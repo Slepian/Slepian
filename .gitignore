@@ -1,0 +1,10 @@
+.DS_Store
+dosetup.sh
+IFILES/
+*~
+slepian_alpha/
+slepian_bravo/
+slepian_charlie/
+slepian_delta/
+slepian_golf/
+slepian_hotel/
