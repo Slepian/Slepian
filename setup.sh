@@ -55,3 +55,6 @@ mkdir RADSLEPIANS
 mkdir TANSLEPIANS
 mkdir TANCAP
 mkdir WIGNER
+
+echo
+echo ...done!

@@ -4,6 +4,8 @@ update_me.sh
 IFILES/
 \#*
 *~
+octave-workspace
+*.gz
 slepian_alpha/
 slepian_bravo/
 slepian_charlie/
