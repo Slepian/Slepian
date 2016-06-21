@@ -1,6 +1,8 @@
 .DS_Store
 dosetup.sh
+update_me.sh
 IFILES/
+\#*
 *~
 slepian_alpha/
 slepian_bravo/

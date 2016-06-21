@@ -5,7 +5,8 @@ echo
 echo Downloading the m-files from GitHub
 echo ===================================
 echo 
-git clone https://github.com/csdms-contrib/slepian_alpha.git
+#git clone https://github.com/csdms-contrib/slepian_alpha.git
+git clone https://github.com/AlainPlattner/slepian_alpha.git
 git clone https://github.com/csdms-contrib/slepian_bravo.git
 git clone https://github.com/csdms-contrib/slepian_charlie.git
 git clone https://github.com/csdms-contrib/slepian_delta.git
