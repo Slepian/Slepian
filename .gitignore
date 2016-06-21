@@ -1,5 +1,5 @@
 .DS_Store
-dosetup.sh
+setup_me.sh
 update_me.sh
 IFILES/
 \#*
