@@ -22,6 +22,7 @@ catch
 end
 
 disp('Installing geometry pkg from forge. This may take a minute.')
+try pkg load geometry
     pkg install -forge geometry
     disp('done')
     pkg load geometry
