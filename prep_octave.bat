@@ -24,3 +24,15 @@ C:\"Program Files"\GnuWin32\bin\wget http://mooring.ucsd.edu/software/matlab/mfi
 C:\"Program Files"\GnuWin32\bin\wget http://mooring.ucsd.edu/software/matlab/mfiles/toolbox/geo/private/npi2pi.m
 
 C:\"Program Files"\GnuWin32\bin\wget http://mooring.ucsd.edu/software/matlab/mfiles/toolbox/geo/private/epsm.m
+
+
+cd ..
+cd IFILES
+cd COASTS
+
+C:\"Program Files"\GnuWin32\bin\wget http://alainplattner.net/COASTS/Africa.mat
+C:\"Program Files"\GnuWin32\bin\wget http://alainplattner.net/COASTS/Antarctica.mat
+C:\"Program Files"\GnuWin32\bin\wget http://alainplattner.net/COASTS/Australia.mat
+C:\"Program Files"\GnuWin32\bin\wget http://alainplattner.net/COASTS/Eurasia.mat
+C:\"Program Files"\GnuWin32\bin\wget http://alainplattner.net/COASTS/Namerica.mat
+C:\"Program Files"\GnuWin32\bin\wget http://alainplattner.net/COASTS/Samerica.mat

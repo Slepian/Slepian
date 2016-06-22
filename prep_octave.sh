@@ -24,3 +24,18 @@ wget http://mooring.ucsd.edu/software/matlab/mfiles/toolbox/geo/private/aut2geod
 wget http://mooring.ucsd.edu/software/matlab/mfiles/toolbox/geo/private/npi2pi.m
 
 wget http://mooring.ucsd.edu/software/matlab/mfiles/toolbox/geo/private/epsm.m
+
+cd ..
+cd IFILES
+cd COASTS
+
+echo
+echo For Octave: Downloading some coasts
+echo
+
+wget http://alainplattner.net/COASTS/Africa.mat
+wget http://alainplattner.net/COASTS/Antarctica.mat
+wget http://alainplattner.net/COASTS/Australia.mat
+wget http://alainplattner.net/COASTS/Eurasia.mat
+wget http://alainplattner.net/COASTS/Namerica.mat
+wget http://alainplattner.net/COASTS/Samerica.mat
