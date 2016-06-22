@@ -9,11 +9,11 @@ function vectordemos(wht)
 % 2     Plot tangential vector Slepian functions for random polar caps
 % 3     Plot spectra of spatially truncated spectrally optimized Slepian
 %       functions for North America
-% 4     Plot internal-source gradient-vector Slepian function for Eurasia
+% 4     Plot internal-field E_lm Slepian function for Eurasia
 %        
 %
 %
-% Last modified by plattner-at-alumn.ethz.ch, 6/21/2015
+% Last modified by plattner-at-alumn.ethz.ch, 6/22/2015
 
 
 
@@ -42,8 +42,9 @@ switch wht
         [G,V]=gradvecglmalpha('eurasia',Lmax);
         % Now get the coefficients from the matrix
         
-        % The resulting coefficients are coefficients for the "internal 
-        % source gradient vector spherical harmonics" Elm that we describe
+        % The resulting coefficients are the coefficients for the 
+        % "internal-fied spherical harmonics" Elm to evaluate the 
+        % internal-field Slepian functions that we describe
         % in our article "Potential field estimation using scalar and 
         % vector Slepian functions at satellite altitude", 
         % doi: 10.1007/978-3-642-27793-1_64-2
