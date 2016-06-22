@@ -56,6 +56,7 @@ mkdir TANSLEPIANS
 mkdir TANCAP
 mkdir WIGNER
 mkdir DLMB
+cd ..
 
 echo
 echo ...done!
