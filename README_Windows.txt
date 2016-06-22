@@ -9,7 +9,7 @@ https://sourceforge.net/projects/gnuwin32/files/wget/1.11.4-1/wget-1.11.4-1-setu
 
 After cloning VectorSlepian, run
 
-setup.sh
+setup_windows.bat
 
 This only needs to be done once.
 
