@@ -23,14 +23,14 @@ end
 
 try pkg load mapping
 catch
-	disp('Installing mapping pkg from forge. This may take a minute.')
+    disp('Installing mapping pkg from forge. This may take a minute.')
     pkg install -forge mapping
     disp('done')
     pkg load mapping
 end
 
-disp('Installing geometry pkg from forge. This may take a minute.')
 try pkg load geometry
+    disp('Installing geometry pkg from forge. This may take a minute.')
     pkg install -forge geometry
     disp('done')
     pkg load geometry
