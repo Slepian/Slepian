@@ -10,7 +10,7 @@ catch
   pkg install -forge io
   disp('done')
   pkg load io
-  end
+end
 
 try pkg load statistics
 catch

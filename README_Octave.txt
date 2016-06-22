@@ -1,6 +1,10 @@
 Before using the Slepian functions for the first time, run
 
+for Unix systems like Mac or Linux:
 ./prep_octave.sh
+
+for Windows:
+prep_octave.bat
 
 To download additionally needed octave programs. 
 
