@@ -29,21 +29,21 @@ echo
 echo Downloading data files from geoweb.princeton.edu
 echo ================================================
 echo
-wget http://geoweb.princeton.edu/people/simons/DOTM/cont.mtl
-wget http://geoweb.princeton.edu/people/simons/DOTM/conm.mat
-wget http://geoweb.princeton.edu/people/simons/DOTM/cost.mtl
-wget http://geoweb.princeton.edu/people/simons/DOTM/platm.mat
+C:\"Program Files"\GnuWin32\bin\wget http://geoweb.princeton.edu/people/simons/DOTM/cont.mtl
+C:\"Program Files"\GnuWin32\bin\wget http://geoweb.princeton.edu/people/simons/DOTM/conm.mat
+C:\"Program Files"\GnuWin32\bin\wget http://geoweb.princeton.edu/people/simons/DOTM/cost.mtl
+C:\"Program Files"\GnuWin32\bin\wget http://geoweb.princeton.edu/people/simons/DOTM/platm.mat
 cd ..
 mkdir EARTHMODELS
 cd EARTHMODELS
 mkdir CONSTANTS
 cd CONSTANTS
-wget http://geoweb.princeton.edu/people/simons/DOTM/Earth.mat
+C:\"Program Files"\GnuWin32\bin\wget http://geoweb.princeton.edu/people/simons/DOTM/Earth.mat
 cd ..
 cd ..
 mkdir COLORMAPS
 cd COLORMAPS
-wget http://geoweb.princeton.edu/people/simons/DOTM/kelim.mat
+C:\"Program Files"\GnuWin32\bin\wget http://geoweb.princeton.edu/people/simons/DOTM/kelim.mat
 cd ..
 mkdir KERNELCP
 mkdir KERNELC

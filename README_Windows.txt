@@ -1,0 +1,17 @@
+To install the software on a windows machine you first need to install:
+
+Git:
+https://git-scm.com/download/win
+
+wget:
+https://sourceforge.net/projects/gnuwin32/files/wget/1.11.4-1/wget-1.11.4-1-setup.exe/download?use_mirror=tenet
+
+
+After cloning VectorSlepian, run
+
+setup.sh
+
+This only needs to be done once.
+
+Then follow the instructions from either README_Matlab.txt or README_Octave.txt
+
