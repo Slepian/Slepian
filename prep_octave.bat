@@ -36,3 +36,6 @@ C:\"Program Files"\GnuWin32\bin\wget http://alainplattner.net/COASTS/Australia.m
 C:\"Program Files"\GnuWin32\bin\wget http://alainplattner.net/COASTS/Eurasia.mat
 C:\"Program Files"\GnuWin32\bin\wget http://alainplattner.net/COASTS/Namerica.mat
 C:\"Program Files"\GnuWin32\bin\wget http://alainplattner.net/COASTS/Samerica.mat
+
+cd ..
+cd ..
