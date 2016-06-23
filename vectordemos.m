@@ -21,8 +21,11 @@ function vectordemos(wht)
 %       for Eurasia
 % 7     Construct and plot purely external-field F_lm Slepian function 
 %       for Eurasia
-% 8     Construct internal- and external- field Slepian function 
+% 8     Construct internal- and external-field Slepian function 
 %       for Eurasia 
+% 9     Toroidal vector Slepian function (TODO)
+% 10    Spherical cap internal- and external-field gradient vector Slepian
+%       functions (TODO)
 %
 %
 % Last modified by plattner-at-alumn.ethz.ch, 6/23/2016
