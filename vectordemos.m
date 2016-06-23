@@ -11,7 +11,12 @@ function vectordemos(wht)
 %       functions for North America
 % 4     Plot internal-field E_lm Slepian function for Eurasia
 % 5     Calculate and plot the eigenvalue weighted sum of all vector 
-%       Slepian functions for the combined continents. 
+%       Slepian functions for the combined continents.
+%       WARNING: In Octave this will only work once polybool is in the
+%       mapping package which should happen somewhen in 2016. Please keep
+%       your packages updated by running "pkg update" regularly 
+% 6     For different spherical cap sizes: Eigenvalues of the Slepian
+%       functions for different orders m.
 %        
 %
 %
@@ -95,6 +100,10 @@ switch wht
         
         disp('Choose a higher degree to have better spatial concentration')
         disp('Now watch PSMOVE.avi')
+        
+    case 6
+        % Show eigenvalues
+        psvals(1)
         
     otherwise error('Choose valid demo number')
         
