@@ -4,7 +4,7 @@ Git:
 https://git-scm.com/download/win
 
 wget:
-https://sourceforge.net/projects/gnuwin32/files/wget/1.11.4-1/wget-1.11.4-1-setup.exe/download?use_mirror=tenet
+https://sourceforge.net/projects/gnuwin32/files/wget/1.11.4-1/wget-1.11.4-1-setup.exe/
 
 
 After cloning VectorSlepian, run

@@ -20,7 +20,6 @@ catch
     pkg load statistics
 end
 
-
 try pkg load mapping
 catch
     disp('Installing mapping pkg from forge. This may take a minute.')
@@ -29,12 +28,12 @@ catch
     pkg load mapping
 end
 
-try pkg load geometry
-    disp('Installing geometry pkg from forge. This may take a minute.')
-    pkg install -forge geometry
-    disp('done')
-    pkg load geometry
-end
+% try pkg load geometry
+%     disp('Installing geometry pkg from forge. This may take a minute.')
+%     pkg install -forge geometry
+%     disp('done')
+%     pkg load geometry
+% end
 
 addpath('./octave_funcs')
 initialize
@@ -42,8 +41,8 @@ initialize
 try poly2cw
 catch
 	disp('poly2cw does not yet exist in the mapping or geometry toolbox.')
-	disp('This will lead to problems when trying to prepare named regions.')
-	disp('Hopefully poly2cw will become available soon in the Octave mapping or geometry package.')
-	disp('Try updating your packages by running:')
-	disp('pkg update')
+%	disp('This will lead to problems when trying to prepare named regions.')
+%	disp('Hopefully poly2cw will become available soon in the Octave mapping or geometry package.')
+%	disp('Try updating your packages by running:')
+%	disp('pkg update')
 end
