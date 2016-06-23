@@ -221,7 +221,45 @@ switch wht
         caxis([-1 1]*max(abs(caxis)))
         title('Radial component external field')
         
-       
+    case 9
+        % Purely toroidal Vector Slepian function
+        Lmax=10;
+        [G,V]=torvecglmalpha('namerica',Lmax);
+        whichone=1;
+        coef=G(:,whichone);
+        % Toroidal functions do not have degree 0, so they are treated the
+        % same way as F_lm coefficients:
+        clmcosi=fcoef2flmcosi(coef,1);                
+        % We don't have a special function clm2xyz, but we do have 
+        % blmclm2xyz. So just feed it an empty blmcosi. 
+        % It needs to be up to the same max spherical harmonic degree as 
+        % the clm
+        % For this we use the handy function addmon which can create a zero
+        % lmcosi
+        [~,~,~,blmcosi]=addmon(Lmax);
+        % And evaluate the zero-blmcosi and the clmcosi
+        % One small step is still needed: The blmclm function needs both
+        % blmcosi and clmcosi to have the same shape. Our clmcosi currently
+        % starts with L=1. Add a zero L=0 to it:
+        clmcosi=[0 0 0 0;clmcosi];
+        [rtor,lon,lat]=blmclm2xyz(blmcosi,clmcosi,1);
+        % And plot it
+        
+        % Longitudinal is the (:,:,1) part (see help blmclm2xyz) 
+        plotplm(rtor(:,:,1),lon*pi/180,lat*pi/180,2);
+        kelicol(1)
+        colorbar
+        caxis([-1 1]*max(abs(caxis)))
+        title('Longitudinal component toroidal Slepian function')
+        
+        % Colatitudinal is the (:,:,2) part (see help blmclm2xyz) 
+        figure
+        plotplm(rtor(:,:,2),lon*pi/180,lat*pi/180,2);
+        kelicol(1)
+        colorbar
+        caxis([-1 1]*max(abs(caxis)))
+        title('Colatitudinal component toroidal Slepian function')
+        
         
 
     otherwise error('Choose valid demo number')
