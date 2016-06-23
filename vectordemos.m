@@ -10,10 +10,12 @@ function vectordemos(wht)
 % 3     Plot spectra of spatially truncated spectrally optimized Slepian
 %       functions for North America
 % 4     Plot internal-field E_lm Slepian function for Eurasia
+% 5     Calculate and plot the eigenvalue weighted sum of all vector 
+%       Slepian functions for the combined continents. 
 %        
 %
 %
-% Last modified by plattner-at-alumn.ethz.ch, 6/22/2015
+% Last modified by plattner-at-alumn.ethz.ch, 6/23/2015
 
 
 
@@ -22,6 +24,7 @@ switch wht
         % Calculate tangential Slepian functions for Australia
         vectorslepian('demo1')
         disp('Vectorslepian has more demos and you can change the max degree and the region.')
+        warning('CHECK OUT THE OTHER vectorspectral.m DEMOS!!!!')
         
     case 2
         % Calculate tangential Slepian function for a random polar cap,
@@ -32,7 +35,7 @@ switch wht
         % Plot 
         vectorspectral('demo1')
         disp('Vectorspectral has many more demos and you can change the max degree and the region.')
-        warning('CHECK OUT THE OTHER vectorspectral.m DEMOS!!!!')
+        
     
     case 4
         % Generate matrix of Slepian functions for Eurasia for a low max
@@ -82,6 +85,16 @@ switch wht
         colorbar
         caxis([-1 1]*max(abs(caxis)))
         title('Longitudinal component')
+        
+    case 5
+        % Calculate and plot the eigenvalue-weighted sum of the vector
+        % Slepian functions for all continents combined.
+        Lmax=5;
+        psallcons([],Lmax,1);
+        psconsum(Lmax)
+        
+        disp('Choose a higher degree to have better spatial concentration')
+        disp('Now watch PSMOVE.avi')
         
     otherwise error('Choose valid demo number')
         

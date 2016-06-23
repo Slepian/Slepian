@@ -39,3 +39,5 @@ wget http://alainplattner.net/COASTS/Australia.mat
 wget http://alainplattner.net/COASTS/Eurasia.mat
 wget http://alainplattner.net/COASTS/Namerica.mat
 wget http://alainplattner.net/COASTS/Samerica.mat
+wget http://alainplattner.net/COASTS/Greenland.mat
+wget http://alainplattner.net/COASTS/Ellesmere.mat

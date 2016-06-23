@@ -56,6 +56,11 @@ mkdir TANSLEPIANS
 mkdir TANCAP
 mkdir WIGNER
 mkdir DLMB
+mkdir GLACIERS
+cd GLACIERS
+mkdir RGI_3_2
+cd ..
+mkdir PSALLCONS
 
 echo
 echo ...done!

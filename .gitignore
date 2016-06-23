@@ -6,6 +6,7 @@ IFILES/
 *~
 octave-workspace
 *.gz
+*.avi
 slepian_alpha/
 slepian_bravo/
 slepian_charlie/
