@@ -25,6 +25,9 @@ wget http://mooring.ucsd.edu/software/matlab/mfiles/toolbox/geo/private/npi2pi.m
 
 wget http://mooring.ucsd.edu/software/matlab/mfiles/toolbox/geo/private/epsm.m
 
+wget http://savannah.gnu.org/support/download.php?file_id=37343
+mv download.php?file_id=37343 ispolycw.m 
+
 cd ..
 cd IFILES
 cd COASTS
