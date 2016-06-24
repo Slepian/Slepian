@@ -2,6 +2,7 @@
 setup_me.sh
 update_me.sh
 IFILES/
+deprecated/
 \#*
 *~
 octave-workspace

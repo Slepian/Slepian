@@ -29,21 +29,21 @@ echo
 echo Downloading data files from geoweb.princeton.edu
 echo ================================================
 echo
-wget http://geoweb.princeton.edu/people/simons/DOTM/cont.mtl
-wget http://geoweb.princeton.edu/people/simons/DOTM/conm.mat
-wget http://geoweb.princeton.edu/people/simons/DOTM/cost.mtl
-wget http://geoweb.princeton.edu/people/simons/DOTM/platm.mat
+curl -o cont.mtl http://geoweb.princeton.edu/people/simons/DOTM/cont.mtl
+curl -o conm.mat http://geoweb.princeton.edu/people/simons/DOTM/conm.mat
+curl -o cost.mtl http://geoweb.princeton.edu/people/simons/DOTM/cost.mtl
+curl -o platm.mat http://geoweb.princeton.edu/people/simons/DOTM/platm.mat
 cd ..
 mkdir EARTHMODELS
 cd EARTHMODELS
 mkdir CONSTANTS
 cd CONSTANTS
-wget http://geoweb.princeton.edu/people/simons/DOTM/Earth.mat
+curl -o Earth.mat http://geoweb.princeton.edu/people/simons/DOTM/Earth.mat
 cd ..
 cd ..
 mkdir COLORMAPS
 cd COLORMAPS
-wget http://geoweb.princeton.edu/people/simons/DOTM/kelim.mat
+curl -o kelim.mat http://geoweb.princeton.edu/people/simons/DOTM/kelim.mat
 cd ..
 mkdir KERNELCP
 mkdir KERNELC

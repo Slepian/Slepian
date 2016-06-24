@@ -23,12 +23,9 @@ function vectordemos(wht)
 %       for Eurasia
 % 8     Construct internal- and external-field Slepian function 
 %       for Eurasia 
-% 9     Toroidal vector Slepian function (TODO)
-% 10    Spherical cap internal- and external-field gradient vector Slepian
-%       functions (TODO)
+% 9     Toroidal vector Slepian function    
 %
-%
-% Last modified by plattner-at-alumn.ethz.ch, 6/23/2016
+% Last modified by plattner-at-alumn.ethz.ch, 6/24/2016
 
 
 
@@ -238,15 +235,18 @@ switch wht
         % lmcosi
         [~,~,~,blmcosi]=addmon(Lmax);
         % And evaluate the zero-blmcosi and the clmcosi
-        % One small step is still needed: The blmclm function needs both
-        % blmcosi and clmcosi to have the same shape. Our clmcosi currently
-        % starts with L=1. Add a zero L=0 to it:
-        clmcosi=[0 0 0 0;clmcosi];
+        % One small step is still needed: addmon creates an lmcosi that
+        % goes from L=0 to L=Lmax, but blmcosi can not have an L=0
+        % component, otherwise there is adivision by 0. So we remove the
+        % L=0:
+        blmcosi=blmcosi(2:end,:);
+        % Then evaluate the field
         [rtor,lon,lat]=blmclm2xyz(blmcosi,clmcosi,1);
         % And plot it
         
         % Longitudinal is the (:,:,1) part (see help blmclm2xyz) 
         plotplm(rtor(:,:,1),lon*pi/180,lat*pi/180,2);
+        view(20,40)
         kelicol(1)
         colorbar
         caxis([-1 1]*max(abs(caxis)))
@@ -255,13 +255,14 @@ switch wht
         % Colatitudinal is the (:,:,2) part (see help blmclm2xyz) 
         figure
         plotplm(rtor(:,:,2),lon*pi/180,lat*pi/180,2);
+        view(20,40)
         kelicol(1)
         colorbar
         caxis([-1 1]*max(abs(caxis)))
         title('Colatitudinal component toroidal Slepian function')
         
+   
         
-
     otherwise error('Choose valid demo number')
         
 end

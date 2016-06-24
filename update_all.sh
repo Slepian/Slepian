@@ -22,7 +22,6 @@ git checkout master
 git pull origin master
 cd ..
 
-
 echo
 echo Updating slepian_delta
 echo ======================
@@ -31,6 +30,13 @@ git checkout master
 git pull origin master
 cd ..
 
+echo
+echo Updating slepian_echo
+echo ======================
+cd slepian_echo
+git checkout master
+git pull origin master
+cd ..
 
 echo
 echo Updating slepian_golf
