@@ -10,7 +10,7 @@ git clone https://github.com/AlainPlattner/slepian_alpha.git
 git clone https://github.com/csdms-contrib/slepian_bravo.git
 git clone https://github.com/csdms-contrib/slepian_charlie.git
 git clone https://github.com/csdms-contrib/slepian_delta.git
-## git clone https://github.com/csdms-contrib/slepian_echo.git
+git clone https://github.com/csdms-contrib/slepian_echo.git
 ## git clone https://github.com/csdms-contrib/slepian_foxtrott.git
 git clone https://github.com/csdms-contrib/slepian_golf.git
 git clone https://github.com/csdms-contrib/slepian_hotel.git 
