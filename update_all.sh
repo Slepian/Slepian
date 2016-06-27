@@ -2,8 +2,10 @@ echo
 echo Updating slepian_alpha
 echo ======================
 cd slepian_alpha
-git checkout amp
-git pull origin amp
+#git checkout amp
+#git pull origin amp
+git checkout master
+git pull origin master
 cd ..
 
 echo
