@@ -18,4 +18,6 @@ slepian_golf/
 slepian_hotel/
 octave_funcs/
 *.org
-
+*.aux
+*.log
+*.out
