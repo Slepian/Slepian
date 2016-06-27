@@ -48,6 +48,7 @@ cd ..
 mkdir KERNELCP
 mkdir KERNELC
 mkdir KERNELB
+mkdir SDWCAP
 mkdir GLMALPHA
 mkdir GRADVECGLMALPHA
 mkdir LEGENDRE
