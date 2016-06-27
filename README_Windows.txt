@@ -7,7 +7,7 @@ wget:
 https://sourceforge.net/projects/gnuwin32/files/wget/1.11.4-1/wget-1.11.4-1-setup.exe/
 
 
-After cloning VectorSlepian, run
+After cloning Slepian, run
 
 setup_windows.bat
 

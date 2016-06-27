@@ -56,7 +56,7 @@ git pull origin master
 cd ..
 
 echo
-echo Updating VectorSlepian
+echo Updating Slepian
 echo ======================
 git checkout master
 git pull origin master
