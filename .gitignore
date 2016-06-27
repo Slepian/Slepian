@@ -17,6 +17,7 @@ slepian_foxtrott/
 slepian_golf/
 slepian_hotel/
 octave_funcs/
+grdwrite2p/
 *.org
 *.aux
 *.log
