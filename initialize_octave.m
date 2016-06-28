@@ -28,6 +28,14 @@ catch
     pkg load mapping
 end
 
+try pkg load netcdf
+catch
+    disp('Installing netcdf pkg from forge. This may take a minute.')
+    pkg install -forge netcdf
+    disp('done')
+    pkg load netcdf
+end
+
 % try pkg load geometry
 %     disp('Installing geometry pkg from forge. This may take a minute.')
 %     pkg install -forge geometry
