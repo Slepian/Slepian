@@ -289,10 +289,12 @@ switch wht
         grdwrite2p(lon,flipud(lat),flipud(datB{cmp}),filename);
         
         disp('Plot the resulting fields using GMT (http://gmt.soest.hawaii.edu/)')
-        disp('For GMT 5, simply run the following two calls to plot the grd file in a Mollweide projection')        
-        disp('gmt grdimage Eurasia_radial.nc -Rg -JW0/20c -K -Cpolar > Eurasia_radial.ps')
+        disp('For GMT 5, simply run the following three calls to plot the grd file in a Mollweide projection')        
+        disp(' ')
+        disp('gmt grd2cpt Eurasia_radial.nc -Cpolar -E100 -T= > colorscale.cpt')
+        disp('gmt grdimage Eurasia_radial.nc -Rg -JW0/20c -K -Ccolorscale.cpt > Eurasia_radial.ps')
         disp('gmt pscoast -Rg -JW -W -O -K >> Eurasia_radial.ps')
-        
+        disp(' ')
         
     otherwise error('Choose valid demo number')
         
