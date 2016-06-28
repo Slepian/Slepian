@@ -23,9 +23,10 @@ function vectordemos(wht)
 %       for Eurasia
 % 8     Construct internal- and external-field Slepian function 
 %       for Eurasia 
-% 9     Toroidal vector Slepian function    
+% 9     Toroidal vector Slepian function
+% 10    Write a Slepian function out to a GMT file (shows GMT instructions) 
 %
-% Last modified by plattner-at-alumn.ethz.ch, 6/24/2016
+% Last modified by plattner-at-alumn.ethz.ch, 6/28/2016
 
 
 
@@ -162,8 +163,8 @@ switch wht
         
         
     case 8
-        % Generate matrix of external Slepian functions for Eurasia for a 
-        % low max degree
+        % Generate matrix of internal and external Slepian functions  
+        % for Eurasia for a low max degree
         % Choose maximum spherical-harmonic degree for internal field
         Lint=15;
         % and for external field
@@ -261,7 +262,37 @@ switch wht
         caxis([-1 1]*max(abs(caxis)))
         title('Colatitudinal component toroidal Slepian function')
         
-   
+    case 10
+        % Generate matrix of Slepian functions for Eurasia for a low max
+        % degree
+        % Choose maximum spherical-harmonic degree
+        Lmax=20;
+        [G,V]=gradvecglmalpha('eurasia',Lmax);
+        
+        % We want to plot the 5th best
+        index=5;
+        coef=G(:,index);
+        % Remember, any glmalpha function (including gradvecglmalpha)
+        % returns the coefficients ordered in ADDMOUT, so we need to set 
+        onorout=1;
+        lmcosi=coef2lmcosi(coef,onorout);       
+        % Now evaluate the function
+        % Let's set resolution to 0.5 degrees per pixels
+        res=0.5;
+        [datB,lon,lat]=elm2xyz(lmcosi,res);        
+        
+        % Let's use the radial component:
+        cmp=1;
+        % Let's write it to
+        filename='Eurasia_radial.nc';
+        % grdwrite2p needs some flipping to understand our ordering scheme:
+        grdwrite2p(lon,flipud(lat),flipud(datB{cmp}),filename);
+        
+        disp('Plot the resulting fields using GMT (http://gmt.soest.hawaii.edu/)')
+        disp('For GMT 5, simply run the following two calls to plot the grd file in a Mollweide projection')        
+        disp('gmt grdimage Eurasia_radial.nc -Rg -JW0/20c -K -Cpolar > Eurasia_radial.ps')
+        disp('gmt pscoast -Rg -JW -W -O -K >> Eurasia_radial.ps')
+        
         
     otherwise error('Choose valid demo number')
         
