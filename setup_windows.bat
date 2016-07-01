@@ -1,30 +1,30 @@
-# This script downloads all the functions and sets up the folder structure
 
-# First download the m-files
+
+
 echo
 echo Downloading the m-files from GitHub
 echo ===================================
 echo 
 git clone https://github.com/csdms-contrib/slepian_alpha.git
-#git clone https://github.com/AlainPlattner/slepian_alpha.git
+
 git clone https://github.com/csdms-contrib/slepian_bravo.git
 git clone https://github.com/csdms-contrib/slepian_charlie.git
 git clone https://github.com/csdms-contrib/slepian_delta.git
 git clone https://github.com/csdms-contrib/slepian_echo.git
-## git clone https://github.com/csdms-contrib/slepian_foxtrott.git
+
 git clone https://github.com/csdms-contrib/slepian_golf.git
 git clone https://github.com/csdms-contrib/slepian_hotel.git 
 
-git clone clone https://github.com/AlainPlattner/grdwrite2p.git
+git clone clone https://github.com/Slepian/grdwrite2p.git
 
 echo
 echo Creating folder structure
 echo =========================
 echo
-# Then make the datafile directory
+
 mkdir IFILES
 
-# And get many of the things we will need
+
 cd IFILES
 mkdir COASTS
 cd COASTS

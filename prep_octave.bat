@@ -25,8 +25,6 @@ C:\"Program Files"\GnuWin32\bin\wget http://mooring.ucsd.edu/software/matlab/mfi
 
 C:\"Program Files"\GnuWin32\bin\wget http://mooring.ucsd.edu/software/matlab/mfiles/toolbox/geo/private/epsm.m
 
-#C:\"Program Files"\GnuWin32\bin\wget http://savannah.gnu.org/file/ispolycw.m?file_id=37343
-#move download.php?file_id=37343 ispolycw.m 
 
 cd ..
 cd IFILES
