@@ -4,8 +4,8 @@ This repository contains installation and demo files for the Slepian software to
 
 The software runs on [Matlab](http://www.mathworks.com/products/matlab/) and [Octave](https://www.gnu.org/software/octave/), which you can obtain for free from https://www.gnu.org/software/octave/download.html 
 
-There is also a folder containing introductory texts: [edu](https://github.com/AlainPlattner/Slepian/tree/master/edu).
-Check out for example the [tutorial to spherical harmonics](https://github.com/AlainPlattner/Slepian/tree/master/edu/Ch_01_SphericalHarmonics/Ch_01_SphericalHarmonics_tut.pdf). 
+There is also a folder containing introductory texts: [edu](https://github.com/Slepian/Slepian/tree/master/edu).
+Check out for example the [tutorial to spherical harmonics](https://github.com/Slepian/Slepian/tree/master/edu/Ch_01_SphericalHarmonics/Ch_01_SphericalHarmonics_tut.pdf). 
  
 
 ##Installation instructions for Windows
@@ -19,7 +19,7 @@ https://sourceforge.net/projects/gnuwin32/files/wget/1.11.4-1/wget-1.11.4-1-setu
 
 Once they are installed, open a Command Prompt window, switch to the folder in which you would like to install the Slepian software, and run
 
-`git clone https://github.com/AlainPlattner/Slepian.git`
+`git clone https://github.com/Slepian/Slepian.git`
 
 Once the repository is cloned, switch to it
 
@@ -79,7 +79,7 @@ For Linux: If it's not already installed you can use a package manager such as a
 
 Once they are installed, open a Terminal window, switch to the folder in which you would like to install the Slepian software, and run
 
-`git clone https://github.com/AlainPlattner/Slepian.git`
+`git clone https://github.com/Slepian/Slepian.git`
 
 Once the repository is cloned, switch to it
 
