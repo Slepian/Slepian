@@ -15,7 +15,7 @@ git clone https://github.com/csdms-contrib/slepian_echo.git
 git clone https://github.com/csdms-contrib/slepian_golf.git
 git clone https://github.com/csdms-contrib/slepian_hotel.git 
 
-git clone clone https://github.com/Slepian/grdwrite2p.git
+git clone https://github.com/Slepian/grdwrite2p.git
 
 echo
 echo Creating folder structure
