@@ -41,6 +41,14 @@ git pull origin master
 cd ..
 
 echo
+echo Updating slepian_foxtrot
+echo ======================
+cd slepian_foxtrot
+git checkout master
+git pull origin master
+cd ..
+
+echo
 echo Updating slepian_golf
 echo ======================
 cd slepian_golf
