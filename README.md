@@ -48,7 +48,7 @@ You will need to run `initialize_octave` every time you start Octave but it will
 
 After that you are ready to go. Try out 
 
-`vectordemo(1)`
+`vectordemos(1)`
 
 etc.
 
@@ -60,7 +60,7 @@ After starting Matlab, switch into the Slepian folder and run in Matlab
 
 After that you are ready to go. Try out 
 
-`vectordemo(1)`
+`vectordemos(1)`
 
 etc.
 
@@ -108,7 +108,7 @@ You will need to run `initialize_octave` every time you start Octave but it will
 
 After that you are ready to go. Try out 
 
-`vectordemo(1)`
+`vectordemos(1)`
 
 etc.
 
@@ -120,7 +120,7 @@ After starting Matlab, switch into the Slepian folder and run in Matlab
 
 After that you are ready to go. Try out 
 
-`vectordemo(1)`
+`vectordemos(1)`
 
 etc.
 
