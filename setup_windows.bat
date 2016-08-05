@@ -59,6 +59,9 @@ mkdir RADSLEPIANS
 mkdir TANSLEPIANS
 mkdir TANCAP
 mkdir WIGNER
+cd WIGNER
+mkdir 0J
+cd ..
 mkdir DLMB
 mkdir GLACIERS
 cd GLACIERS
