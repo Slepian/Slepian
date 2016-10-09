@@ -41,9 +41,12 @@ before starting Octave.
 
 After starting Octave, switch into the Slepian folder and run in Octave
 
+`setup_octave_pkg`
+
+This will only be necessary the first time you use this software. Then, after the necessary packages are installed (or skipped), run
+
 `initialize_octave`
 
-This may install some additional Octave packages required to run the software. 
 You will need to run `initialize_octave` every time you start Octave but it will only install the packages once, so it will be much faster the next time you run it.
 
 After that you are ready to go. Try out 
@@ -101,9 +104,13 @@ before starting Octave.
 
 After starting Octave, switch into the Slepian folder and run in Octave
 
+`setup_octave_pkg`
+
+This will only be necessary the first time you use this software. Then, after the necessary packages are installed (or skipped), run
+
+
 `initialize_octave`
 
-This may install some additional Octave packages required to run the software. 
 You will need to run `initialize_octave` every time you start Octave but it will only install the packages once, so it will be much faster the next time you run it.
 
 After that you are ready to go. Try out 
