@@ -20,14 +20,6 @@ catch
     pkg load statistics
 end
 
-try pkg load mapping
-catch
-    disp('Installing mapping pkg from forge. This may take a while.')
-    pkg install -forge mapping
-    disp('done')
-    pkg load mapping
-end
-
 addpath('./octave_funcs')
 initialize
 

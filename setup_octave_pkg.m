@@ -1,6 +1,12 @@
 
 
-
+try pkg load mapping
+catch
+    disp('Installing mapping pkg from forge. This may take a while.')
+    pkg install -forge mapping
+    disp('done')
+    pkg load mapping
+end
 
 try pkg load netcdf
 catch
