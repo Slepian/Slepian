@@ -95,7 +95,7 @@ This will set up the folder structure and download some additional data files. C
 To run the software in Octave, which you can obtain [here](https://www.gnu.org/software/octave/) for free, 
 you will need to run
 
-`prep_octave.sh`
+`./prep_octave.sh`
 
 before starting Octave.
 
@@ -130,7 +130,7 @@ If some of the demos run into problems you may be missing the Mapping Toolbox or
 ##Keeping the software updated
 This repository and all the slepian_alpha etc repositories are regularly updated. To keep your software up to date I included the scripts
 
-`update_all.sh` 
+`./update_all.sh` 
 
 for Linux/Mac/Unix
 
