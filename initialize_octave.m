@@ -46,3 +46,5 @@ catch
 end
 
 do_braindead_shortcircuit_evaluation (1)
+% Too many warnings in octave
+warning('off')
