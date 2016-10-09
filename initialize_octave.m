@@ -44,3 +44,5 @@ try polybool
 catch 
 	warning('polybool does not yet exist in the mapping package.')
 end
+
+do_braindead_shortcircuit_evaluation (1)
