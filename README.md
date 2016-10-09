@@ -41,19 +41,19 @@ before starting Octave.
 
 After starting Octave, switch into the Slepian folder and run in Octave
 
-`setup_octave_pkg`
-
-This will only be necessary the first time you use this software. 
-
-**There may be error messages or warnings during package installation.**
-**This does not mean that the software will not run. It may just mean that a specific package failed to install.**
-The software should still work and you can continue with the next steps. Some special functions such as export to GMT may not work but this can be fixed at a later time (install NetCDF and run `setup_octave_pkg` again).
-
-Then, after the necessary packages are installed (or skipped with error messages), run
-
 `initialize_octave`
 
-You will need to run `initialize_octave` every time you start Octave but it will only install the packages once, so it will be much faster the next time you run it.
+The first time you run `initialize_octave`, the program will take a while to complete because it downloads and installs necessary additional octave packages. 
+Once the packages are installed, octave will simply load them when running this script. This will be much faster.
+
+To also load/install advanced packages that will only run if your system has the corresponding programs installed (NetCDF, GDAL), run
+
+`initialize_octave_adv`
+
+If the package installation for the advanced packages fails you will still be able to use most functions.  
+Some special functions such as export to GMT may not work but this can be fixed at a later time (install NetCDF and run `initialize_octave_adv` again).
+
+You will need to run `initialize_octave` (and ``initialize_octave_adv`, if required) every time you start Octave but it will only install the packages once, so it will be much faster the next time you run it.
 
 After that you are ready to go. Try out 
 
@@ -110,19 +110,19 @@ before starting Octave.
 
 After starting Octave, switch into the Slepian folder and run in Octave
 
-`setup_octave_pkg`
-
-This will only be necessary the first time you use this software. 
-
-**There may be error messages or warnings during package installation.**
-**This does not mean that the software will not run. It may just mean that a specific package failed to install.**
-The software should still work and you can continue with the next steps. Some special functions such as export to GMT may not work but this can be fixed at a later time (install NetCDF and run `setup_octave_pkg` again).
-
-Then, after the necessary packages are installed (or skipped with error messages), run
-
 `initialize_octave`
 
-You will need to run `initialize_octave` every time you start Octave but it will only install the packages once, so it will be much faster the next time you run it.
+The first time you run `initialize_octave`, the program will take a while to complete because it downloads and installs necessary additional octave packages. 
+Once the packages are installed, octave will simply load them when running this script. This will be much faster.
+
+To also load/install advanced packages that will only run if your system has the corresponding programs installed (NetCDF, GDAL), run
+
+`initialize_octave_adv`
+
+If the package installation for the advanced packages fails you will still be able to use most functions.  
+Some special functions such as export to GMT may not work but this can be fixed at a later time (install NetCDF and run `initialize_octave_adv` again).
+
+You will need to run `initialize_octave` (and ``initialize_octave_adv`, if required) every time you start Octave but it will only install the packages once, so it will be much faster the next time you run it.
 
 After that you are ready to go. Try out 
 
