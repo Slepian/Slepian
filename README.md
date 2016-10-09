@@ -43,7 +43,13 @@ After starting Octave, switch into the Slepian folder and run in Octave
 
 `setup_octave_pkg`
 
-This will only be necessary the first time you use this software. Then, after the necessary packages are installed (or skipped), run
+This will only be necessary the first time you use this software. 
+
+**There may be error messages or warnings during package installation.**
+**This does not mean that the software will not run. It may just mean that a specific package failed to install.**
+The software should still work and you can continue with the next steps. Some special functions such as export to GMT may not work but this can be fixed at a later time (install NetCDF and run `setup_octave_pkg` again).
+
+Then, after the necessary packages are installed (or skipped with error messages), run
 
 `initialize_octave`
 
@@ -106,8 +112,13 @@ After starting Octave, switch into the Slepian folder and run in Octave
 
 `setup_octave_pkg`
 
-This will only be necessary the first time you use this software. Then, after the necessary packages are installed (or skipped), run
+This will only be necessary the first time you use this software. 
 
+**There may be error messages or warnings during package installation.**
+**This does not mean that the software will not run. It may just mean that a specific package failed to install.**
+The software should still work and you can continue with the next steps. Some special functions such as export to GMT may not work but this can be fixed at a later time (install NetCDF and run `setup_octave_pkg` again).
+
+Then, after the necessary packages are installed (or skipped with error messages), run
 
 `initialize_octave`
 
