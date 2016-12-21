@@ -57,6 +57,10 @@ mkdir GLMALPHAPTOJ
 mkdir GRADVECGLMALPHA
 mkdir LEGENDRE
 mkdir LOCALIZE
+mkdir PLATES
+cd PLATES
+C:\"Program Files"\GnuWin32\bin\wget http://geoweb.princeton.edu/people/simons/DOTM/plates.mtl
+cd ..
 mkdir RADSLEPIANS
 mkdir TANSLEPIANS
 mkdir TANCAP

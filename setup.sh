@@ -57,6 +57,10 @@ mkdir GLMALPHAPTOJ
 mkdir GRADVECGLMALPHA
 mkdir LEGENDRE
 mkdir LOCALIZE
+mkdir PLATES
+cd PLATES
+curl -o plates.mtl http://geoweb.princeton.edu/people/simons/DOTM/plates.mtl
+cd ..
 mkdir RADSLEPIANS
 mkdir TANSLEPIANS
 mkdir TANCAP
