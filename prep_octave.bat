@@ -25,6 +25,7 @@ C:\"Program Files"\GnuWin32\bin\wget http://mooring.ucsd.edu/software/matlab/mfi
 
 C:\"Program Files"\GnuWin32\bin\wget http://mooring.ucsd.edu/software/matlab/mfiles/toolbox/geo/private/epsm.m
 
+C:\"Program Files"\GnuWin32\bin\wget http://mooring.ucsd.edu/software/matlab/mfiles/toolbox/geo/private/meanm.m
 
 cd ..
 cd IFILES

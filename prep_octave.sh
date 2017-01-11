@@ -25,6 +25,7 @@ curl -o npi2pi.m http://mooring.ucsd.edu/software/matlab/mfiles/toolbox/geo/priv
 
 curl -o epsm.m http://mooring.ucsd.edu/software/matlab/mfiles/toolbox/geo/private/epsm.m
 
+curl -o meanm.m http://mooring.ucsd.edu/software/matlab/mfiles/toolbox/geo/private/meanm.m
 #curl -o ispolycw.m http://savannah.gnu.org/support/download.php?file_id=37343
 
 cd ..
