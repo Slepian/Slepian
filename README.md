@@ -1,4 +1,4 @@
-#Welcome to the Slepian wiki!
+# Welcome to the Slepian wiki!
 
 This repository contains installation and demo files for the Slepian software to install all prerequisites from the repository slepian_alpha, etc.
 
@@ -8,7 +8,7 @@ There is also a folder containing introductory texts: [edu](https://github.com/S
 Check out for example the [tutorial to spherical harmonics](https://github.com/Slepian/Slepian/tree/master/edu/Ch_01_SphericalHarmonics/Ch_01_SphericalHarmonics_tut.pdf). 
  
 
-##Installation instructions for Windows
+## Installation instructions for Windows
 To be able to use the installation scripts setup_windows.bat and, in case you are using Octave, the Octave prep script prep_octave.bat, you will need to have the following two programs installed:
 
 Git:
@@ -145,7 +145,7 @@ etc.
 If some of the demos run into problems you may be missing the Mapping Toolbox or other Matlab toolboxes. You can either purchase them from MathWorks or try out Octave (see above).
 
 
-##Keeping the software updated
+## Keeping the software updated
 This repository and all the slepian_alpha etc repositories are regularly updated. To keep your software up to date I included the scripts
 
 `./update_all.sh` 
