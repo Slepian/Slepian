@@ -1,4 +1,4 @@
-# Welcome to the Slepian wiki!
+# Welcome to the Slepian installation instructions!
 
 This repository contains installation and demo files for the Slepian software to install all prerequisites from the repository slepian_alpha, etc.
 
