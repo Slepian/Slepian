@@ -18,7 +18,7 @@ cd ..
 
 echo
 echo Updating slepian_charlie
-echo ======================
+echo ========================
 cd slepian_charlie
 git checkout master
 git pull origin master
@@ -42,7 +42,7 @@ cd ..
 
 echo
 echo Updating slepian_foxtrot
-echo ======================
+echo ========================
 cd slepian_foxtrot
 git checkout master
 git pull origin master
@@ -50,7 +50,7 @@ cd ..
 
 echo
 echo Updating slepian_golf
-echo ======================
+echo =====================
 cd slepian_golf
 git checkout master
 git pull origin master
@@ -66,7 +66,15 @@ git pull origin master
 cd ..
 
 echo
+echo Updating slepian_juliet
+echo =======================
+cd slepian_juliet
+git checkout master
+git pull origin master
+cd ..
+
+echo
 echo Updating Slepian
-echo ======================
+echo ================
 git checkout master
 git pull origin master

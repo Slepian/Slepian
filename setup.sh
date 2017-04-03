@@ -13,7 +13,8 @@ git clone https://github.com/csdms-contrib/slepian_delta.git
 git clone https://github.com/csdms-contrib/slepian_echo.git
 git clone https://github.com/csdms-contrib/slepian_foxtrot.git
 git clone https://github.com/csdms-contrib/slepian_golf.git
-git clone https://github.com/csdms-contrib/slepian_hotel.git 
+git clone https://github.com/csdms-contrib/slepian_hotel.git
+git clone https://github.com/csdms-contrib/slepian_juliet.git
 
 git clone https://github.com/Slepian/grdwrite2p.git
 
