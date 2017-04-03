@@ -76,7 +76,8 @@ etc.
 If some of the demos run into problems you may be missing the Mapping Toolbox or other Matlab toolboxes. You can either purchase them from MathWorks or try out Octave (see above).
 
 
-##Installation instructions for Mac/Linux/Unix
+## Installation instructions for Mac/Linux/Unix
+
 To be able to use the installation scripts setup.sh and, in case you are using Octave, the Octave prep script prep_octave.sh, you will need to have the following two programs installed:
 
 **Git:**
