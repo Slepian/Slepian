@@ -21,7 +21,7 @@ Once the repository is cloned start Matlab or Octave, change to your newly creat
 
 `setup()`
 
-#### Running in Octave
+## Running in Octave
 To finalize the instalation for Octave, run in Octave
 
 `prep_octave()`
@@ -51,7 +51,7 @@ After that you are ready to go. Try out
 etc.
 
 
-#### Running in Matlab
+## Running in Matlab
 After starting Matlab, switch into the Slepian folder and run in Matlab
 
 `initialize`
