@@ -21,21 +21,21 @@ mkdir('COASTS');
 cd('COASTS');
 
 disp('Downloading data files from geoweb.princeton.edu')
-websave('cont.mtl','http://geoweb.princeton.edu/people/simons/DOTM/cont.mtl');
-websave('conm.mat','http://geoweb.princeton.edu/people/simons/DOTM/conm.mat');
-websave('cost.mtl','http://geoweb.princeton.edu/people/simons/DOTM/cost.mtl');
-websave('platm.mat','http://geoweb.princeton.edu/people/simons/DOTM/platm.mat');
+urlwrite('http://geoweb.princeton.edu/people/simons/DOTM/cont.mtl','cont.mtl');
+urlwrite('http://geoweb.princeton.edu/people/simons/DOTM/conm.mat','conm.mat');
+urlwrite('http://geoweb.princeton.edu/people/simons/DOTM/cost.mtl','cost.mtl');
+urlwrite('http://geoweb.princeton.edu/people/simons/DOTM/platm.mat','platm.mat');
 cd('..')
 mkdir('EARTHMODELS');
 cd('EARTHMODELS');
 mkdir('CONSTANTS');
 cd('CONSTANTS');
-websave('Earth.mat','http://geoweb.princeton.edu/people/simons/DOTM/Earth.mat');
+urlwrite('http://geoweb.princeton.edu/people/simons/DOTM/Earth.mat','Earth.mat');
 cd('..');
 cd('..');
 mkdir('COLORMAPS');
 cd('COLORMAPS');
-websave('kelim.mat','http://geoweb.princeton.edu/people/simons/DOTM/kelim.mat');
+urlwrite('http://geoweb.princeton.edu/people/simons/DOTM/kelim.mat','kelim.mat');
 cd('..');
 mkdir('KERNELCP');
 mkdir('KERNELC');
@@ -49,7 +49,7 @@ mkdir('LEGENDRE');
 mkdir('LOCALIZE');
 mkdir('PLATES');
 cd('PLATES');
-websave('plates.mtl','http://geoweb.princeton.edu/people/simons/DOTM/plates.mtl');
+urlwrite('http://geoweb.princeton.edu/people/simons/DOTM/plates.mtl','plates.mtl');
 cd('..');
 mkdir('RADSLEPIANS');
 mkdir('TANSLEPIANS');
