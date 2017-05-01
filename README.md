@@ -8,38 +8,27 @@ There is also a folder containing introductory texts: [edu](https://github.com/S
 Check out for example the [tutorial to spherical harmonics](https://github.com/Slepian/Slepian/tree/master/edu/Ch_01_SphericalHarmonics/Ch_01_SphericalHarmonics_tut.pdf). 
  
 
-## Installation instructions for Windows
-To be able to use the installation scripts setup_windows.bat and, in case you are using Octave, the Octave prep script prep_octave.bat, you will need to have the following two programs installed:
+## Installation instructions
+To be able to use the installation functions setup.m and, in case you are using Octave, the Octave prep function prep_octave.m, you will need to have Git installed:
 
-Git:
 https://git-scm.com/download/win
 
-wget:
-https://sourceforge.net/projects/gnuwin32/files/wget/1.11.4-1/wget-1.11.4-1-setup.exe/
-
-Once they are installed, open a Command Prompt window, switch to the folder in which you would like to install the Slepian software, and run
+Once git is installed, open a Command Prompt window, switch to the folder in which you would like to install the Slepian software, and run
 
 `git clone https://github.com/Slepian/Slepian.git`
 
-Once the repository is cloned, switch to it
+Once the repository is cloned start Matlab or Octave, change to your newly created directory `Slepian` and, in Octave or Matlab, run the setup function
 
-`cd Slepian`
+`setup()`
 
-and run the setup script
+#### Running in Octave
+To finalize the instalation for Octave, run in Octave
 
-`setup_windows.bat`
+`prep_octave()`
 
-This will set up the folder structure and download some additional data files. Continue below depending on if you are using Octave or Matlab.
+this is only necessary the first time you are using the software.
 
-#### Running under Octave
-To run the software in Octave, which you can obtain [here](https://www.gnu.org/software/octave/) for free, 
-you will need to run
-
-`prep_octave.bat`
-
-before starting Octave.
-
-After starting Octave, switch into the Slepian folder and run in Octave
+To initialize the software (set paths, etc), run in Octave
 
 `initialize_octave`
 
@@ -53,86 +42,16 @@ To also load/install advanced packages that will only run if your system has the
 If the package installation for the advanced packages fails you will still be able to use most functions.  
 Some special functions such as export to GMT may not work but this can be fixed at a later time (install NetCDF and run `initialize_octave_adv` again).
 
-You will need to run `initialize_octave` (and ``initialize_octave_adv`, if required) every time you start Octave but it will only install the packages once, so it will be much faster the next time you run it.
+You will need to run `initialize_octave` (and `initialize_octave_adv`, if required) every time you start Octave but it will only install the packages once, so it will be much faster the next time you run it.
 
 After that you are ready to go. Try out 
 
-`vectordemos(1)`
+`vectordemos(2)`
 
 etc.
 
 
-#### Running under Matlab
-After starting Matlab, switch into the Slepian folder and run in Matlab
-
-`initialize`
-
-After that you are ready to go. Try out 
-
-`vectordemos(1)`
-
-etc.
-
-If some of the demos run into problems you may be missing the Mapping Toolbox or other Matlab toolboxes. You can either purchase them from MathWorks or try out Octave (see above).
-
-
-## Installation instructions for Mac/Linux/Unix
-
-To be able to use the installation scripts setup.sh and, in case you are using Octave, the Octave prep script prep_octave.sh, you will need to have the following two programs installed:
-
-**Git:**
-https://git-scm.com/
-
-**curl:**
-For Mac: It should already be installed. If not, you can get it from package managers such as [MacPorts](https://www.macports.org/), [Homebrew](http://brew.sh/), etc.
-For Linux: If it's not already installed you can use a package manager such as apt-get.
-
-Once they are installed, open a Terminal window, switch to the folder in which you would like to install the Slepian software, and run
-
-`git clone https://github.com/Slepian/Slepian.git`
-
-Once the repository is cloned, switch to it
-
-`cd Slepian`
-
-and run the setup script
-
-`./setup.sh`
-
-This will set up the folder structure and download some additional data files. Continue below depending on if you are using Octave or Matlab.
-
-#### Running under Octave
-To run the software in Octave, which you can obtain [here](https://www.gnu.org/software/octave/) for free, 
-you will need to run
-
-`./prep_octave.sh`
-
-before starting Octave.
-
-After starting Octave, switch into the Slepian folder and run in Octave
-
-`initialize_octave`
-
-The first time you run `initialize_octave`, the program will take a while to complete because it downloads and installs necessary additional octave packages. 
-Once the packages are installed, octave will simply load them when running this script. This will be much faster.
-
-To also load/install advanced packages that will only run if your system has the corresponding programs installed (NetCDF, GDAL), run
-
-`initialize_octave_adv`
-
-If the package installation for the advanced packages fails you will still be able to use most functions.  
-Some special functions such as export to GMT may not work but this can be fixed at a later time (install NetCDF and run `initialize_octave_adv` again).
-
-You will need to run `initialize_octave` (and ``initialize_octave_adv`, if required) every time you start Octave but it will only install the packages once, so it will be much faster the next time you run it.
-
-After that you are ready to go. Try out 
-
-`vectordemos(1)`
-
-etc.
-
-
-#### Running under Matlab
+#### Running in Matlab
 After starting Matlab, switch into the Slepian folder and run in Matlab
 
 `initialize`
@@ -147,17 +66,9 @@ If some of the demos run into problems you may be missing the Mapping Toolbox or
 
 
 ## Keeping the software updated
-This repository and all the slepian_alpha etc repositories are regularly updated. To keep your software up to date I included the scripts
+This repository and all the slepian_alpha etc repositories are regularly updated. To keep your software up to date I included the Matlab/Octave function 
 
-`./update_all.sh` 
-
-for Linux/Mac/Unix
-
-and
-
-`update_all.bat`
-
-for Windows.
+`update_all()` 
 
 To avoid conflicts when updating I recommend that if you change any of provided files in your folder, that you rename them. This way, an update will simply overwrite the provided files and will ignore your new functions/files/scripts.
 
