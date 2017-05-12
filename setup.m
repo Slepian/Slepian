@@ -72,6 +72,8 @@ mkdir('TORVECGLMALPHA');
 mkdir('TORVECGLMALPHATOJ');
 mkdir('VECTANSDWCAP');
 mkdir('VECTANGLMALPHA');
+mkdir('SDWCAPRING');
+mkdir('GLMALPHARING');
 
 cd('..');
 
