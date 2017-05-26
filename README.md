@@ -48,12 +48,17 @@ After that you are ready to go. Try out
 
 `demos_slepian_golf(2)`
 
-or
+orgra
 
 `demos_slepian_hotel(1)`
 
 etc.
 
+If the figures look weird, close all figures, run
+
+`graphics_toolkit('gnuplot')`
+
+and try again.
 
 ## Running in Matlab
 After starting Matlab, switch into the Slepian folder and run in Matlab
