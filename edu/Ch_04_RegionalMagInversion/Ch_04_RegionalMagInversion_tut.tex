@@ -389,22 +389,17 @@ If you actually want to make beautiful plots, use GMT \\(http://gmt.soest.hawaii
 
 \section{Evaluating a model at varying satellite altitude}
 
-\COMON
-Use rGvec instead of evalatalt. Update description.
-\COMOFF
 
 Let's say you want to compare the model described by a set of spherical-harmonic coefficients to a set of data points that were collected by the satellite. These ``real'' data points are each at an individual altitude. In section \ref{plotting single alt} you learned how to plot the models at a single altitude, but this won't help much if you want to know exactly how different the modeled value at each individual point is from the measured value. 
 
-Luckily we have a function that does that: \verb+evalatalt+ 
+Luckily we have a function that does that: \verb+rGvec+ 
  What you need in order to use this function is: the coefficients (in addmon format) \emph{coef}, the data point locations (longitude \emph{lon}, colatitude \emph{cola}, radial position \emph{r}), and the reference radius of the planet for the spherical-harmonic coefficients \emph{planet}. For example if you load the coefficients from model\\
   \verb+L130_200night_r3376_avgalt135_SouthernTerraSirenum_J90_weighres.mat+,\\
 and the corresponding data from \verb+premapping_SouthernTerraSirenum.mat+, you can evaluate the modeled data values for the coefficients at exactly the same locations and altitudes as the measured satellite data by running
 
-\qquad \verb+moddata=evalatalt(coef,lon,cola,r,3376);+
+\qquad \verb+moddata=rGvec(coef,cola*pi/180,lon*pi/180,r,3376);+
 
 The reference radius 3376 km is what was used as the planet's radius when I originally calculated the model (as is indicated in the filename). The calculation will take a while. Save the modeled data after calculation!
-
-Remark: The function evalatalt is ok if you want to evaluate a single function given by its coefficients and the maximum degree is not too high. The function \verb+rGvec+ is optimized in terms of memory and runtime.
 
 As a first check to see if the modeled data and the evaluated data are even close to being similar you can just plot for example the radial component of the magnetic field of both data sets:
 

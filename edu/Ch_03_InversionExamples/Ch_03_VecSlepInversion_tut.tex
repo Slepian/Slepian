@@ -29,16 +29,16 @@
 
 \section{Testing the software}
 
-After installing the package VecSlepInversion and starting Octave or
-Matlab, and initializing (by running \verb+initialize_octave+ or
+After installing the software and starting Octave or Matlab, and
+initializing (by running \verb+initialize_octave+ or
 \verb+initialize+), try out the demo function
-\verb+InversionExamples+. For example. run
+\verb+demos_slepian_hotel+. For example. run
 
-\verb+InversionExamples(1)+
+\verb+demos_slepian_hotel(1)+
 
 This will take a while to calculate. If it takes too long you can
 abort by pressing ``Ctrl-c''. Let's have a look why it takes so
-long. Open the function \verb+InversionExamples.m+ by double-clicking
+long. Open the function \verb+demos_slepian_hotel.m+ by double-clicking
 on it in Octave/Matlab.
 
 You will first see a couple of lines with \verb+%+ signs in the
@@ -58,7 +58,7 @@ the data!
 
 Set Lmax to a lower value. Maybe 10. Save, and then run again
 
-\qquad \verb+InversionExamples(1)+
+\qquad \verb+demos_slepian_hotel(1)+
 
 This should, after other things, finally plot a sphere with some
 blurry colors on it. You can rotate the sphere by clicking on ``R'' in
@@ -66,7 +66,7 @@ Octave, or the rotate button in Matlab and then rotate with your mouse.
 
 If you now run the example again
 
-\qquad \verb+InversionExamples(1)+
+\qquad \verb+demos_slepian_hotel(1)+
 
 you will see that the calculations are much faster. This is because
 in-between steps were stored.
@@ -102,7 +102,7 @@ calculate and require much less memory than irregular regions. This is
 particularly important for very large spherical-harmonic degrees (200
 and beyond).
 
-\verb+InversionExamples(3)+ and \verb+InversionExamples(4)+ are inversions for
+\verb+demos_slepian_hotel(3)+ and \verb+demos_slepian_hotel(4)+ are inversions for
 artificial data with a noise level you can choose. These are the key
 examples for estimating crustal fields from satellite altitude. In
 principle you can take these examples (3 for radial component data
@@ -111,7 +111,7 @@ select your region, satellite altitude, planet radius, maximum
 spherical harmonic degree, and number of Slepian functions you want to
 use, and run it to calculate your crustal magnetic field model.
 
-\verb+InversionExamples(5)+ finally puts everything together and
+\verb+demos_slepian_hotel(5)+ finally puts everything together and
 more. In this function we have:
 
 \begin{itemize}
