@@ -46,7 +46,11 @@ You will need to run `initialize_octave` (and `initialize_octave_adv`, if requir
 
 After that you are ready to go. Try out 
 
-`vectordemos(2)`
+`demos_slepian_golf(2)`
+
+or
+
+`demos_slepian_hotel(1)`
 
 etc.
 
@@ -58,7 +62,11 @@ After starting Matlab, switch into the Slepian folder and run in Matlab
 
 After that you are ready to go. Try out 
 
-`vectordemos(1)`
+`demos_slepian_golf(2)`
+
+or
+
+`demos_slepian_hotel(1)`
 
 etc.
 
