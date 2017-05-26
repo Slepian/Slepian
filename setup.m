@@ -75,6 +75,23 @@ mkdir('VECTANGLMALPHA');
 mkdir('SDWCAPRING');
 mkdir('GLMALPHARING');
 
+% These are the additional folders needed for SLEPIAN_Hotel
+mkdir('SDWCAPUP');
+mkdir('GLMALPHAUP');
+mkdir('GLMALPHAUPTOJP');
+mkdir('GRADVECSDWCAPUP');
+mkdir('GRADVECGLMALPHAUP');
+mkdir('GRADVECGLMALPHAUPTOJP');
+mkdir('INOUTGRADVECSDWCAPUP');
+mkdir('INOUTGRADVECGLMALPHAUP');
+mkdir('INOUTGRADVECGLMALPHAUPTOJP');
+mkdir('KERNELCPUP');
+mkdir('KERNELEPUP');
+mkdir('KERNELFPUP');
+mkdir('SLEPEVAL');
+mkdir('INOUTSLEPEVAL');
+
+
 cd('..');
 
 disp('.. done')

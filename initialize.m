@@ -12,6 +12,7 @@ addpath('./slepian_echo')
 % addpath('./slepian_foxtrott')
 addpath('./slepian_golf')
 addpath('./slepian_hotel')
+addpath('./slepian_hotel/MGS')
 
 addpath('./grdwrite2p')
 

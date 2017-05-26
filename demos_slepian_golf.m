@@ -1,4 +1,4 @@
-function vectordemos(wht)
+function demos_slepian_golf(wht)
 % Demo to show some of the capabilities of the software. Many of the 
 % m-files have demos themselves usually through filename('demo1') 
 %
@@ -26,7 +26,7 @@ function vectordemos(wht)
 % 9     Toroidal vector Slepian function
 % 10    Write a Slepian function out to a GMT file (shows GMT instructions) 
 %
-% Last modified by plattner-at-alumn.ethz.ch, 6/28/2016
+% Last modified by plattner-at-alumn.ethz.ch, 5/26/2017
 
 
 
