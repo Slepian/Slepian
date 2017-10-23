@@ -1,5 +1,11 @@
 function update_all()
 
+disp('Updating slepian_zero')
+cd('slepian_zero');
+system('git checkout master');
+system('git pull origin master');
+cd('..');
+
 disp('Updating slepian_alpha')
 cd('slepian_alpha');
 system('git checkout master');

@@ -3,6 +3,7 @@ setenv('OSTYPE','linux')
 %setenv('OSTYPE','solaris')
 disp('If you are using a Solaris machine, change the OSTYPE setting in initialize.m')
 
+addpath('./slepian_zero')
 addpath('./slepian_alpha')
 addpath('./slepian_alpha/REGIONS')
 addpath('./slepian_bravo')

@@ -8,6 +8,7 @@ deprecated/
 octave-workspace
 *.gz
 *.avi
+slepian_zero/
 slepian_alpha/
 slepian_bravo/
 slepian_charlie/
