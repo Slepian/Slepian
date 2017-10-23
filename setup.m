@@ -2,7 +2,8 @@ function setup()
 
 disp('Downloading the m-files from GitHub ..')
 
-system('git clone https://github.com/csdms-contrib/slepian_zero.git');
+%system('git clone https://github.com/csdms-contrib/slepian_zero.git');
+system('git clone https://github.com/Slepian/slepian_zero.git');
 system('git clone https://github.com/csdms-contrib/slepian_alpha.git');
 system('git clone https://github.com/csdms-contrib/slepian_bravo.git');
 system('git clone https://github.com/csdms-contrib/slepian_charlie.git');
