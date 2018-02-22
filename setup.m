@@ -66,7 +66,6 @@ cd('GLACIERS');
 mkdir('RGI_3_2');
 cd('..');
 mkdir('PSALLCONS');
-mkdir('GRADVECGLMALPHA');
 mkdir('INOUTGRADVECGLMALPHA');
 mkdir('INOUTGRADVECSDWCAP');
 mkdir('OUTGRADVECGLMALPHA');
