@@ -80,8 +80,10 @@ mkdir('GLMALPHARING');
 
 % These are the additional folders needed for SLEPIAN_Hotel
 mkdir('SDWCAPUP');
+mkdir('SDWCAPPOTUP');
 mkdir('GLMALPHAUP');
 mkdir('GLMALPHAUPTOJP');
+mkdir('GLMALPHAPOTUP');
 mkdir('GRADVECSDWCAPUP');
 mkdir('GRADVECGLMALPHAUP');
 mkdir('GRADVECGLMALPHAUPTOJP');
