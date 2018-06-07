@@ -13,6 +13,7 @@ system('git clone https://github.com/csdms-contrib/slepian_foxtrot.git');
 system('git clone https://github.com/csdms-contrib/slepian_golf.git');
 system('git clone https://github.com/csdms-contrib/slepian_hotel.git');
 system('git clone https://github.com/csdms-contrib/slepian_juliet.git');
+system('git clone https://github.com/harig00/MMASS.git');
 
 system('git clone https://github.com/Slepian/grdwrite2p.git');
 
