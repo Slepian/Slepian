@@ -13,7 +13,6 @@ system('git clone https://github.com/csdms-contrib/slepian_foxtrot.git');
 system('git clone https://github.com/csdms-contrib/slepian_golf.git');
 system('git clone https://github.com/csdms-contrib/slepian_hotel.git');
 system('git clone https://github.com/csdms-contrib/slepian_juliet.git');
-system('git clone https://github.com/harig00/MMASS.git');
 
 system('git clone https://github.com/Slepian/grdwrite2p.git');
 
@@ -84,6 +83,7 @@ mkdir('SDWCAPPOTUP');
 mkdir('GLMALPHAUP');
 mkdir('GLMALPHAUPTOJP');
 mkdir('GLMALPHAPOTUP');
+mkdir('GLMALPHAPOTUPTOJP');
 mkdir('GRADVECSDWCAPUP');
 mkdir('GRADVECGLMALPHAUP');
 mkdir('GRADVECGLMALPHAUPTOJP');
@@ -91,6 +91,7 @@ mkdir('INOUTGRADVECSDWCAPUP');
 mkdir('INOUTGRADVECGLMALPHAUP');
 mkdir('INOUTGRADVECGLMALPHAUPTOJP');
 mkdir('KERNELCPUP');
+mkdir('KERNELCPPOTUP');
 mkdir('KERNELEPUP');
 mkdir('KERNELFPUP');
 mkdir('SLEPEVAL');
