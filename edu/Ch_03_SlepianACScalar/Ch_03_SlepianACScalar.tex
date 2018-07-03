@@ -61,7 +61,10 @@ As mentioned in the previous chapter, we must know whether our spherical harmoni
 \verb+[G,V] = glmalphapotup(dom,L,rnew,rold);+
 
 \subsection{Plotting}
-However, to plot the Slepian function at satellite altitude, we must upward continue the functions by using the function \verb+potup+.  This requires the inputs: G, radius to the satellite, planet radius, and L.  For this example, we will use the spherical harmonic coefficient for the optimal Slepian function, which would be the first column of G.  We can now run:
+However, to plot the Slepian function at satellite altitude, we must upward continue the functions by using the function \verb+potup+.  This requires the inputs: G, radius to the satellite, planet radius, and L.  
+
+\subsubsection{Example One:}
+For this example, we will use the spherical harmonic coefficient for the optimal Slepian function, which would be the first column of G.  We can now run:
 
 \verb+coef = potup(G(:,1),rnew,rold,L,1);+
 
@@ -123,6 +126,7 @@ This should result in figure 2.
 
 \textbf{Exercise:} Try some of your own linear combinations.
 
+\subsubsection{Example Two:}
 Now, let's try a set of linear combinations including all of the spherical harmonic coefficients in our case.  The length of our matrix, G, is $(L+1)^2$.  Let:
 
 \verb|K = length(G)|
@@ -131,9 +135,9 @@ We need to determine a proper value for \verb+J+ to plot the optimal linear comb
 
 \verb|plot(1:K,V)|
 
-Now we can analyze the plot to determine which value of J such that most of the eigenvalues are concentrated within our region.  Our plot will look like figure.... , as an exponential decay curve.  By analyzing the graph, it looks like the eigenvalues near zero at about $J=40$.  You will have to manually choose your J value, so run:
+Now we can analyze the plot to determine which value of J such that most of the eigenvalues are concentrated within our region.  Our plot will look like figure.... , as an exponential decay curve.  By analyzing the graph, it looks like the eigenvalues near zero at about $J=50$.  You will have to manually choose your J value, so run:
 
-\verb+J = 40+
+\verb+J = 50+
 
 We will need to use a \verb+for+ loop to run through all the spherical harmonic coefficients contained in the matrix \verb+G+, with \verb+J+ columns.  Combining our knowledge from above, run:
 
@@ -161,7 +165,7 @@ Again, use \verb+plotplm+ to plot and adjust the color:
 \verb+kelicol(1)+\\
 \verb+caxis([-1,1]*max(abs(caxis)))+
 
-Compare your plot to figure 3.
+Compare your plot to figure 3.  As  you can see, the Slepian functions are describing the region chosen, \verb|'africa'|.  
 
 \textbf{Question:} Choose a lower J value and compare the plots.  What do you notice?
 
