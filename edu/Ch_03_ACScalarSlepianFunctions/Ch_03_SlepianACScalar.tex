@@ -7,6 +7,8 @@
 \usepackage{color}
 \setlength{\parskip}{0.5cm plus4mm minus3mm}
 \usepackage{upquote}
+\usepackage{float}
+\usepackage{amsmath}
 
 
 \textwidth=6.4in
@@ -39,7 +41,7 @@
 
 Now that we understand the classical scalar Slepian functions, we can consider the altitude of a satellite from which the data was taken.   Atlitude-cognizant scalar Slepian functions can optimize the linear combination of spherical harmonics by either a downward continuation from the satellite radius to the planet's surface or a upward continuation from the planet's surface to the satellite radius.  The altitude-cognizant scalar Slepian functions (AC-SSF) are constructed through the maximum spherical harmonic degree L, region of concentration, planet radius, and the average satellite radius.  Since there is 'negligible' potential field in the area between the planet's surface and the satellite altitude, we optimize the potential from the planet to create a model.  The AC-SSF optimizes the linear combination of scalar spherical harmonics to incorporate the satellite altitude at which the data was taken.  Basically, we are able to take the field data collected by a satellite at some altitude and, through an optimal linear combination, we are able to plot the field on the planet's surface. 
 
-*See Plattner and Simons 2017 for an in depth explanation.
+*See Plattner and Simons (2017) for an in depth explanation.
 
 \section{Application}
 
@@ -73,17 +75,7 @@ For this example, we will use the spherical harmonic coefficient for the optimal
 
 \verb+lmcosi = coef2lmcosi(G(:,1),1);+
 
-To plot the Slepian functions on the surface of the planet, we may use the same functions as in the previous chapter, for the classical scalar Slepian functions: \verb+plm2xyz+ and \verb+plotplm+. 
- 
-\begin{figure}
-  %\centering
-  \includegraphics[width=0.45\textwidth]{figures/G(:,1)flat.png}
-  \includegraphics[width=0.5\textwidth]{figures/G(:,1).png}
-  \caption{Result of plotplm with G(:,1).}
-\label{G(:,1)}
-\end{figure}
-
-Now set the resolution to 
+To plot the Slepian functions on the surface of the planet, we may use the same functions as in the previous chapter, for the classical scalar Slepian functions: \verb+plm2xyz+ and \verb+plotplm+.  Now set the resolution:
 
 \verb+res = 1;+ 
 
@@ -101,20 +93,18 @@ Let's add a colorbar and make the color scale nicer by running:
 \verb+colorbar+\\
 \verb+caxis([-1,1]*max(abs(caxis)))+
 
-\begin{figure}
-  %\centering
-  \includegraphics[width=0.5\textwidth]{figures/potupflat.png}
-  \includegraphics[width=0.45\textwidth]{figures/potup.png}
-  \caption{Result of plotup with G(:,1).}
-\label{G(:,1)potup}
-\end{figure}
-
 To plot the figure on a 3-D sphere, run:
 
 \verb+plotplm(lmcosi,[],[],2,res)+
 
 For the results, see Figure 1.
-
+\begin{figure}[H]
+  %\centering
+  \includegraphics[width=0.5\textwidth]{figures/G(:,1)flatml.png}
+  \includegraphics[width=0.45\textwidth]{figures/G(:,1)ml.png}
+  \caption{Plot of G(:,1).}
+\label{G(:,1)}
+\end{figure}
 Let's now use the function \verb+potup+ to upward continue the Slepian functions to satellite altitude.  We can now run:
 
 \verb+coef = potup(G(:,1),rnew,rold,L,1);+
@@ -135,13 +125,12 @@ To plot on a sphere, run:
 \verb+plotplm(lmcosi,[],[],2,res)+
 
 For the results, see figure 2.
-
-\begin{figure}
-  \centering
-  \includegraphics[width=0.4\textwidth]{figures/dom16.png}
-  \includegraphics[width=0.4\textwidth]{figures/dom100_25.png}
-  \caption{Result with dom = 16 and dom = [100,25]}
-\label{dom}
+\begin{figure}[H]
+  %\centering
+  \includegraphics[width=0.5\textwidth]{figures/potupflatml.png}
+  \includegraphics[width=0.45\textwidth]{figures/potupml.png}
+  \caption{Upward continued G(:,1).}
+\label{G(:,1)potup}
 \end{figure}
 
 \textbf{Exercise:} Let's try another region, say a spherical cap:
@@ -150,16 +139,21 @@ For the results, see figure 2.
 
 Run every step above again and plot on a sphere.  What is the result?  Compare your result to figure 3.
 
-
 \textbf{Exercise:} We can try another region, say a spherical ring:
 
 \verb+dom = [100,25]+
 
 What is the result? Compare to figure 3.
-
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.45\textwidth]{figures/dom16ml.png}
+  \includegraphics[width=0.45\textwidth]{figures/dom100_25ml.png}
+  \caption{Result with dom = 16 and dom = [100,25]}
+\label{dom}
+\end{figure}
 See the \verb+help+ function to see what other regions we can choose for \verb+glmalphapotup+.
 
-\textbf{Exercise:} Try the second best Slepian function now in Africa:
+\textbf{Exercise:} Try the second best Slepian function, now in Africa:
 
 \verb+dom = 'africa';+\\
 \verb+[G,V] = glmalphapotup(dom,L,rnew,rold);+\\
@@ -168,12 +162,12 @@ See the \verb+help+ function to see what other regions we can choose for \verb+g
 \verb+plotplm(lmcosi,[],[],2,res)+\\
 \verb+kelicol(1)+
 
-This results in figure 4.  Compare with figure 1.  What do you notice?
+This results in figure 4.  Compare with figure 2.  What do you notice?
 
-\begin{figure}
+\begin{figure}[H]
   \centering
-  \includegraphics[width=0.4\textwidth]{figures/G(:,2).png}
-  \caption{Result with G(:,2).}
+  \includegraphics[width=0.45\textwidth]{figures/G(:,2)ml.png}
+  \caption{Plot with the second best Slepian function, G(:,2).}
 \label{G(:,2)}
 \end{figure}
 
@@ -181,7 +175,7 @@ This results in figure 4.  Compare with figure 1.  What do you notice?
 
 Now that we know how to create and plot the Slepain functions at satellite altitude with different regions, we can create a linear combination of the altitude-cognizant Slepian functions.  What does the linear combination 
 
-\verb|h = G(:,1)+3*G(:,2);| 
+\verb|h = G(:,1)+G(:,2);| 
 
 look like?  You will need to input this linear combination into your command line and run the same process, with \verb+h+ instead of \verb+G(:,1)+ in the functions:
 
@@ -191,16 +185,17 @@ look like?  You will need to input this linear combination into your command lin
 \verb+caxis([-1,1]*max(abs(caxis)))+\\
 \verb+kelicol(1)+
 
-This should result in figure 5.
+This should result in figure 5.  Compare this figure with figures 2 and 4.  What do you notice?
 
-\begin{figure}
+\textbf{Exercise:} Try some of your own linear combinations and examine the plots.
+
+\begin{figure}[H]
   \centering
-  \includegraphics[width=0.4\textwidth]{figures/lincomb1.png}
-  \caption{Result with h = G(:,1)+3*G(:,2).}
+  \includegraphics[width=0.5\textwidth]{figures/hcombml.png}
+  \caption{Plot with h = G(:,1)+G(:,2).}
 \label{lincomb1}
 \end{figure}
 
-\textbf{Exercise:} Try some of your own linear combinations.
 
 \subsubsection{Example Two:}
 Now, let's try a set of linear combinations including all of the spherical harmonic coefficients in our case.  The length of our matrix, G, is $(L+1)^2$.  Let:
@@ -211,68 +206,88 @@ We need to determine a proper value for \verb+J+ to plot the optimal linear comb
 
 \verb|plot(1:K,V)|
 
-Now we can analyze the plot to determine which value of J such that most of the eigenvalues are concentrated within our region.  Our plot will look like figure 8, as an exponential decay curve.  By analyzing the graph, it looks like the eigenvalues near zero at about $J=50$.  You will have to manually choose your J value, so run:
+Now we can analyze the plot to determine which value of J such that most of the eigenvalues are concentrated within our region.  Our plot will look like figure 6, as an exponential decay curve.  
 
-\verb+J = 50;+
-
-We will need to use a \verb+for+ loop to run through all the spherical harmonic coefficients contained in the matrix \verb+G+, with \verb+J+ columns.  We first upward continue the function:
-
-\verb+for j=1:J+\\
-\verb+    g{j} = potup(G(:,j),rnew,rold,L,1);+\\
-\verb+end+
-
-Now, we can turn the coefficients into lmcosi:
-
-\verb+for j=1:J+\\
-\verb+    g{j} = coef2lmcosi(g{j},1);+\\
-\verb+end+
-
-We then turn this into xyz coordinates:
-
-\verb+for j=1:J+\\
-\verb+    g{j} = plm2xyz(g{j},1);+\\
-\verb+end+
-
-This is the long version of obtaining \verb+g{j}+, the cell array containing the coefficients.  The shorter version is as follows:
-
-\verb+for j=1:J+\\
-\verb+    g{j} = plm2xyz(coef2lmcosi(potup(G(:,j),rnew,rold,L,1),1),res);+\\
-\verb+end+
-
-\begin{figure}
-  %\centering
-  \includegraphics[width=0.45\textwidth]{figures/Vvsj.png}
-  \includegraphics[width=0.45\textwidth]{figures/lincomb.png}
-  \caption{V vs j and linear combination.}
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.5\textwidth]{figures/Vvsj_ml.png}
+  \caption{Eigenvalue V vs index j.}
 \label{lincomb}
 \end{figure}
 
-This also gathers all of the coefficients into the cell array, \verb+g{j}+, while sorting them into the appropriate format.  Now we can choose some random values:
+By analyzing the graph, it looks like the eigenvalues near zero at about $J=50$.  You will have to manually choose your J value, so run:
 
-\verb+u = rand(J,1);+
+\verb+J = 50;+
 
-Now, we need to create a matrix, \verb+f+, which is the same size as our coefficients. Run:
+We want to choose some random values to create our linear combination:
 
-\verb+f = zeros(size(g{1}));+
+\verb|u = randn(K,1);|
 
-Finally, we can build our linear combination of spherical harmonics, which describe the Slepian functions:
+and we will need to create a a matrix, \verb+f+, which is the same size as our coefficients. Run:
 
-\verb+for j=1:J+\\
-\verb|    f = f+u(j)*g{j};|\\   
-\verb+end+
+\verb|f = zeros(size(G(:,1)));|
 
-Again, use \verb+plotplm+ to plot and adjust the color:
+Now we can make a \verb|for| loop to create a linear combination of the coefficients by running:
 
-\verb+plotplm(f,[],[],4,res)+\\
-\verb+kelicol(1)+\\
-\verb+caxis([-1,1]*max(abs(caxis)))+
+\verb|for j=1:J|\\
+\verb|	f = f + u(j)*G(:,j);|\\
+\verb|end|
 
-Compare your plot to figure 6.  As  you can see, the Slepian functions are describing the region chosen, \verb|'africa'|.  
+This will create a matrix, \verb|f|, containing the linear combinations of spherical harmonics.  Now we can sort them into the correct format and plot:
+
+\verb|[F,lon,lat] = plm2xyz(coef2lmcosi(f,1),1);|\\
+\verb|plotplm(F,lon,lat,4,res)|
+
+The plot of F is shown in figure 7.  We can alternatively directly plot this by:
+
+\verb|plotplm(coef2lmcosi(f,1),[],[],4,res)|
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.5\textwidth]{figures/F_ml.png}
+	\caption{Random linear combination for eignenvalues up to J = 50.}
+\end{figure}
+
+
+Now, let's use all of the Slepian functions, rather than just up to our value \verb|J|.  To do this, let's run a similar code with eigenvalues \verb|1:K|.
+
+\verb|f2 = zeros(size(G(:,1)));|\\
+\verb|for j=1:K|\\
+\verb|	f2 = f2 + u(j)*G(:,j)|\\
+\verb|end|
+
+Plot:
+
+\verb|plotplm(coef2lmcosi(f2,1),[],[],4,res)|
+
+Figure 8 shows the plot of all of the eigenvalues.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.5\textwidth]{figures/f2ml.png}
+	\caption{Random linear combination for all eignenvalues.}
+\end{figure}
+
+
+Now that we understand the building of the linear combinations, we can use \verb|potup| to upward continue the coefficients.  We want to use our original \verb|f|, since it would be the best linear combination of Slepian functions.  We can do this in one step:
+
+\verb|fup = potup(f,rnew,rold,L,1);|
+
+Now we can plot the upward continued coefficients:
+
+\verb|plotplm(coef2lmcosi(fup,1),[],[],4,res)|
+
+The best fit Slepian functions, upward continued, are shown in figure 9.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.5\textwidth]{figures/fup_ml.png}
+	\caption{Best linear combination of Slepian functions up to J = 50, upward continued.}
+\end{figure}
 
 \textbf{Question:} Choose a lower J value and compare the plots.  What do you notice?
 
 
-
-\textit{**This chapter is currently under construction.**}
+\TAG
 
 \end{document}
