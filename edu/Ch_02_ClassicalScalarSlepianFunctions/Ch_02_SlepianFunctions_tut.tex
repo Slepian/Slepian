@@ -129,7 +129,7 @@ g_{LL,1}  & g_{LL,2}  & \dots  & g_{LL,(L+1)2}    \\
 \end{bmatrix}
 $$
 
-where the subscript of each element contains the $lm$ values and the slepian function number separated by a comma respectively. The first column \verb+G(:,1)+ is the coefficients corresponding to the ``best'' Slepian funtion, or the one that is most spatially concentrated within our chosen region of Africa. \verb+G(:,2)+ would be the second best, \verb+G(:,3)+ would be the third best, and so on until \verb|G(:(L+1)^2)|.
+where the subscript of each element contains the $lm$ values and the slepian function number separated by a comma respectively. The first column \verb+G(:,1)+ is the coefficients corresponding to the ``best'' Slepian funtion, or the one that is most spatially concentrated within our chosen region of Africa. \verb+G(:,2)+ would be the second best, \verb+G(:,3)+ would be the third best, and so on until \verb|G(:,(L+1)^2)|.
  
 Once the coefficients have been calculated we desire a neutral type of sorting in the format called LMCOSI to prepare for plotting.
 
@@ -176,9 +176,9 @@ As expected, the fluctuations are concentrated on the center of Africa and negli
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.5\textwidth]{figures/demoClassScaleAfrica.png}
+  \includegraphics[width=0.5\textwidth]{figures/firstGColumnExample.png}
   \caption{\begin{small}
-  Result of example using glmalpha() with L=20 to calculate coefficients, plm2xyz() to evaluate them, and plotplm() to plot with method 4. The y-axis is latitude and x-axis is longitude. Only the first ``best" concentrated eigensolutions are plotted. The color scheme is kelicol(1) and max/min values are changed to fit the max/min of data plotted. 
+  Result of example using glmalpha() with L=20 to calculate coefficients, plm2xyz() to evaluate them, and plotplm() to plot with method 1 - the Mollweide projection. Only the first ``best" concentrated eigensolutions are plotted. The color scheme is kelicol(1) and max/min values are changed to fit the max/min of data plotted. 
   \end{small}}
 \label{plotplm}
 \end{figure}
@@ -191,8 +191,11 @@ Let's do another quick example where we plot a linear combination of Slepian fun
 And if you plot it you should see:
 
 
-*******PLOT HERE**********
-
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.5\textwidth]{figures/linCombExample.png}
+\label{replace_me}
+\end{figure}
 
 
 \textbf{Exercsie:} Practice plotting different linear combinations of slepian functions. Try multiplying by a vector of random coefficients.
