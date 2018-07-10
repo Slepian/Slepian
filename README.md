@@ -15,7 +15,7 @@ Check out for example the [tutorial to spherical harmonics](https://github.com/S
 ## Installation instructions
 To be able to use the installation functions setup.m and, in case you are using Octave, the Octave prep function prep_octave.m, you will need to have Git installed:
 
-https://git-scm.com/download/win
+https://git-scm.com/download/
 
 Once git is installed, open a Command Prompt window, switch to the folder in which you would like to install the Slepian software, and run
 
