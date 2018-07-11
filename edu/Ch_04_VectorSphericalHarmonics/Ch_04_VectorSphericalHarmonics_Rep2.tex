@@ -32,25 +32,34 @@
 
 \section{Representation 2 of Vector Fields}
 
-
+The second representation of vector fields include $E_{lm}$, $F_{lm}$, and $C_{lm}$.
 
 $E_{lm}$: vector components from the gradient of a potential field from a planet. \\
 $F_{lm}$: vector components from the gradient of a potential field from outside the satellite radius (space). \\
 $C_{lm}$: same as in representation 1.
 
+
+
+
 To evaluate the spherical harmonic coefficients, we must first convert each of the vector components into lmcosi format.  To do so, we can use the following:
 
-\verb|elmcosi = ??|\\
-\verb|flmcosi = fcoef2flmcosi(?coef=G(:,1)?,1);|\\
+\verb|elmcosi = coef2lmcosi(coef,1)|\\
+\verb|flmcosi = fcoef2flmcosi(coef,1);|\\
 \verb|[blmcosi,clmcosi] = coef2blmclm(coef,L);|
 
 Now we can convert these to xyz coordinates by running:
 
-\verb|elm = elm2xyz(elmcosi,1);|\\
-\verb|flm = flm2xyz(flmcosi,1);|\\
-\verb|[blm,clm] = blmclm2xyz(blmcosi,clmcosi,1);|
+\verb|[elm,elon,elat] = elm2xyz(elmcosi,1);|\\
+\verb|[flm,flon,flat] = flm2xyz(flmcosi,1);|
+
+The output of each of these provide fields \verb|r{1}| (radial component), \verb|r{2}| (theta or colatitudinal component), and \verb|r{3}| (phi or longitudinal component).  The first dimension of the field is latitude and the second is longitude.
+
+\verb|[blmclm,lon,lat] = blmclm2xyz(blmcosi,clmcosi,1);|
+
+This will output a field with \verb|r(:,:,1)| as the phi component and \verb|r(:,:,2)| as the theta component.  See the \verb|help| functions for each of these to examine their outputs in further detail.
 
 
+If the vector field is represented as a linear combination of elm and flm, then we will need to evaluate elm and flm separately then sum them.
 
 
 
