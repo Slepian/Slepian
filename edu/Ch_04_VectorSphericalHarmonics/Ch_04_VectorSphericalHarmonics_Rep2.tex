@@ -38,25 +38,41 @@ $E_{lm}$: vector components from the gradient of a potential field from a planet
 $F_{lm}$: vector components from the gradient of a potential field from outside the satellite radius (space). \\
 $C_{lm}$: same as in representation 1.
 
+We can choose these values through the following method.  First, we will need to set some parameters:
 
+\verb|L = 20;|\\
+\verb|theta = pi/2;|\\
+\verb|phi = pi;|
 
+Now let's find the values of \verb|elm|:
 
-To evaluate the spherical harmonic coefficients, we must first convert each of the vector components into lmcosi format.  To do so, we can use the following:
+\verb|[Elm,theta,phi] = elm(L,theta,phi);|
 
-\verb|elmcosi = coef2lmcosi(coef,1)|\\
-\verb|flmcosi = fcoef2flmcosi(coef,1);|\\
-\verb|[blmcosi,clmcosi] = coef2blmclm(coef,L);|
+Similarly, we can find \verb|flm| and \verb|clm|:
+
+\verb|[Flm,theta,phi] = flm(L,theta,phi);|\\
+\verb|[Blm,Clm,theta,phi] = blmclm([],[],theta,phi);|
+
+To plot the spherical harmonic coefficients, we must first convert each of the vector components into lmcosi format.  To do so, we can use the following:
+
+\verb|elmcosi = coef2lmcosi(Elm,1) **DID NOT WORK|\\
+\verb|flmcosi = fcoef2flmcosi(Flm,1);|\\
+\verb|[blmcosi,clmcosi] = coef2blmclm(Clm,L);|
 
 Now we can convert these to xyz coordinates by running:
 
 \verb|[elm,elon,elat] = elm2xyz(elmcosi,1);|\\
 \verb|[flm,flon,flat] = flm2xyz(flmcosi,1);|
 
-The output of each of these provide fields \verb|r{1}| (radial component), \verb|r{2}| (theta or colatitudinal component), and \verb|r{3}| (phi or longitudinal component).  The first dimension of the field is latitude and the second is longitude.
+The output of each of these provide fields \verb|elm{1}| (radial component), \verb|elm{2}| (theta or colatitudinal component), and \verb|elm{3}| (phi or longitudinal component).  This is also true for \verb|flm{i}|.  The first dimension of the field is latitude and the second is longitude.
 
 \verb|[blmclm,lon,lat] = blmclm2xyz(blmcosi,clmcosi,1);|
 
-This will output a field with \verb|r(:,:,1)| as the phi component and \verb|r(:,:,2)| as the theta component.  See the \verb|help| functions for each of these to examine their outputs in further detail.
+This will output a field with \verb|blmclm(:,:,1)| as the phi component and \verb|blmclm(:,:,2)| as the theta component.  See the \verb|help| functions for each of these to examine their outputs in further detail.
+
+Finally, we can plot these:
+
+\verb|plotplm(elm,elon,elat,4,1)?|\\
 
 
 If the vector field is represented as a linear combination of elm and flm, then we will need to evaluate elm and flm separately then sum them.
