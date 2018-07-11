@@ -26,7 +26,7 @@
 \hyphenation{Text-Wrangler}
 
 \title{Chapter 2: Introduction to Slepian Functions}
-\author{Alain Plattner, Kylee Ford, Sarah Kroeker}
+\author{Sarah Kroeker, Alain Plattner}
 
 \begin{document}
 \maketitle
@@ -76,21 +76,33 @@ concentrated within the region that we are interested in.
 %A brief mathematical overview will be as follows; for a more in depth treatment, please see Section 2.3 of Simons and Plattner (2014): \\
 %\url{https://pdfs.semanticscholar.org/886c/70532a885ca66c1b70e55eb65a3f6500be67.pdf}.
 %
-Let's first look at the classical scalar Slepian functions, which are spectrally limited and spatially optimized. These functions are suitable to use when you are limited to information within a specific region as mentioned above, but only when that information is constrained to the surface of the sphere as point values; classical vector Slepian functions will be addressed in a later chapter. The functions will be bandlimited by the maximum spherical harmonic degree \textit{L} for region of concentration \textit{R}. We will choose the continent \textbf{Africa} as \textit{R} for the following example in which we will calculate and plot spherical harmonic coefficients. 
+Let's first look at the classical scalar Slepian functions, which are spectrally limited and spatially optimized. These functions are suitable to use when you are limited to information within a specific region as mentioned above, but only when that information is constrained to the surface of the sphere as point values; classical vector Slepian functions will be addressed in a later chapter. The functions will be bandlimited by the maximum spherical harmonic degree \textit{L} for region of concentration \textit{R}. We will choose our region to be the continent \textbf{Africa} for our first example. The following examples will include a region of an axisymmetric polar cap, a polar ring, and both polar cap and ring again when rotated away from the north pole.
 
-\subsection{Example One - Using glmalpha() and plotting evaluated Slepian function coefficients}
+\subsection{Calculating Coefficients for a Region}
+
+In the Slepian folder start MATLAB and run: 
+
+\verb|demos_chapter_two(2.1)|
+
+You may also find it helpful to open \verb|demos_chapter_two.m| in a text editor and browse the script as you read through this tutorial. The demo file is divded into cases for each subsection of this chapter. 
 
 The function \verb+glmalpha+ is used to calculate unit-normalized spherical harmonic coefficients given the following required inputs:
 
-\verb+	TH+ - a desired region, in our case: \verb+'africa'+. This may also be any other spherical cap or ordered list defining a closed curve
+\verb+	TH+ - a desired region (in this example: \verb+'africa'+)
 
-\verb+	L+ - the bandwidth, or maximum spherical harmonic degree
+\verb+	L+ - the bandwidth, or maximum spherical harmonic degree. 
 
-Thus the outputs of \verb+glmalpha+ we will need for this example are a unitary matrix of localization coefficients \verb+G+ and the eigenvalues \verb+V+. There are several other inputs and outputs that may and should be used; see \verb+help glmalpha+ for more details. 
+If you find the program running slowly or freezing up in MATLAB due to your machine's computing power, you may need to edit the demo file and set \verb|L| in \verb|glmalpha()| to a smaller value, say 5 for example.
 
-We will specify one other input to indicate the ordering of the spherical harmonic coefficients. In our codes  we use two different methods of ordering: ADDMOUT and ADDMON. 
+Thus the output of \verb+glmalpha+ we will need for this example is:
 
-Remember that spherical harmonics have a degree $l$ and an order $m$. degrees are all integers greater than zero and orders for each degree vary between $-l$ and $l$.
+\verb+	G+ - a unitary matrix of localization coefficients. 
+
+There are several other inputs and outputs that may and should be used later; see \verb+help glmalpha+ for more details. 
+
+We specify one other input to indicate the ordering of the spherical harmonic coefficients. In our codes  we use two different methods of ordering: ADDMOUT and ADDMON. 
+
+Remember that spherical harmonics have a degree $l$ and an order $m$. Degrees are all integers greater than zero and orders for each degree vary between $-l$ and $l$.
 
 We could order these spherical harmonics as
 
@@ -103,7 +115,7 @@ m&0&-1&0&1&-2&-1&0&1&2&\text{etc.}
 
 This is called the ADDMOUT ordering and is the ordering in which the columns of the Slepian matrices in \verb+glmalpha+, \verb+gradvecglmalpha+, and all these other similar functions are returned.
 
-The other ordering that we are using is:
+The other ordering that we may use is:
 
 \begin{tabular}{c|cccccccccc}
 l&0&1&1&1&2&2&2&2&2&\text{etc.}\\
@@ -111,14 +123,14 @@ l&0&1&1&1&2&2&2&2&2&\text{etc.}\\
 m&0&0&-1&1&0&-1&1&-2&2&\text{etc.}
 \end{tabular}
 
-This one we call ADDMON and it is the ordering in which the coefficients from functions like \verb+LocalInnerField+ (which will be discussed in a later chapter) are returned. Every function that returns coefficients or matrices of coefficients should state in their help menu in which format the coefficients are.
+This one we call ADDMON and it is the ordering in which the coefficients from functions like \verb+LocalInnerField+ (which will be discussed in a later chapter) are returned. Every function that returns coefficients or matrices of coefficients should state in their help menu in which format the coefficients are. Just run \verb|help [function]| in MATLAB.
 
-Returning to our example we now know that \verb+glmalpha+ uses the ADDMOUT ordering and thus requires us to use \verb+0+ as the fourth input according to the help section. We will choose a value of \verb+L=20+. Now we can run:
+Returning to our example, if you run \verb+help glmalpha+ you will read that it uses the ADDMOUT ordering and thus requires us to use \verb+0+ as the fourth input. We will choose a value of \verb+L=20+. Now we can run:
 
 
-\verb|	[G,V] = glmalpha('africa',20,[],0)|
+\verb|	[G] = glmalpha('africa',20,[],0)|
 
-and observe the output \verb+G+ which should be a $(L+1)^2\times(L+1)^2$ orthonormal matrix of coefficients and \verb+V+ a single vector of eigenvalues. Each column of \verb+G+ contains a set of coefficients for a single slepian function which are in the ADDMOUT ordering:
+and observe the output \verb+G+ which should be a $(L+1)^2\times(L+1)^2$ orthonormal matrix of coefficients. Each column of \verb+G+ contains a set of coefficients for a single slepian function which are in the ADDMOUT ordering:
 
 $$
 G = \begin{bmatrix} 
@@ -156,7 +168,7 @@ For our Africa example we will need to feed our coefficients into \verb+coef2lmc
 
 \verb+	lmcs=coef2lmcosi(G(:,1),1)+
 
-The first column of G is used for now in our example because these are the coefficients corresponding to the ``best" Slepian function as discussed above.
+The first column of G is used for now in our example for simplicity's sake.
 
 We now have one more step before we are ready to plot and that is to evaluate the coefficients using the function \verb+plm2xyz+. The required inputs are our \textit{lmcosi} format matrix and a chosen resolution. You can choose \textit{res}=1, or 0.5, or even 0.1 for a very high resolution image, but keep in mind this will also use much calculation time and memory.  We will give the output the arbitrary name `data' and choose  a resolution of 0.5. Run:
 
@@ -164,28 +176,51 @@ We now have one more step before we are ready to plot and that is to evaluate th
 
 And finally to plot we will use \verb+plotplm+:
 
-\verb+	plotplm(data,[],[],4,0.5)+
+\verb+	plotplm(data,[],[],1,0.5)+
 
-for which our input choices follow the second input scheme of \verb+help plotplm+.
+where the fourth input chooses the plotting method. The value '1' corresponds to a Mollweide projection of Earth.
 
-Run \verb+kelicol(1)+ for a more clear color scheme where white sections are of value 0, and you should see a map of Earth projected into a 2D plane with latitude as the y-axis and longitude on the x-axis. It is recommended to change the maximum and minimum of the color scheme which you can do by running:
+We use \verb+kelicol(1)+ for a more clear color scheme where white sections are of value 0. It is recommended to change the maximum and minimum of the color scheme which you can do by running:
 
 \verb+	caxis([-1,1]*max(abs(caxis)));+
 
-As expected, the fluctuations are concentrated on the center of Africa and negligible elsewhere. Your plot should match that of Figure 1. \\
+As expected, the fluctuations are concentrated on the center of Africa and negligible elsewhere. The plot produced by \verb|demos_chapter_two(2.1)| should match Figure 1. \\
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.5\textwidth]{figures/firstGColumnExample.png}
+  \includegraphics[width=0.5\textwidth]{figures/figure1.png}
   \caption{\begin{small}
-  Result of example using glmalpha() with L=20 to calculate coefficients, plm2xyz() to evaluate them, and plotplm() to plot with method 1 - the Mollweide projection. Only the first ``best" concentrated eigensolutions are plotted. The color scheme is kelicol(1) and max/min values are changed to fit the max/min of data plotted. 
+  Result of example using glmalpha() with L=20 to calculate coefficients, plm2xyz() to evaluate them, and plotplm() to plot with method 1 - the Mollweide projection. Only the first ``best" concentrated Slepian function is plotted. The color scheme is kelicol(1) and max/min values are changed to fit the max/min of data plotted. 
   \end{small}}
 \label{plotplm}
 \end{figure}
 
+\textbf{Exercise:} Pick a different a region, or subtract a region from Africa to use as the domain and plot again. You can edit \verb|demos_chapter_two.m| or write your own \verb|.m| file.  
+% clarify that plotplm can take either lmcosi or r lon lat data?
+% add another example of regions subtracted
+% add an exercise
+
+\subsection{Calculating Coefficients for an Axisymmetric Polar Cap}
+
+We now look at the case of an axisymmetric polar cap.
+
+You can run:
+
+\verb|	demos_chapter_two(2.1)|
+
+which will plot both a Mollweide projection where the region is North polar cap, as well as the same region looking down at the North Pole.
+
+The functions used for this type of region follow the same format as in section 2.1, however we have changed the inputs of \verb|glmalpha()|. \verb|TH| is now an opening angle in degrees, which have chosen to be 40, and a value of 1 is passed as the third input to indicate we are creating coefficients for a polar cap of radius \verb|TH|.
+
+\subsection{Calculating Coefficients for a Polar Ring}
+
+\subsection{Rotating a Polar Cap or Ring}
+
+\section{Linear Combinations of Classical Scalar Slepian Functions}
+
 Let's do another quick example where we plot a linear combination of Slepian functions. We can add any combination the columns of \verb+G+ together and also multiply by any value or a vector of scalars. We can repeat the steps from earlier and run:
 
-\verb|	lmcs=coef2lmcosi((5*G(:,1))+(10*G(:,30)),1)| \\
+\verb|	lmcs=coef2lmcosi((5*G(:,1))+(3*G(:,30)),1)| \\
 \verb|	data=plm2xyz(lmcs,0.5)|\\
 
 And if you plot it you should see:
@@ -200,12 +235,8 @@ And if you plot it you should see:
 
 \textbf{Exercsie:} Practice plotting different linear combinations of slepian functions. Try multiplying by a vector of random coefficients.
 
-\textbf{Exercise:} Pick a different a region, or subtract a region from Africa to use as the domain and plot again.
-% clarify that plotplm can take either lmcosi or r lon lat data?
-% add another example of regions subtracted
-% add an exercise
 
-\subsection{Example Two - Looking at Eigenvalues}
+\section{Choosing The Number of Slepian Functions} 
 
 We will now take a look at our vector of eigenvalues, \verb+V+. You can plot the eigenvalues versus their corresponding slepian function $j$ by setting \verb|J=(L+1)^2| and running the following:
 
@@ -274,8 +305,6 @@ If we refer back to Figure 2 we can see that our eigenvalues drop off to zero ar
   \end{small}}
 \label{fuplot}
 \end{figure}
-
-
 
 \TAG
 \end{document}
