@@ -153,6 +153,40 @@ What is the result? Compare to figure 3.
 \end{figure}
 See the \verb+help+ function to see what other regions we can choose for \verb+glmalphapotup+.
 
+\textbf{Exercise:} Let's try to rotate a region.  We will walk through this together.  In order to rotate our region, we must use the function, \verb|glmalphapotuptoJp|.  This function requires an angular extent of a spherical cap or angles between two spherical caps, where we want to look at the ring between them.  See \verb|help glmalphapotuptoJp| for more information on the required parameters.  Let's set our \verb|TH| and other paramaters as follows:
+
+\verb|TH = 16;|\\
+\verb|phi = 90;|\\
+\verb|theta = 20;|\\
+\verb|omega = 25;|\\
+\verb|J = 50;|
+
+Now let's get our spherical harmonic coefficients:
+
+\verb|[Grot,V] = glmalphapotuptoJp(TH,L,rnew,rold,phi,theta,omega,J);|
+
+We can now upward continue these and plot them:
+
+\verb|coef = potup(Grot(:,1),rnew,rold,L,0);|\\
+\verb|lmcosi = coef2lmcosi(coef,1);|\\
+\verb|data = plm2xyz(lmcosi,res);|\\
+\verb|plotplm(data,[],[],4,res)|
+
+Plotting on the 3D sphere:
+
+\verb|plotplm(lmcosi,[],[],2,res)|
+
+The rotated spherical cap is shown in figure 4.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.45\textwidth]{figures/rot16flat.png}
+  \includegraphics[width=0.45\textwidth]{figures/rot16.png}
+  \caption{Rotated spherical cap of TH = 16.}
+\label{Grot}
+\end{figure}
+
+
 \textbf{Exercise:} Try the second best Slepian function, now in Africa:
 
 \verb+dom = 'africa';+\\
@@ -162,7 +196,7 @@ See the \verb+help+ function to see what other regions we can choose for \verb+g
 \verb+plotplm(lmcosi,[],[],2,res)+\\
 \verb+kelicol(1)+
 
-This results in figure 4.  Compare with figure 2.  What do you notice?
+This results in figure 5.  Compare with figure 2.  What do you notice?
 
 \begin{figure}[H]
   \centering
@@ -185,7 +219,7 @@ look like?  You will need to input this linear combination into your command lin
 \verb+caxis([-1,1]*max(abs(caxis)))+\\
 \verb+kelicol(1)+
 
-This should result in figure 5.  Compare this figure with figures 2 and 4.  What do you notice?
+This should result in figure 6.  Compare this figure with figures 2 and 4.  What do you notice?
 
 \textbf{Exercise:} Try some of your own linear combinations and examine the plots.
 
@@ -193,7 +227,7 @@ This should result in figure 5.  Compare this figure with figures 2 and 4.  What
   \centering
   \includegraphics[width=0.5\textwidth]{figures/hcombml.png}
   \caption{Plot with h = G(:,1)+G(:,2).}
-\label{lincomb1}
+\label{lincomb}
 \end{figure}
 
 
@@ -206,13 +240,13 @@ We need to determine a proper value for \verb+J+ to plot the optimal linear comb
 
 \verb|plot(1:K,V)|
 
-Now we can analyze the plot to determine which value of J such that most of the eigenvalues are concentrated within our region.  Our plot will look like figure 6, as an exponential decay curve.  
+Now we can analyze the plot to determine which value of J such that most of the eigenvalues are concentrated within our region.  Our plot will look like figure 7, as an exponential decay curve.  
 
 \begin{figure}[H]
   \centering
   \includegraphics[width=0.5\textwidth]{figures/Vvsj_ml.png}
   \caption{Eigenvalue V vs index j.}
-\label{lincomb}
+\label{eigenvalue}
 \end{figure}
 
 By analyzing the graph, it looks like the eigenvalues near zero at about $J=50$.  You will have to manually choose your J value, so run:
@@ -238,7 +272,7 @@ This will create a matrix, \verb|f|, containing the linear combinations of spher
 \verb|[F,lon,lat] = plm2xyz(coef2lmcosi(f,1),1);|\\
 \verb|plotplm(F,lon,lat,4,res)|
 
-The plot of F is shown in figure 7.  We can alternatively directly plot this by:
+The plot of F is shown in figure 8.  We can alternatively directly plot this by:
 
 \verb|plotplm(coef2lmcosi(f,1),[],[],4,res)|
 
@@ -260,7 +294,7 @@ Plot:
 
 \verb|plotplm(coef2lmcosi(f2,1),[],[],4,res)|
 
-Figure 8 shows the plot of all of the eigenvalues.
+Figure 9 shows the plot of all of the eigenvalues.
 
 \begin{figure}[H]
 	\centering
@@ -277,7 +311,7 @@ Now we can plot the upward continued coefficients:
 
 \verb|plotplm(coef2lmcosi(fup,1),[],[],4,res)|
 
-The best fit Slepian functions, upward continued, are shown in figure 9.
+The best fit Slepian functions, upward continued, are shown in figure 10.
 
 \begin{figure}[H]
 	\centering

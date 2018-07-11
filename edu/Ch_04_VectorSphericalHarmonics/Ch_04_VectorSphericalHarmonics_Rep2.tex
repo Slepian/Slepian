@@ -1,0 +1,58 @@
+\documentclass[11pt]{article}
+
+\usepackage{url}
+\usepackage{hyperref}
+\usepackage{graphicx}
+\usepackage{verbatim}
+\usepackage{color}
+\setlength{\parskip}{0.5cm plus4mm minus3mm}
+\usepackage{upquote}
+\usepackage{float}
+
+\textwidth=6.4in
+\textheight=8.5in
+\hoffset=-0.7in
+\voffset=-0.7in
+
+\setlength{\parindent}{0cm} 
+
+\newcommand{\Yfun}{Y}
+%\newcommand{\TAG}{test}
+\newcommand{\TAG}{\begin{color}{blue}This tutorial is currently under construction. Please check back later for more by keeping your software updated.\end{color}}
+
+\newcommand{\HERE}{\begin{color}{blue}Currently working on this part.\end{color}}
+
+\hyphenation{Text-Wrangler}
+
+\title{Chapter 4: Vector Spherical Harmonics}
+\author{Kylee Ford, Sarah Kroeker, Alain Plattner}
+
+\begin{document}
+\maketitle
+
+\section{Representation 2 of Vector Fields}
+
+
+
+$E_{lm}$: vector components from the gradient of a potential field from a planet. \\
+$F_{lm}$: vector components from the gradient of a potential field from outside the satellite radius (space). \\
+$C_{lm}$: same as in representation 1.
+
+To evaluate the spherical harmonic coefficients, we must first convert each of the vector components into lmcosi format.  To do so, we can use the following:
+
+\verb|elmcosi = ??|\\
+\verb|flmcosi = fcoef2flmcosi(?coef=G(:,1)?,1);|\\
+\verb|[blmcosi,clmcosi] = coef2blmclm(coef,L);|
+
+Now we can convert these to xyz coordinates by running:
+
+\verb|elm = elm2xyz(elmcosi,1);|\\
+\verb|flm = flm2xyz(flmcosi,1);|\\
+\verb|[blm,clm] = blmclm2xyz(blmcosi,clmcosi,1);|
+
+
+
+
+
+\TAG
+\end{document}
