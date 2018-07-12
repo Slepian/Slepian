@@ -186,6 +186,22 @@ The rotated spherical cap is shown in figure 4.
 \label{Grot}
 \end{figure}
 
+\textbf{Exercise:} Let's try a rotated ring.  We will need to change only the \verb|TH| so we have a ring.  So set:
+
+\verb|TH = [100,25]|
+
+Now we can obtain the spherical harmonic coefficients:
+
+\verb|[Grot,V] = glmalphapotuptoJp(TH,L,rnew,rold,phi,theta,omega,J);|
+
+Upward continue and plot:
+
+\verb|coef = potup(Grot(:,1),rnew,rold,L,0);|\\
+\verb|lmcosi = coef2lmcosi(coef,1);|\\
+\verb|data = plm2xyz(lmcosi,res);|\\
+\verb|plotplm(data,[],[],4,res)|
+
+This rotated spherical ring is shown in figure ...
 
 \textbf{Exercise:} Try the second best Slepian function, now in Africa:
 
