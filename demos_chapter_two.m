@@ -1,5 +1,5 @@
 function demos_chapter_two(wht)
-% Demo to show the outputs of examples in Chapter 2: Introduction to Slepian Functions
+% Demo to show the outputs of examples in Chapter 2: Introduction to Slepian Functions.
 %
 % INPUT:
 %
@@ -7,8 +7,10 @@ function demos_chapter_two(wht)
 %
 % 2.1	 Calculating Coefficients for a Region
 % 2.2	 Calculating Coefficients for an Axisymmetric Polar Cap
-% 2.3	 Calculating Coefficients for a Polar Ring
-% 2.4	 Rotating a Polar Cap or Ring
+% 2.3	 Calculating Coefficients for an Axisymmetric Double Polar Cap
+% 2.4	 Calculating Coefficients for a Rotated Polar Cap or Double Polar Cap
+% 2.5    Calculating Coefficients for a Polar Ring
+% 2.6    Calculating Coefficients for a Rotated a Polar Ring
 % 3.0	 Linear Combinations of Classical Scalar Slepian Functions
 % 4.0	 Looking at Eigenvalues
 %
@@ -20,17 +22,17 @@ switch wht
     case 2.1
         clear all
         % 2.1 Calculating coefficients for a region
-        [G] = glmalpha('africa',20,[],0)
+        [G] = glmalpha('africa',20,[],0);
 
         % converting to lmcosi format
-        lmcs = coef2lmcosi(G(:,1),1)
+        lmcs = coef2lmcosi(G(:,1),1);
 
         % evaluating scalar coefficients
-        data = plm2xyz(lmcs,0.5)
+        data = plm2xyz(lmcs,0.5);
 
         % plotting Mollweide projection
         figure
-        plotplm(data,[],[],1,0.5)
+        plotplm(data,[],[],1,0.5);
 
         % resetting color scheme min/max
         kelicol(1)
@@ -40,15 +42,15 @@ switch wht
         clear all
 
         % 2.2 Calculating coefficients for an Axisymmetric Polar Cap
-        [G] = glmalpha(40,20,1,0)
+        [G] = glmalpha(40,20,1,0);
 
         % converting to lmcosi format
-        lmcs = coef2lmcosi(G(:,1),1)
+        lmcs = coef2lmcosi(G(:,1),1);
 
         % evaluating scalar coefficients
-        data = plm2xyz(lmcs,0.5)
+        data = plm2xyz(lmcs,0.5);
 
-        % plotting to Mollweide projection
+        % plotting in a Mollweide projection
         figure
         plotplm(data,[],[],1,0.5)
         kelicol(1)
@@ -56,39 +58,52 @@ switch wht
 
 	% plotting looking down at North Pole
 	figure
-	plotplm(data,[],[],5,0.5)
+	plotplm(data,[],[],2,0.5)
+	view(2)
 	kelicol(1)
 	caxis([-1,1]*max(abs(caxis)))
 
     case 2.3
         clear all
-        % 2.3 Calculating coefficients for an Axisymmetric Polar Ring
-        [G] = glmalpha(40,20,2,0)
+        % 2.3 Calculating coefficients for an Axisymmetric Double Polar Cap
+        [G] = glmalpha(40,20,2,0);
 
         % converting to lmcosi format
-        lmcs = coef2lmcosi(G(:,1),1)
+        lmcs = coef2lmcosi(G(:,1),1);
 
         % evaluating scalar coefficients
-        data = plm2xyz(lmcs,0.5)
+        data = plm2xyz(lmcs,0.5);
 
-        % plotting to Mollweide projection
+        % plotting in a Mollweide projection
         figure
         plotplm(data,[],[],1,0.5)
+        kelicol(1)
+        caxis([-1,1]*max(abs(caxis)))
 
-        % resetting color scheme min/max
+        % plotting looking down at a the North Pole
+        figure
+        plotplm(data,[],[],2,0.5)
+	view(2)
+        kelicol(1)
+        caxis([-1,1]*max(abs(caxis)))
+
+	% plotting looking up at the South Pole
+        figure
+        plotplm(data,[],[],2,0.5)
+        view(3)
         kelicol(1)
         caxis([-1,1]*max(abs(caxis)))
 
     case 2.4
 	clear all	
 	% 2.4 Rotating coefficientsfor a Polar Cap
-	[G] = glmalphaptoJ(40,20,180,90,[],50)
+	[G] = glmalphaptoJ(40,20,180,90,[],50);
 	
 	% converting to lmcosi format
-	lmcs = coef2lmcosi(G(:,1),1)
+	lmcs = coef2lmcosi(G(:,1),1);
 
 	% evaluating scalar coefficients
-	data = plm2xyz(lmcs,0.5)
+	data = plm2xyz(lmcs,0.5);
 
 	% plotting to Mollweide projections
 	figure
@@ -97,6 +112,50 @@ switch wht
 	% resetting color scheme min/max
 	kelicol(1)
 	caxis([-1,1]*max(abs(caxis)))
+
+    case 2.5
+	clear all
+	% 2.4 Calculating Coefficients for a Polar Ring
+	[G] = glmalpharing([20 40],20,1);
+
+        % converting to lmcosi format
+        lmcs = coef2lmcosi(G(:,1),1);
+
+        % evaluating scalar coefficients
+        data = plm2xyz(lmcs,0.5);
+
+        % plotting in a Mollweide projection
+        figure
+        plotplm(data,[],[],1,0.5)
+        kelicol(1)
+        caxis([-1,1]*max(abs(caxis)))
+
+	% plotting on sphere
+	figure
+	plotplm(data,[],[],2,0.5)
+	kelicol(1)
+	caxis([-1,1]*max(abs(caxis)))
+	view(2)
+
+    case 2.6
+	clear all
+	% 2.6 Rotating a Polar Ring
+	[G] = glmalphaptoJ([20 40],20,180,90,[],50);
+
+        % converting to lmcosi format
+        lmcs = coef2lmcosi(G(:,1),1);
+
+        % evaluating scalar coefficients
+        data = plm2xyz(lmcs,0.5);
+
+        % plotting to Mollweide projections
+        figure
+        plotplm(data,[],[],1,0.5)
+
+        % resetting color scheme min/max
+        kelicol(1)
+        caxis([-1,1]*max(abs(caxis)))
+
 
     case 3.0
 	clear all

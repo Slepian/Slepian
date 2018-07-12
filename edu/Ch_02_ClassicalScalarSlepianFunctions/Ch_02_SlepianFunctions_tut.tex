@@ -9,6 +9,8 @@
 \usepackage{upquote}
 \usepackage{float}
 \usepackage{amsmath}
+\usepackage{mwe}
+\usepackage{subcaption}
 
 \textwidth=6.4in
 \textheight=8.5in
@@ -76,7 +78,7 @@ concentrated within the region that we are interested in.
 %A brief mathematical overview will be as follows; for a more in depth treatment, please see Section 2.3 of Simons and Plattner (2014): \\
 %\url{https://pdfs.semanticscholar.org/886c/70532a885ca66c1b70e55eb65a3f6500be67.pdf}.
 %
-Let's first look at the classical scalar Slepian functions, which are spectrally limited and spatially optimized. These functions are suitable to use when you are limited to information within a specific region as mentioned above, but only when that information is constrained to the surface of the sphere as point values; classical vector Slepian functions will be addressed in a later chapter. The functions will be bandlimited by the maximum spherical harmonic degree \textit{L} for region of concentration \textit{R}. We will choose our region to be the continent \textbf{Africa} for our first example. The following examples will include a region of an axisymmetric polar cap, a polar ring, and both polar cap and ring again when rotated away from the north pole.
+Let's first look at the classical scalar Slepian functions, which are spectrally limited and spatially optimized. These functions are suitable to use when you are limited to information within a specific region as mentioned above, but only when that information is constrained to the surface of the sphere as point values; classical vector Slepian functions will be addressed in a later chapter after a discussion of vector spherical harmonics. The Slepian functions are bandlimited by the maximum spherical harmonic degree \textit{L} for region of concentration \textit{R}. We will choose our region to be the continent \textbf{Africa} for our first example. The following examples will include a region of an axisymmetric polar cap, a polar ring, and both polar cap and ring again when rotated away from the north pole.
 
 \subsection{Calculating Coefficients for a Region}
 
@@ -88,15 +90,15 @@ You may also find it helpful to open \verb|demos_chapter_two.m| in a text editor
 
 The function \verb+glmalpha+ is used to calculate unit-normalized spherical harmonic coefficients given the following required inputs:
 
-\verb+	TH+ - a desired region (in this example: \verb+'africa'+)
+\verb+		TH+ - a desired region (in this example: \verb+'africa'+)
 
-\verb+	L+ - the bandwidth, or maximum spherical harmonic degree. 
+\verb+		L+ - the bandwidth, or maximum spherical harmonic degree. 
 
-If you find the program running slowly or freezing up in MATLAB due to your machine's computing power, you may need to edit the demo file and set \verb|L| in \verb|glmalpha()| to a smaller value, say 5 for example.
+If you find the program running too slowly for the purpose of quickly going through this tutorial or freezing up in MATLAB you may need to edit the demo file and set \verb|L| in \verb|glmalpha()| to a smaller value, say 5 for example.
 
-Thus the output of \verb+glmalpha+ we will need for this example is:
+Thus the output of \verb+glmalpha+ we used for this example is:
 
-\verb+	G+ - a unitary matrix of localization coefficients. 
+\verb+		G+ - a unitary matrix of localization coefficients. 
 
 There are several other inputs and outputs that may and should be used later; see \verb+help glmalpha+ for more details. 
 
@@ -128,7 +130,7 @@ This one we call ADDMON and it is the ordering in which the coefficients from fu
 Returning to our example, if you run \verb+help glmalpha+ you will read that it uses the ADDMOUT ordering and thus requires us to use \verb+0+ as the fourth input. We will choose a value of \verb+L=20+. Now we can run:
 
 
-\verb|	[G] = glmalpha('africa',20,[],0)|
+\verb|		[G] = glmalpha('africa',20,[],0)|
 
 and observe the output \verb+G+ which should be a $(L+1)^2\times(L+1)^2$ orthonormal matrix of coefficients. Each column of \verb+G+ contains a set of coefficients for a single slepian function which are in the ADDMOUT ordering:
 
@@ -166,23 +168,23 @@ Luckily we have programs that take care of these issues. These programs have the
 
 For our Africa example we will need to feed our coefficients into \verb+coef2lmcosi+ and again tell it whether they are in the ADDMOUT or ADDMON format. This is indicated by using the value 1 for the second input (see \verb+help coef2lmcosi+). The output is saved as \textit{lmcs} but you can name it whatever you would like. Run:
 
-\verb+	lmcs=coef2lmcosi(G(:,1),1)+
+\verb+		lmcs=coef2lmcosi(G(:,1),1)+
 
 The first column of G is used for now in our example for simplicity's sake.
 
 We now have one more step before we are ready to plot and that is to evaluate the coefficients using the function \verb+plm2xyz+. The required inputs are our \textit{lmcosi} format matrix and a chosen resolution. You can choose \textit{res}=1, or 0.5, or even 0.1 for a very high resolution image, but keep in mind this will also use much calculation time and memory.  We will give the output the arbitrary name `data' and choose  a resolution of 0.5. Run:
 
-\verb+	data=plm2xyz(lmcs,0.5)+
+\verb+		data=plm2xyz(lmcs,0.5)+
 
 And finally to plot we will use \verb+plotplm+:
 
-\verb+	plotplm(data,[],[],1,0.5)+
+\verb+		plotplm(data,[],[],1,0.5)+
 
 where the fourth input chooses the plotting method. The value '1' corresponds to a Mollweide projection of Earth.
 
 We use \verb+kelicol(1)+ for a more clear color scheme where white sections are of value 0. It is recommended to change the maximum and minimum of the color scheme which you can do by running:
 
-\verb+	caxis([-1,1]*max(abs(caxis)));+
+\verb+		caxis([-1,1]*max(abs(caxis)));+
 
 As expected, the fluctuations are concentrated on the center of Africa and negligible elsewhere. The plot produced by \verb|demos_chapter_two(2.1)| should match Figure 1. \\
 
@@ -195,10 +197,9 @@ As expected, the fluctuations are concentrated on the center of Africa and negli
 \label{plotplm}
 \end{figure}
 
-\textbf{Exercise:} Pick a different a region, or subtract a region from Africa to use as the domain and plot again. You can edit \verb|demos_chapter_two.m| or write your own \verb|.m| file.  
+\textbf{Exercise:} Pick a different a region, or subtract a region from Africa to use as the domain and plot again. You can edit \verb|demos_chapter_two.m|, write your own \verb|.m| file, or run line by line in matlab.
+ 
 % clarify that plotplm can take either lmcosi or r lon lat data?
-% add another example of regions subtracted
-% add an exercise
 
 \subsection{Calculating Coefficients for an Axisymmetric Polar Cap}
 
@@ -206,15 +207,116 @@ We now look at the case of an axisymmetric polar cap.
 
 You can run:
 
-\verb|	demos_chapter_two(2.1)|
+\verb|		demos_chapter_two(2.2)|
 
-which will plot both a Mollweide projection where the region is North polar cap, as well as the same region looking down at the North Pole.
+which will plot both a Mollweide projection, as well as the perspective of looking down at the North Pole.
 
-The functions used for this type of region follow the same format as in section 2.1, however we have changed the inputs of \verb|glmalpha()|. \verb|TH| is now an opening angle in degrees, which have chosen to be 40, and a value of 1 is passed as the third input to indicate we are creating coefficients for a polar cap of radius \verb|TH|.
+The functions used for this type of region follow the same format as in section 2.1, however we have changed the inputs of \verb|glmalpha()|. \verb|TH| is now an opening angle in degrees, which we have chosen to be 40, and a value of 1 is passed as the third input to indicate we are creating coefficients for a polar cap of radius \verb|TH|.
+
+To plot as a sphere, a value of 2 for the plotting method should be given to \verb|plotplm()| and then running \verb|view(2)| will rotate the sphere so that the North Pole is pointing out at the viewer.
+
+The demo should produce the same images as Figure 2 below.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.5\textwidth]{figures/figure2A.png}
+  \includegraphics[width=0.5\textwidth]{figures/figure2B.png}
+  \caption{\begin{small}
+  The first Slepian function of a polar cap of opening angle 40 degrees plotted in both the Mollweide projection (top) and on a sphere with the North pole rotated to the center of the image (bottom).
+  \end{small}}
+\label{plotplm}
+\end{figure}
+
+\textbf{Exercise:} The first Slepian function appears roughly symmetric. Try plotting other Slepian functions and see how the distribution changes when they are less concentrated in the specified polar cap.
+
+\subsection{Calculating Coefficients for an Axisymmetric Double Polar Cap}
+
+The double polar cap is very similar to our previous example. The only difference is choosing our third input into \verb|glmalpha()| to be the value 2 to indicate a double polar cap. The opening angle is still chosen to be 40. 
+
+Run:
+
+\verb|		demos_chapter_two(2.3)|
+
+We plot with a Mollweide projection and on the sphere with the view of the North Pole and South pole. 
+
+\begin{figure*}[t!]
+    \centering
+        \includegraphics[height=1.2in]{figures/figure3A.png}     
+        \begin{subfigure}[t]{0.5\textwidth}
+        \centering
+        \includegraphics[height=1.2in]{figures/figure3B.png}
+        \caption{(B)}
+    \end{subfigure}
+    \begin{subfigure}[t]{0.5\textwidth}
+    	\centering
+    	\includegraphics[height=1.0in]{figures/figure3C.png}
+    	\caption{(c)}
+    \end{subfigure}
+    \caption{The first Slepian function of a double polar cap of opening angle 40 degrees plotted in the Mollweide projection (top), on a sphere with the North pole rotated to the center of the image (bottom left), with the South pole rotated to the center (bottom right).}
+\end{figure*}
+
+
+\subsection{A Rotated Polar Cap}
+
+If the region of interest is a polar cap or double polar cap that is not axisymmetric and needs to be rotated from the North Pole then a different function is used to produce our matrix of coefficients, \verb|G|.
+
+Run:
+
+\verb|		demos_chapter_two(2.4)|
+
+Instead of \verb|glmalpha()| we are using \verb|glmalphaptoJ()| which requires us to give the following inputs:
+
+\verb|		TH| - the opening angle \\
+\verb|		L| - maximum spherical harmonic degree \\
+\verb|		phi| - the center longitude in degrees of the polar cap of interest \\
+\verb|		theta| - the center colatitude in degrees of the polar cap of interest \\
+\verb|		omega| - the anticlockwise azimuthal rotation in degrees (rotation of the region itself if necessary) \\
+\verb|		J| - the number of Slepian functions to be calculated \\
+
+This function requires you to know the center colatitude and longitude of your region and to choose the number of Slepian functions to be calculated. For the demo we chose our polar cap to be centered on the antimeridian at the equator, and chose J=50 as we did for earlier examples in which L=20. 
+
+The first Slepian function was evaluated and plotted, however it should be noted that for \verb|glmalphaptoJ()| this does not necessarily correspond to the ``best" concentrated Slepian function overall as in our examples above. Instead, the matrix \verb|G| in this case contains column vectors where the best of every order \textit{m} was calculated first, then the second best of that order, and so forth, repeating this process for each order. So be careful when using this function. 
+
+The plot produced by the demo should match that of figure 4 below:
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.5\textwidth]{figures/figure4A.png}
+  \caption{\begin{small}
+  The first Slepian function of a polar cap of opening angle 40 degrees plotted in the Mollweide projection. This polar cap has been rotated with its center on the antimeridian at the equator using \textit{glmalphaptoJ()}.
+  \end{small}}
+\label{plotplm}
+\end{figure}
+
 
 \subsection{Calculating Coefficients for a Polar Ring}
 
-\subsection{Rotating a Polar Cap or Ring}
+Our next example involves a polar ring, or the difference of two polar caps of different opening angle. 
+
+Run:
+
+\verb|		demos_chapter_two(2.5)|
+
+and observe the output. 
+
+For this demo, \verb|glmalpharing()| was used to produce our matrix of coefficients. \verb|TH| was given to be a vector of two values in degrees \verb|[20 40]| that represent the opening angles of two regions. The difference between these regions is our ring. This function can also accept just one value and calculate a normal polar cap.
+
+\verb|glmaalpharing()| only requires three inputs: the opening angle(s) of the polar cap(s), m\verb|L|, and a value of 1 to indicate if the \verb|G| matrix will be sorted in order of its eigenvalues (which is also the default input if nothing is specified). 
+
+With plotting you should see: 
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.5\textwidth]{figures/figure5A.png}
+  \caption{\begin{small}
+  The first Slepian function of a polar ring which is the difference between two polar caps of opening angle 40 degrees and 20 dgrees, plotted in the Mollweide projection. \textit{glmalphaptoJ()}.
+  \end{small}}
+\label{plotplm}
+\end{figure}
+
+\subsection{Rotating a Polar Ring}
+
+
 
 \section{Linear Combinations of Classical Scalar Slepian Functions}
 
