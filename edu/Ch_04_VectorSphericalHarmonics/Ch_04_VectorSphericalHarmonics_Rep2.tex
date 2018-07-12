@@ -38,13 +38,35 @@ $E_{lm}$: vector components from the gradient of a potential field from a planet
 $F_{lm}$: vector components from the gradient of a potential field from outside the satellite radius (space). \\
 $C_{lm}$: same as in representation 1.
 
-We can choose these values through the following method.  First, we will need to set some parameters:
+We can determine the vector spherical harmonics by first setting parameters:
 
-\verb|L = 20;|\\
-\verb|theta = pi/2;|\\
-\verb|phi = pi;|
+\verb|L = 2;|\\
+\verb|theta = 0:0.01:pi;|\\
+\verb|phi = 0:0.01:2*pi;|
 
-Now let's find the values of \verb|elm|:
+Now we can set values
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Now let's find the vector spherical harmonics, starting with \verb|elm|:
 
 \verb|[Elm,theta,phi] = elm(L,theta,phi);|
 
