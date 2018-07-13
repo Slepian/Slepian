@@ -27,7 +27,7 @@
 \hyphenation{Text-Wrangler}
 
 \title{Chapter 3: Introduction to altitude-cognizant scalar Slepian functions}
-\author{Kylee Jo Ford, Sarah Kroeker, Alain Plattner}
+\author{Kylee Jo Ford, Alain Plattner}
 
 \usepackage{graphicx}
 \graphicspath{ {./images/} }
@@ -63,7 +63,7 @@ In our example, we will use a familiar domain, Africa.  Set the paramaters:
 \verb|rnew = 6371+400;|  \\
 \verb+rold = 6371;+  
 
-As mentioned in the previous chapter, we must know whether our spherical harmonic coefficients are in ADDMOUT or ADDMON ordering.  By using the \verb+help+ function, it is clear that the output is in ADDMOUT ordering; this will be useful information in a moment.  So, we can run:
+As mentioned in the previous chapter, we must know whether our spherical harmonic coefficients are in \textit{addmout} or \textit{addmon} ordering.  By using the \verb+help+ function, it is clear that the output is in \textit{addmout} ordering; this will be useful information in a moment.  So, we can run:
 
 \verb+[G,V] = glmalphapotup(dom,L,rnew,rold);+
 
@@ -71,7 +71,7 @@ As mentioned in the previous chapter, we must know whether our spherical harmoni
 However, to plot the Slepian function at satellite altitude, we must upward continue the functions by using the function \verb+potup+.  This requires the inputs: G, radius to the satellite, planet radius, and L.  
 
 \subsubsection{Example One:}
-For this example, we will use the spherical harmonic coefficient for the optimal Slepian function, which would be the first column of G.  Let's first plot the Slepian functions on the surface of the planet.  We will first need to convert our G into lmcosi, since G is in ADDMOUT, so run:
+For this example, we will use the spherical harmonic coefficient for the optimal Slepian function, which would be the first column of G.  Let's first plot the Slepian functions on the surface of the planet.  We will first need to convert our G into lmcosi, since G is in \textit{addmout}, so run:
 
 \verb+lmcosi = coef2lmcosi(G(:,1),1);+
 
@@ -79,7 +79,7 @@ To plot the Slepian functions on the surface of the planet, we may use the same 
 
 \verb+res = 1;+ 
 
-and convert the coefficients to xyz coordinates by running:
+and create a spacial field from the spherical harmonic coefficients by running:
 
 \verb+data = plm2xyz(lmcosi,res);+
 
@@ -102,7 +102,7 @@ For the results, see Figure 1.
   %\centering
   \includegraphics[width=0.5\textwidth]{figures/G(:,1)flatml.png}
   \includegraphics[width=0.45\textwidth]{figures/G(:,1)ml.png}
-  \caption{Plot of G(:,1).}
+  \caption{Optimal Slepian function, G(:,1), plotted on the surface of the planet within the region Africa and spherical harmonic degree L=20.}
 \label{G(:,1)}
 \end{figure}
 Let's now use the function \verb+potup+ to upward continue the Slepian functions to satellite altitude.  We can now run:
@@ -129,7 +129,7 @@ For the results, see figure 2.
   %\centering
   \includegraphics[width=0.5\textwidth]{figures/potupflatml.png}
   \includegraphics[width=0.45\textwidth]{figures/potupml.png}
-  \caption{Upward continued G(:,1).}
+  \caption{Upward continued optimal Slepian function, G(:,1), in the region Africa with L=20.  We can see this is the optimal Slepian function since it describes much of the region.}
 \label{G(:,1)potup}
 \end{figure}
 
@@ -148,7 +148,7 @@ What is the result? Compare to figure 3.
   \centering
   \includegraphics[width=0.45\textwidth]{figures/dom16ml.png}
   \includegraphics[width=0.45\textwidth]{figures/dom100_25ml.png}
-  \caption{Result with dom = 16 and dom = [100,25]}
+  \caption{Optimal Slepian function upward continued at satellite radius in the spherical cap with opening angle dom=16 (on the left) and in the spherical ring between the angles dom=[100,25] (on the right).}
 \label{dom}
 \end{figure}
 See the \verb+help+ function to see what other regions we can choose for \verb+glmalphapotup+.
@@ -182,7 +182,7 @@ The rotated spherical cap is shown in figure 4.
   \centering
   \includegraphics[width=0.45\textwidth]{figures/rot16flat.png}
   \includegraphics[width=0.45\textwidth]{figures/rot16.png}
-  \caption{Rotated spherical cap of TH = 16.}
+  \caption{Optimal Slepian function to describe the rotated spherical cap of TH = 16 upward continued with rotations phi=90, theta=20, and omega=25 and eigenfunctions up to J=50.  Compare this with figure 3, which is the same spherical cap not rotated.}
 \label{Grot}
 \end{figure}
 
@@ -201,7 +201,15 @@ Upward continue and plot:
 \verb|data = plm2xyz(lmcosi,res);|\\
 \verb|plotplm(data,[],[],4,res)|
 
-This rotated spherical ring is shown in figure ...
+The rotated rotated ring is shown in figure 5.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.45\textwidth]{figures/rot100_25flat.png}
+  \includegraphics[width=0.45\textwidth]{figures/rot100_25.png}
+  \caption{Optimal Slepian function to describe the rotated spherical ring of TH=[100,25] upward continued with rotations phi=90, theta=20, and omega=25 and eigenfunctions up to J=50.  Compare this with figure 3, which is the same spherical ring not rotated.}
+\label{Grot10025}
+\end{figure}
 
 \textbf{Exercise:} Try the second best Slepian function, now in Africa:
 
@@ -212,12 +220,12 @@ This rotated spherical ring is shown in figure ...
 \verb+plotplm(lmcosi,[],[],2,res)+\\
 \verb+kelicol(1)+
 
-This results in figure 5.  Compare with figure 2.  What do you notice?
+This results in figure 6.  Compare with figure 2.  What do you notice?
 
 \begin{figure}[H]
   \centering
   \includegraphics[width=0.45\textwidth]{figures/G(:,2)ml.png}
-  \caption{Plot with the second best Slepian function, G(:,2).}
+  \caption{Upward continued second best Slepian function, G(:,2), to describe the region, Africa.  Notice this looks like two separate regions on the sphere.  These are formed due to the nature of spherical harmonics.  See chapter 1 for more information.}
 \label{G(:,2)}
 \end{figure}
 
@@ -235,14 +243,14 @@ look like?  You will need to input this linear combination into your command lin
 \verb+caxis([-1,1]*max(abs(caxis)))+\\
 \verb+kelicol(1)+
 
-This should result in figure 6.  Compare this figure with figures 2 and 4.  What do you notice?
+This should result in figure 7.  Compare this figure with figures 2 and 4.  What do you notice?
 
 \textbf{Exercise:} Try some of your own linear combinations and examine the plots.
 
 \begin{figure}[H]
   \centering
   \includegraphics[width=0.5\textwidth]{figures/hcombml.png}
-  \caption{Plot with h = G(:,1)+G(:,2).}
+  \caption{Linear combination of Slepian functions, h = G(:,1)+G(:,2).  Notice the upper portion dominates the plot since G(:,1) is the most optimal Slepian function, while G(:,2) is the second best Slepian function to describe the region.  See figures 2 and 6 to notice how both of these Slepian functions plot.}
 \label{lincomb}
 \end{figure}
 
@@ -256,12 +264,12 @@ We need to determine a proper value for \verb+J+ to plot the optimal linear comb
 
 \verb|plot(1:K,V)|
 
-Now we can analyze the plot to determine which value of J such that most of the eigenvalues are concentrated within our region.  Our plot will look like figure 7, as an exponential decay curve.  
+Now we can analyze the plot to determine which value of J such that most of the eigenvalues are concentrated within our region.  Our plot will look like figure 8, as an exponential decay curve.  
 
 \begin{figure}[H]
   \centering
   \includegraphics[width=0.5\textwidth]{figures/Vvsj_ml.png}
-  \caption{Eigenvalue V vs index j.}
+  \caption{Eigenvalues V versus index j (column number in the vector V).  From this pllot, we can see that the eigenvalues approach zero near j=50, which we will then set as our maximum J value.}
 \label{eigenvalue}
 \end{figure}
 
@@ -288,14 +296,14 @@ This will create a matrix, \verb|f|, containing the linear combinations of spher
 \verb|[F,lon,lat] = plm2xyz(coef2lmcosi(f,1),1);|\\
 \verb|plotplm(F,lon,lat,4,res)|
 
-The plot of F is shown in figure 8.  We can alternatively directly plot this by:
+The plot of F is shown in figure 9.  We can alternatively directly plot this by:
 
 \verb|plotplm(coef2lmcosi(f,1),[],[],4,res)|
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.5\textwidth]{figures/F_ml.png}
-	\caption{Random linear combination for eignenvalues up to J = 50.}
+	\caption{Linear combination of Slepian functions with random coefficients for eignenvalues up to J = 50, plotted on the surface.  The linear combination of the Slepian functions gives a plot which describes the region, Africa.}
 \end{figure}
 
 
@@ -310,12 +318,12 @@ Plot:
 
 \verb|plotplm(coef2lmcosi(f2,1),[],[],4,res)|
 
-Figure 9 shows the plot of all of the eigenvalues.
+Figure 10 shows the plot of all of the eigenvalues.
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.5\textwidth]{figures/f2ml.png}
-	\caption{Random linear combination for all eignenvalues.}
+	\caption{Linear combination of Slepian functitons with random coefficients for all eignenvalues plotted on the surface.  This linear combination does not describe the region, Africa, so this plot would not be useful.}
 \end{figure}
 
 
@@ -327,12 +335,12 @@ Now we can plot the upward continued coefficients:
 
 \verb|plotplm(coef2lmcosi(fup,1),[],[],4,res)|
 
-The best fit Slepian functions, upward continued, are shown in figure 10.
+The best fit Slepian functions, upward continued, are shown in figure 11.
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.5\textwidth]{figures/fup_ml.png}
-	\caption{Best linear combination of Slepian functions up to J = 50, upward continued.}
+	\caption{Upward continued linear combination of Slepian functions with random coefficients up to J = 50.}
 \end{figure}
 
 \textbf{Question:} Choose a lower J value and compare the plots.  What do you notice?
