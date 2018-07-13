@@ -10,8 +10,8 @@ function demos_chapter_two(wht)
 % 2.3	 Calculating Coefficients for an Axisymmetric Double Polar Cap
 % 2.4	 Calculating Coefficients for a Rotated Polar Cap or Double Polar Cap
 % 2.5    Calculating Coefficients for a Polar Ring
-% 2.6    Calculating Coefficients for a Rotated a Polar Ring
 % 3.0	 Linear Combinations of Classical Scalar Slepian Functions
+% 3.1    Linear Combinations of Slepian Functions and Random Vector
 % 4.0	 Looking at Eigenvalues
 %
 %
@@ -96,7 +96,7 @@ switch wht
 
     case 2.4
 	clear all	
-	% 2.4 Rotating coefficientsfor a Polar Cap
+	% 2.4 Rotating coefficients for a Polar Cap
 	[G] = glmalphaptoJ(40,20,180,90,[],50);
 	
 	% converting to lmcosi format
@@ -137,36 +137,16 @@ switch wht
 	caxis([-1,1]*max(abs(caxis)))
 	view(2)
 
-    case 2.6
-	clear all
-	% 2.6 Rotating a Polar Ring
-	[G] = glmalphaptoJ([20 40],20,180,90,[],50);
-
-        % converting to lmcosi format
-        lmcs = coef2lmcosi(G(:,1),1);
-
-        % evaluating scalar coefficients
-        data = plm2xyz(lmcs,0.5);
-
-        % plotting to Mollweide projections
-        figure
-        plotplm(data,[],[],1,0.5)
-
-        % resetting color scheme min/max
-        kelicol(1)
-        caxis([-1,1]*max(abs(caxis)))
-
-
     case 3.0
 	clear all
 	% 3.0 Linear Combinations of Slepian Functions
-	[G] = glmalpha('namerica',20,[],0)
+	[G] = glmalpha('namerica',20,[],0);
 
 	% converting to lmcosi format and adding functions
-	lmcs = coef2lmcosi((5*G(:,1))+(3*G(:,1)),1)
+	lmcs = coef2lmcosi((5*G(:,1))+(3*G(:,10)),1);
 
 	% evaluating scalar coefficients
-	data = plm2xyz(lmcs,0.5)
+	data = plm2xyz(lmcs,0.5);
 
         % plotting to Mollweide projections
         figure
@@ -176,32 +156,33 @@ switch wht
         kelicol(1)
         caxis([-1,1]*max(abs(caxis)))
 
-    case 4.0
+    case 3.1
 	clear all
 	% 4.0 Looking at Eigenvalues
 	L = 20
 
-	[G,V] = glmalpha('namerica',L,[],0)
+	[G,V] = glmalpha('namerica',L,[],0);
 
 	% Plotting eigenvalues versus slepian function number
 	figure
-	plot(1:((L+1)^2),V)	
+	plot(1:((L+1)^2),V);	
 	ylabel('eigenvalue \lambda')
 	xlabel('Slepian Function #')	
 
-	% Setting J. 
-	J = 50
+	% Prompt user to choose the number of Slepian Functions that will be used
+	prompt = 'Choose the number of Slepian functions you would like to use. J=';
+	J = input(prompt)
 
 	% converting to lmcosi and evaluating all Slepian functions up to 'J'
 	for j=1:J
-	    g{j} = plm2xyz(coef2lmcosi(G(:,j),1),.5)
+	    g{j} = plm2xyz(coef2lmcosi(G(:,j),1),.5);
         end
 
 	% creating matrix and making linear combination of all Slepian functions up to 'J' multiplied by vector of random coefficients 'u' and length 'J'
 	u = randn(J,1)
 	f = zeros(size(g{1}))
 	for j=1:J
-	    f = f + u(j)*g{j}
+	    f = f + u(j)*g{j};
 	end
 
 	% Plotting f
