@@ -39,51 +39,62 @@ $E_{lm}$: vector components from the gradient of a potential field from a planet
 $F_{lm}$: vector components from the gradient of a potential field from outside the satellite radius (space). \\
 $C_{lm}$: same as in representation 1.
 
-\textbf{Exercise:} Let's calculate the spherical harmonics first for $E_{lm}$.  Let's set some parameters:
+\subsection{Example One:} 
+Let's calculate the spherical harmonics first for $E_{lm}$.  Let's set some parameters:
 
 \verb|L = 2;|\\
-\verb|theta = 0:0.01:pi;|\\
-\verb|phi = 0:0.01:2*pi;|
+\verb|theta = 0:0.1:pi;|\\
+\verb|phi = 0:0.1:2*pi;|
 
 We can now calculate them by running:
 
 \verb|[E,theta,phi] = elm(L,theta,phi);|
 
-This provides us with \verb|E|, 3 pixel maps of size $(L+1)^2$.  \verb|E{1}| are the radial components of the spherical harmonics, \verb|E{2}| are the colatitudinal components, and \verb|E{3}| are the longitudinal components.  Each row represents a \verb|(l,m)| pairing with columns for the pixel map values.  From the \verb|help| function, we can see that \verb|elm| function provides the \verb|m| values in the \textit{addmout} format.  
+This provides us with \verb|E|, which contains the three components of the $E_{lm}$ vector spherical harmonics for degrees $l=0$ to $l=L$.  \verb|E{1}| contains $(L+1)^2$ pixel maps for the radial component.  Each row of E{1} is a pixel map represented as a vector of numbers such that we when we reshape............**SKYPE
 
-Let's plot the radial component of $E_{lm}$ with \verb|l=2| and \verb|m=-1|.  With the \textit{addmout} format, we will have this as the sixth row, which is denoted as \verb|E{1}(6,:)|.  Our first step would be to reshape this into a pixel matrix by running:
+\verb|E{2}| contains $(L+1)^2$ pixel maps for the colatitudinal components and \verb|E{3}| contains $(L+1)^2$ pixel maps for the longitudinal components.  From the \verb|help| function, we can see that \verb|elm| function provides the pixel map values in the \textit{addmout} format.  
 
-\verb|E6_1 = reshape(E{1}(6,:),length(theta),length(phi));|
+Let's plot the radial component of $E_{lm}$ with \verb|l=2| and \verb|m=-1|.  With the \textit{addmout} format, we will have this as the sixth row, which is denoted as \verb|E{1}(6,:)|.  Our first step would be to label the radial, colatitudinal, and longitudinal components.  The best way to do this would be to also create an index such that we can change it easily:
 
-Now we can plot this:
+\verb|index = 6;|\\
+\verb|E2m1_rad = E{1}(index,:);|\\
+\verb|E2m1_theta = E{2}(index,:);|\\
+\verb|E2m1_phi = E{3}(index,:);|
 
-\verb|plotplm(E6_1,phi,pi/2-theta,2)|
+Now we can reshape this into a pixel matrix by running:
+
+\verb|P = reshape(E2m1_rad,length(theta),length(phi));|
+
+Now we can plot \verb|E2m1_rad| on the Mallweide projection******:
+
+\verb|plotplm(P,phi,pi/2-theta,1)|\\
+\verb|kelicol(1)|
 
 We can also plot the colatitudinal component with the same (l,m).  We will need to reshape this as above and plot:
 
-\verb|E6_2 = reshape(E{2}(6,:),length(theta),length(phi));|\\
-\verb|plotplm(E6_2,phi,pi/2-theta,2)|
+\verb|U = reshape(E2m1_theta,length(theta),length(phi));|\\
+\verb|plotplm(U,phi,pi/2-theta,1)|
 
 Plot the longitudinal component by running:
 
-\verb|E6_3 = reshape(E{3}(6,:),length(theta),length(phi));|\\
-\verb|plotplm(E6_3,phi,pi/2-theta,2)|
+\verb|V = reshape(E2m1_phi,length(theta),length(phi));|\\
+\verb|plotplm(V,phi,pi/2-theta,1)|
 
 Compare your plots to figure 1.
 
 \begin{figure}[H]
-  \begin{subfigure}{.5\textwidth}
+  \begin{subfigure}{.7\textwidth}
   \centering
   \includegraphics[width=0.5\textwidth]{figures_Rep2/E_2-1{1}.png}
   \caption{Radial component}
   \label{rad}
   \end{subfigure}
-  \begin{subfigure}{.5\textwidth}
+  \begin{subfigure}{.7\textwidth}
   \centering
   \includegraphics[width=0.5\textwidth]{figures_Rep2/E_2-1{2}.png}
   \caption{Colatitudinal component}
   \end{subfigure}
-  \begin{subfigure}{.5\textwidth}
+  \begin{subfigure}{.7\textwidth}
   \centering
   \includegraphics[width=0.5\textwidth]{figures_Rep2/E_2-1{3}.png}  
   \caption{Longitudinal component}
@@ -92,23 +103,33 @@ Compare your plots to figure 1.
 \label{E6}
 \end{figure}
 
-%%%%%%INSERT a figure with radial as a background and col/lon through quiver.
+We can also plot each component on one figure.  To do this, we will need to use a function called \verb|quiver|, which can be used as the \verb|help| function describes.  Open a new figure and run the following:
+
+\verb|plotplm(P,phi,pi/2-theta,4);|\\
+\verb|kelicol(1)|\\
+\verb|caxis([-1,1]*max(abs(caxis)))|\\
+\verb|hold on|\\
+\verb|quiver(phi*180/pi,90-theta*180/pi,U,V,'k','LineWidth',1)|\\
+\verb|hold off|
+
+This will produce figure ......
 
 We can plot another (l,m), say $E_{20}$, which would be the the seventh row in $E_{lm}$.  Let's look at the radial component:
 
-\verb|E7 = reshape(E{1}(7,:),length(theta),length(phi));|\\
-\verb|plotplm(E7,phi,pi/2-theta,2)|
+\verb|index = 7;|\\
+\verb|E20_rad = reshape(E{1}(index,:),length(theta),length(phi));|\\
+\verb|plotplm(E20_rad,phi,pi/2-theta,1)|
 
 Compare your plot to figure 2.
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.5\textwidth]{figures_Rep2/E_20{1}.png}  
+  %\includegraphics[width=0.5\textwidth]{figures_Rep2/E_20{1}.png}  
   \caption{Vector spherical harmonic with $E_{20}$ plot of the radial component.}
 \label{E7}
 \end{figure}
 
-\subsection{Linear Combinations of Spherical Harmonics}
+\subsection{Linear Combinations of Vector Spherical Harmonics}
 
 \textbf{Exercise:}  Let's try a linear combination, choose: $2E_{00}-1.5E_{10}+3E_{11}$.  We can plot this in a couple different ways, either by first reshaping each of the $E_{lm}$ values then make the linear combination or make the linear combination first then reshape it.  Try both and compare the results.  For the sake of computation, let's try the second way:
 
@@ -126,7 +147,7 @@ Compare your plot to figure 3.
   \HERE
 %  \includegraphics[width=0.5\textwidth]{figures_Rep2/lincomb??.png}  
   \caption{Linear combination of vector spherical harmonics, $2E_{00}-1.5E_{10}+3E_{11}$, with the radial component.}
-\label{E7}
+\label{E}
 \end{figure}
 
 We can also create the same linear combination by putting the values into \textit{addmout} format in the following way:
@@ -137,13 +158,29 @@ The cosine and sine expansion coefficients are determined by whether m is positi
 
 \verb|Elmcosi = [0,0,2,0 ; 1,0,-1.5,0 ; 1,1,0,3]|
 
-
-
 \HERE
+
+We can also change all of the $E_{lm}$ coefficients into lmcosi format by running:
+
+\verb|elmcosi_rad = coef2lmcosi(E{1}(:,1),1);|
+
+We can then create a gradient spherical harmonic vector field by running:
+
+\verb|elm_rad = elm2xyz(elmcosi_rad,1);|
+
+We can do this with each of the components:
+
+\verb|elmcosi_theta = coef2lmcosi(E{2}(:,1),1);|\\
+\verb|elm_theta = elm2xyz(elmcosi_theta,1);|\\
+\verb|elmcosi_phi = coef2lmcosi(E{3}(:,1),1);|\\
+\verb|elm_phi = elm2xyz(elmcosi_phi,1);|
+
+Now we can plot these.
+
 
 If the vector field is represented as a linear combination of elm and flm, then we will need to evaluate elm and flm separately then sum them.
 
-
+\HERE
 
 \TAG
 \end{document}
