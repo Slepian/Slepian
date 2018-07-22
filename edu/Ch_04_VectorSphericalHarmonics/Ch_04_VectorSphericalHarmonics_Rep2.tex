@@ -48,7 +48,7 @@ Let's calculate the spherical harmonic functions first for $E_{lm}$.  We will ne
 
 We can now calculate the spherical harmonic functions by running:
 
-\verb|[E,theta,phi] = elm(L,theta,phi);|
+\verb|[E,theta,phi] = elm(L,theta,phi+pi);|
 
 This provides \verb|E|, which contains the three components of the $E_{lm}$ vector spherical harmonics for degrees $l=0$ to $l=L$.   \verb|E{1}| contains $(L+1)^2$ pixel maps for the radial component.  Each row of \verb|E{1}| is a pixel map represented as a vector of numbers.  \verb|E{2}| contains $(L+1)^2$ pixel maps for the colatitudinal components and \verb|E{3}| contains $(L+1)^2$ pixel maps for the longitudinal components.  From the \verb|help| function, we can see that \verb|elm| function provides the pixel map values in the \textit{addmout} format.  
 
@@ -158,7 +158,7 @@ Let's try a linear combination of vector spherical harmonics, choose: $2E_{00}-1
 \verb|L = 2;|\\
 \verb|theta = 0:0.1:pi;|\\
 \verb|phi = 0:0.1:2*pi;|\\
-\verb|[E,theta,phi] = elm(L,theta,phi);|\\
+\verb|[E,theta,phi] = elm(L,theta,phi+pi);|\\
 \verb|lincomb_rad = 2*E{1}(1,:)-1.5*E{1}(3,:)+3*E{1}(4,:);|\\
 \verb|linr_rad = reshape(lincomb_rad,length(theta),length(phi));|\\
 \verb|lincomb_theta = 2*E{2}(1,:)-1.5*E{2}(3,:)+3*E{2}(4,:);|\\
@@ -172,7 +172,7 @@ Now we can plot:
 \verb|kelicol(1)|\\
 \verb|caxis([-1,1]*max(abs(caxis)))|\\
 \verb|hold on|\\
-\verb|quiver(phi*180/pi,90-theta*180/pi,linr_phi,linr_theta,'k','LineWidth',1)|\\
+\verb|quiver(phi*180/pi-180,90-theta*180/pi,linr_phi,linr_theta,'k','LineWidth',1)|\\
 \verb|hold off|
 
 Compare your plot to figure 4.
@@ -232,7 +232,7 @@ Say we have a linear combination $E_{10}+F_{11}$ and we want to just look at the
 
 Plot this on the Mallweide projection:
 
-\verb|plotplm(lincombr,phi,pi/2-theta,1)|\\
+\verb|plotplm(lincombr,phi+pi,pi/2-theta,1)|\\
 \verb|kelicol(1)|
 
 Compare your plot to figure 6.
@@ -243,7 +243,7 @@ Compare your plot to figure 6.
 \label{EFcomb}
 \end{figure}
 
-We can also create the linear combinations with the colatitudinal and longitudinal components.  Lower the resolution and recalculate the linear combinations:
+We can also create the linear combinations with the colatitudinal and longitudinal components.  Lower the resolution and recalculate $E_{lm}$, $F_{lm}$, and the linear combinations for each component:
 
 \verb|theta = 0:0.1:pi;|\\
 \verb|phi = 0:0.1:2*pi;|\\
@@ -257,9 +257,10 @@ Now let's plot these components using the \verb|quiver| function, as before:
 \verb|plotplm(lincombr,phi,pi/2-theta,4)|\\
 \verb|kelicol(1)|\\
 \verb|hold on|\\
-\verb|quiver(phi*180/pi,90-theta*180/pi,lincombr_phi,lincombr_theta,'k','LineWidth',1)|\\
+\verb|quiver(phi*180/pi-180,90-theta*180/pi,lincombr_phi,lincombr_theta,'k','LineWidth',1)|\\
 \verb|hold off|
 
+Compare your plot to 7 of the linear combination.
 \begin{figure}[H]
   \centering
   \includegraphics[width=0.5\textwidth]{figures_Rep2/lincombEF_quiver.png}  
@@ -267,7 +268,49 @@ Now let's plot these components using the \verb|quiver| function, as before:
 \label{EFcomb_quiver}
 \end{figure}
 
-%\verb|[B,C,theta,phi] = blmclm(l,m,theta,phi);|
+We can also create linear combinations with $C_{lm}$.  Since $C_{lm}$ is calculated by taking one $(l,m)$ combination, let's choose and run:
+
+\verb|theta = 0:0.1:pi;|\\
+\verb|phi = 0:0.1:2*pi;|\\
+\verb|l = 1;|\\
+\verb|m = -1;|\\
+\verb|[B,C,theta,phi] = blmclm(l,m,theta,phi);|
+
+We will need to create a linear combination first for the radial component, which $C_{lm}$ does not contain, so run:
+
+\verb|lincomb_rad = E{2}(2,:)+F{2}(2,:);|\\
+\verb|lincombr_rad = reshape(lincomb_rad,length(theta),length(phi));|
+
+Let's create a linear combination with all three $E_{lm}$, $F_{lm}$, and $C_{lm}$. 
+We must reshape the components first since $E_{lm}$ and $F_{lm}$ contain pixel map information in a vector, while $C_{lm}$ contains the information in a matrix.
+
+\verb|E1m1_theta=reshape(E{2}(2,:),length(theta),length(phi));|\\
+\verb|E1m1_phi=reshape(E{3}(2,:),length(theta),length(phi));|\\
+\verb|F1m1_theta=reshape(F{2}(2,:),length(theta),length(phi));|\\
+\verb|F1m1_phi=reshape(F{3}(2,:),length(theta),length(phi));|
+
+Now we can create the linear combinations:
+
+\verb|lincomb_theta = E1m1_theta+F1m1_theta+C{1};|\\
+\verb|lincomb_phi = E1m1_phi+F1m1_phi+C{2};|
+
+Now we can plot this:
+
+\verb|plotplm(lincombr_rad,phi,pi/2-theta,4)|\\
+\verb|kelicol(1)|\\
+\verb|hold on|\\
+\verb|quiver(phi*180/pi,90-theta*180/pi,lincomb_phi,lincomb_theta,'k','LineWidth',1)|\\
+\verb|hold off|
+
+Figure 8 shows the plot of this linear combination.
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.5\textwidth]{figures_Rep2/lincombEFC_quiver.png}  
+  \caption{Linear combination of the vector spherical harmonics $E_{1-1}+F_{1-1}+C_{1-1}$ with l=1 and m=-1.}
+\label{EFCcomb_quiver}
+\end{figure}
+
+
 
 
 \HERE
