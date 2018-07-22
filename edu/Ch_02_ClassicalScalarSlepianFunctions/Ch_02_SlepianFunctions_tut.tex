@@ -133,7 +133,7 @@ This one we call ADDMON and it is the ordering in which the coefficients from fu
 Returning to our example, if you run \verb+help glmalpha+ you will read that it uses the ADDMOUT ordering and thus requires us to use \verb+0+ as the fourth input. We will choose a value of \verb+L=20+. Now we can run:
 
 
-\verb|		[G] = glmalpha('africa',20,[],0)|
+\verb|		[G] = glmalpha('africa',20,[],0);|
 
 and observe the output \verb+G+ which should be a $(L+1)^2\times(L+1)^2$ orthonormal matrix of coefficients. Each column of \verb+G+ contains a set of coefficients for a single slepian function which are in the ADDMOUT ordering:
 
@@ -171,17 +171,17 @@ Luckily we have programs that take care of these issues. These programs have the
 
 For our Africa example we will need to feed our coefficients into \verb+coef2lmcosi+ and again tell it whether they are in the ADDMOUT or ADDMON format. This is indicated by using the value 1 for the second input (see \verb+help coef2lmcosi+). The output is saved as \textit{lmcs} but you can name it whatever you would like. Run:
 
-\verb+		lmcs=coef2lmcosi(G(:,1),1)+
+\verb+		lmcs=coef2lmcosi(G(:,1),1);+
 
 The first column of G, or the first Slepian function, is used in our example for simplicity's sake; we show in Section 3 how to make a linear combination of Slepian functions.
 
 We now have one more step before we are ready to plot and that is to evaluate the coefficients using the function \verb+plm2xyz+. The required inputs are our \textit{lmcosi} format matrix and a chosen resolution. You can choose \textit{res}=1, or 0.5, or even 0.1 for a very high resolution image, but keep in mind this will also use much calculation time and memory.  We will give the output the arbitrary name `data' and choose  a resolution of 0.5. Run:
 
-\verb+		data=plm2xyz(lmcs,0.5)+
+\verb+		data=plm2xyz(lmcs,0.5);+
 
 And finally to plot we will use \verb+plotplm+:
 
-\verb+		plotplm(data,[],[],1,0.5)+
+\verb+		plotplm(data,[],[],1,0.5);+
 
 where the fourth input chooses the plotting method. The value '1' corresponds to a Mollweide projection of Earth.
 
@@ -197,6 +197,10 @@ As expected, the fluctuations are concentrated on the center of Africa and negli
   \caption{Result of example using glmalpha() with L=20 to calculate coefficients, plm2xyz() to evaluate them, and plotplm() to plot with method 1 - the Mollweide projection. Only the first ``best" concentrated Slepian function is plotted. The color scheme is kelicol(1) and max/min values are changed to fit the max/min of data plotted.}
 \label{figure1}
 \end{figure}
+
+\textbf{Anarctica: A Special Case}
+
+[antarctica demo coming soon]
 
 \textbf{Exercise:} Pick a different a region, or subtract a region from Africa to use as the domain and plot again. You can edit \verb|demos_chapter_two.m|, write your own \verb|.m| file, or run line by line in matlab.
  
@@ -319,7 +323,7 @@ Run
 
 where we have chosen our region of interest to be North America, expressed by a linear combination of two Slepian functions. To do this, we created a matrix of coefficients using \verb|glmalpha()|. We then combined the first and tenth Slepian functions multiplied by values of 5 and 3 respectively. This sum can be converted into \textit{lmcosi} format in the same line:
 
-\verb|	lmcs=coef2lmcosi((5*G(:,1))+(3*G(:,10)),1)|
+\verb|	lmcs=coef2lmcosi((5*G(:,1))+(3*G(:,10)),1);|
 
 The coeficients were then evaluated and plotted in the same methods as above. The demo should produce:
 
@@ -331,6 +335,8 @@ The coeficients were then evaluated and plotted in the same methods as above. Th
 \end{figure}
 
 Which we can see is starting to look very different from just the first Slepian function.
+
+It should be noted that you can either make linear combinations of coefficients and then evaluate them as we did above, or evaluate the coefficients first, convert to lmcosi format, and then make linear combinations of the Slepian functions.
 
 \textbf{Exercsie:} Practice plotting different linear combinations of slepian functions and observe their output. Try multiplying them by a vector of random coefficients.
 
@@ -346,11 +352,11 @@ which should produce Figure 7, a plot of eigenvalues versus their corresponding 
 
 The eigenvalues are obtained by running \verb|glmalpha()| and ``catching" the second output. We chose North America as our region and kept L=20 as in the previous examples:
 
-\verb|		[G,V] = glmalpha('namerica',20,[],0)|
+\verb|		[G,V] = glmalpha('namerica',20,[],0);|
 
 We then plotted the eigenvalues using:
 
-\verb|		plot(1:((L+1)^2),V)|
+\verb|		plot(1:((L+1)^2),V);|
 
 and can see in Figure 7 that most of the eigenvalues are approximately 0 past the 50th Slepian function. 
 
@@ -371,16 +377,16 @@ In the demo we convert each column of coefficients in \verb|G| to \textit{lmcosi
 
 Then we build an empty matrix the same size as \verb|g{1}|:
 
-\verb|	f = zeros(size(g{1}))|
+\verb|	f = zeros(size(g{1}));|
 
-as well as a vector of normally distributed random numbers and length \textit{J}:
+as well as a vector of normally distributed random numbers and length \textit{J} to randomly weight each Slepian function:
 
-\verb|	u = randn(J,1)|
+\verb|	u = randn(J,1);|
 
 We then use another \verb|for| loop to build our linear combination of the first 50 Slepian functions multiplied by our vector of random coefficients:
 
 \verb|for j=1:J| \\
-\verb|	f = f + u(j)*g{j}| \\
+\verb|	f = f + u(j)*g{j};| \\
 \verb|end|
 
 and then feed our matrix \verb|f| into \verb|plotplm()| to make Figure 8. In the figure we see we have a more complex representaion that is still concentrated within North America.
