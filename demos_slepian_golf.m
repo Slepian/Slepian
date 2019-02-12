@@ -52,7 +52,7 @@ switch wht
         % Calculate and plot the eigenvalue-weighted sum of the vector
         % Slepian functions for all continents combined.
         Lmax=5;
-        psallcons([],Lmax,1);
+        psallcons([],Lmax,0);
         psconsum(Lmax)
         
         disp('Choose a higher degree to have better spatial concentration')
