@@ -77,6 +77,7 @@ mkdir('VECTANSDWCAP');
 mkdir('VECTANGLMALPHA');
 mkdir('SDWCAPRING');
 mkdir('GLMALPHARING');
+mkdir('MCOUPLINGS');
 
 % These are the additional folders needed for SLEPIAN_Hotel
 mkdir('SDWCAPUP');
