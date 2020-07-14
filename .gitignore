@@ -25,6 +25,7 @@ grdwrite2p/
 *.aux
 *.log
 *.out
+*.bak
 InstructionsVecSlepInversion.org
 research/
 prismSlepians

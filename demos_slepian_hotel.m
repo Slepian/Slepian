@@ -103,7 +103,7 @@ switch wht
         % Component 2 is colatitudinal southward
         % Component 3 is longitudinal eastward
         
-        % Do you want s epherical cap or ring?
+        % Do you want spherical cap or ring?
         dom=[17.24 10.55]; 
         clon=18;
         ccola=90+33;        
