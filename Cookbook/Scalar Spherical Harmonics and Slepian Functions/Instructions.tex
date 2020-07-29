@@ -22,9 +22,11 @@
 \begin{document}
 \maketitle
 
-\section{Plot a single spherical harmonic function}
-We will demonstrate plotting a spherical-harmonic on a sphere,  in a standard Matlab plot, on a Mollweide projection, and on random points of a sphere.
+\tableofcontents 
 
+\section{Plot a single spherical harmonic function}
+
+We will demonstrate plotting a spherical-harmonic on a sphere,  in a standard Matlab plot, on a Mollweide projection, and on random points of a sphere.
 
 First, designate a spherical-harmonic to be plotted:
 
@@ -35,6 +37,26 @@ For example,
 0 ≤ \verb+l+ fixes the degree and \verb+m+ fixes the order.
 
 \subsection{Plot on sphere}
+
+\setlength{\parskip}{.1mm}
+
+\verb+l+ = 3; \verb+m+ = -2;
+
+\verb+lon = 0:0.5:360;+
+
+\verb+lat = -90:0.5:90;+
+
+\verb+Y = ylm(l, m, pi/180*(90-lat), pi/180*lon);+
+
+\verb+figure;+
+
+\verb+plotplm(Y, pi/180*lon, pi/180*lat,2)+
+
+\begin{figure}[H]
+\includegraphics[scale=1]{graph_on_sphere}
+\end{figure}
+
+\setlength{\parskip}{0.5cm plus4mm minus3mm}
 
 1. Create a grid on the sphere
 
@@ -58,34 +80,79 @@ Note that \verb+90-lat+ is needed to convert latitude to colatitude and \verb+pi
 
 The function \verb+slepian_alpha/plotplm.m+ is here used to plot the vector \verb+Y+ using the grid specified by “\verb+lon+” and “\verb+lat+” in step 1. The input \verb+2+ dictates that the graph be on a sphere.
 
+\subsection{Plot in standard Matlab plot}
+
+\setlength{\parskip}{.1mm}
+
+\verb+l+ = 3; \verb+m+ = -2;
+
+\verb+lon = 0:0.5:360;+
+
+\verb+lat = -90:0.5:90;+
+
+\verb+Y = ylm(l, m, pi/180*(90-lat), pi/180*lon);+
+
+\verb+imagesc(lon, lat, Y)+
+
 \begin{figure}[H]
-\includegraphics[scale=1]{graph_on_sphere}
+\includegraphics[scale=.6]{standard_matlab_plot}
 \end{figure}
 
-\subsection{Plot in standard Matlab plot}
+\setlength{\parskip}{0.5cm plus4mm minus3mm}
 
 Do steps 1 and 2, and then run
 
 \verb+imagesc(lon, lat, Y)+
 
+\subsection{Plot on Mollweide projection}
+
+\setlength{\parskip}{.1mm}
+
+\verb+l+ = 3; \verb+m+ = -2;
+
+\verb+lon = 0:0.5:360;+
+
+\verb+lat = -90:0.5:90;+
+
+\verb+Y = ylm(l, m, pi/180*(90-lat), pi/180*lon);+
+
+\verb+figure;+
+
+\verb+plotplm(Y, pi/180*lon, pi/180*lat,1)+
+
 \begin{figure}[H]
-\includegraphics[scale=.75]{standard_matlab_plot}
+\includegraphics[scale=.8]{mollweide}
 \end{figure}
 
-\subsection{Plot on Mollweide projection}
+\setlength{\parskip}{0.5cm plus4mm minus3mm}
 
 Do steps 1 and 2, and then run
 
 \verb+figure;+
+
 \verb+plotplm(Y, pi/180*lon, pi/180*lat,1)+
 
 The input \verb+1+ dictates that the graph be on the Mollweide projection.
 
+\subsection{Plot for random points on a sphere}
+
+\setlength{\parskip}{.1mm}
+
+\verb+l+ = 3; \verb+m+ = -2;
+
+\verb+TH = 120; lon0 = 30; cola0 = 40; N=1000;+
+
+\verb+[lon, lat] = randpatch(N,TH,lon0,cola0);+
+
+\verb+Y = ylm(l, m, pi/180*(90-lat), pi/180*lon,[],[],[],1);+
+
+\verb+scatter(lon, lat, [], Y)+
+
 \begin{figure}[H]
-\includegraphics[scale=.75]{mollweide}
+\includegraphics[scale=.75]{random_plot}
 \end{figure}
 
-\subsection{Plot for random points on a sphere}
+\setlength{\parskip}{0.5cm plus4mm minus3mm}
 
 1. Generate a subset of the sphere consisting of random points 
 
@@ -118,9 +185,58 @@ To clear existing figures, and then run the Matlab command
 
 To create a scatter plot of circles having locations \verb+[lon, lat]+. Here, \verb+[]+ indicates the default value for circle size and the vector of spherical-harmonic values \verb+Y+ is used to determine circle color. 
 
+Please see \verb+Ch_01+ in the \verb+.edu+ folder for more detailed information.
+
+\section{Plot a linear combination of spherical harmonics}
+
+\setlength{\parskip}{.1mm}
+
+\verb+lon = 0:0.5:360;+
+
+\verb+lat = -90:0.5:90;+
+
+\verb+Y1=ylm(3,1,pi/180*(90-lat),pi/180*lon);+
+
+\verb+Y2=ylm(1,-1,pi/180*(90-lat),pi/180*lon);+
+
+\verb+Y3=ylm(5,-2,pi/180*(90-lat),pi/180*lon);+
+
+\verb!Y4=4*Y1-0.2*Y2+2*Y3;!
+
+\verb+plotplm(Y4, pi/180*lon, pi/180*lat,1);+
+
+\verb!kelicol(1)!
 \begin{figure}[H]
-\includegraphics[scale=.75]{random_plot}
+\includegraphics[scale=1]{linear_combination}
 \end{figure}
+
+\setlength{\parskip}{0.5cm plus4mm minus3mm}
+
+This task is a simple variation on the first. 
+
+Let us define three spherical harmonics:
+
+\verb+lon = 0:0.5:360;+
+
+\verb+lat = -90:0.5:90;+
+
+\verb+Y1=ylm(3,1,pi/180*(90-lat),pi/180*lon);+
+
+\verb+Y2=ylm(1,-1,pi/180*(90-lat),pi/180*lon);+
+
+\verb+Y3=ylm(5,-2,pi/180*(90-lat),pi/180*lon);+
+
+Next, create a vector which is a linear combination of these three. For example,
+
+\verb!Y4=4*Y1-0.2*Y2+2*Y3;!
+
+To plot the function, use \verb+plotplm.m+. For example,
+
+\verb+plotplm(Y4, pi/180*lon, pi/180*lat,1)+
+
+If you're interested in another color scheme, try out 
+
+\verb+kelicol(1)+
 
 Please see \verb+Ch_01+ in the \verb+.edu+ folder for more detailed information.
 
