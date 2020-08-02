@@ -240,4 +240,111 @@ If you're interested in another color scheme, try out
 
 Please see \verb+Ch_01+ in the \verb+.edu+ folder for more detailed information.
 
+\section{Create and plot scalar Slepian functions}
+
+\subsection{Named region and polar cap}
+
+Named region example 1:
+
+\setlength{\parskip}{.1mm}
+
+\verb![G] = glmalpha('africa',20,[],0);!
+
+\verb!lmcs = coef2lmcosi(G(:,1),1);!
+
+\verb!data=plm2xyz(lmcs,0.5);!
+
+\verb!plotplm(data, [], [], 1, 0.5)!
+
+\begin{figure}[H]
+\includegraphics[scale=.75]{africa_ex_1}
+\end{figure}
+
+\setlength{\parskip}{0.5cm plus4mm minus3mm}
+
+Named region example 2:
+
+\setlength{\parskip}{.1mm}
+
+\verb![G] = glmalpha('england',20,[],0);!
+
+\verb!lmcs = coef2lmcosi(G(:,3),1);!
+
+\verb!data=plm2xyz(lmcs,0.5);!
+
+\verb!plotplm(data, [], [], 2, 0.5)!
+
+\begin{figure}[H]
+\includegraphics[scale=1.2]{england_ex_2}
+\end{figure}
+
+\setlength{\parskip}{0.5cm plus4mm minus3mm}
+
+Polar cap example:
+
+\setlength{\parskip}{.1mm}
+
+\verb![G] = glmalpha(40,20,1,0)!
+
+\verb!lmcs = coef2lmcosi(G(:,1),1);!
+
+\verb!data=plm2xyz(lmcs,0.5);!
+
+\verb!plotplm(data, [], [], 2, 0.5)!
+
+\verb!view(2)!
+
+\begin{figure}[H]
+\includegraphics[scale=.75]{polarcap_ex}
+\end{figure}
+
+\setlength{\parskip}{0.5cm plus4mm minus3mm}
+
+1. Generate the coefficients of the function
+
+We will use  the function \verb!glmalpha.m!, which will essentially compute for us the best spatially-concentrated Slepian functions given two constraints. Those constraints are the first input, \verb!TH!, and the second, \verb!L!. \verb!TH! can be either a named region or the opening angle in degrees of a polar cap. \verb!L! is the bandwidth.
+
+You may choose among the named regions 'england', 'eurasia',  'namerica', 'australia', 'greenland', 'africa', 'samerica', 'amazon', 'orinoco', 'antarctica', 'contshelves', and  'alloceans'.
+
+For example, 
+
+\verb![G] = glmalpha('africa',20,[],0);!
+
+
+2. Plot
+
+\verb![G]! in both cases is a matrix whose $n$th column holds the coefficients of the $n$th-best spatially-concentrated Slepian function. In order to plot the $n$th function we need to convert the $n$th column of \verb![G]! into the form recognized by the function \verb!plotplm.m!, the so-called "lmcosi" format.
+
+\verb!lmcs = coef2lmcosi(G(:,1),1);!
+
+Here we have chosen to use the first column \verb!G(:,1)!. The second input \verb!1! is necessary when the coefficients are calculated using \verb!glmalpha!.
+
+Now we input the (lmcosi-formatted) matrix \verb!lmcs! and a resolution into the function \verb!plm2xyz!. We choose the resolution to be 0.5 and name the ouput "data":
+
+\verb!data=plm2xyz(lmcs,0.5);!
+
+To plot, run
+
+\verb!plotplm(data, [], [], 1, 0.5)!
+
+The input \verb!1! specifies Mollweide projection and the input \verb!0.5! is just the resolution again.
+
+The same sequence is used to plot a Slepian function on a polar cap, except for a change in the inputs to \verb!glmalpha.m! Specifically, we will now let \verb!TH! denote an opening angle in degrees.
+
+For example, let \verb!TH = 40!.
+
+\verb![G] = glmalpha(40,20,2,0)!
+
+The command 
+
+\verb!view(2)!
+
+may be used to rotate the spherical figure so that the North pole is faced toward the viewer.
+
+We suggest reading the \verb!help! section for the relevant functions and/or Chapter 2 Section 1 in the folder .edu for a detailed discussion.
+
+\subsection{Rotated polar cap}
+
+The general method of calculuating coefficients for a rotated polar cap is the same as above, but involves slightly different commands.
+
 \end{document}
