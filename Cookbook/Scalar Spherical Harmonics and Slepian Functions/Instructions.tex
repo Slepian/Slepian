@@ -38,6 +38,9 @@ For example,
 
 \subsection{Plot on sphere}
 
+Example:
+\vspace{2mm}
+
 \setlength{\parskip}{.1mm}
 
 \verb+l+ = 3; \verb+m+ = -2;
@@ -82,6 +85,9 @@ The function \verb+slepian_alpha/plotplm.m+ is here used to plot the vector \ver
 
 \subsection{Plot in standard Matlab plot}
 
+Example:
+\vspace{2mm}
+
 \setlength{\parskip}{.1mm}
 
 \verb+l+ = 3; \verb+m+ = -2;
@@ -105,6 +111,9 @@ Do steps 1 and 2, and then run
 \verb+imagesc(lon, lat, Y)+
 
 \subsection{Plot on Mollweide projection}
+
+Example:
+\vspace{2mm}
 
 \setlength{\parskip}{.1mm}
 
@@ -135,6 +144,9 @@ Do steps 1 and 2, and then run
 The input \verb+1+ dictates that the graph be on the Mollweide projection.
 
 \subsection{Plot for random points on a sphere}
+
+Example:
+\vspace{2mm}
 
 \setlength{\parskip}{.1mm}
 
@@ -188,6 +200,9 @@ To create a scatter plot of circles having locations \verb+[lon, lat]+. Here, \v
 Please see \verb+Ch_01+ in the \verb+.edu+ folder for more detailed information.
 
 \section{Plot a linear combination of spherical harmonics}
+
+Example:
+\vspace{2mm}
 
 \setlength{\parskip}{.1mm}
 
@@ -246,6 +261,8 @@ Please see \verb+Ch_01+ in the \verb+.edu+ folder for more detailed information.
 
 Named region example 1:
 
+\vspace{2mm}
+
 \setlength{\parskip}{.1mm}
 
 \verb![G] = glmalpha('africa',20,[],0);!
@@ -263,6 +280,8 @@ Named region example 1:
 \setlength{\parskip}{0.5cm plus4mm minus3mm}
 
 Named region example 2:
+
+\vspace{2mm}
 
 \setlength{\parskip}{.1mm}
 
@@ -282,6 +301,8 @@ Named region example 2:
 
 Polar cap example:
 
+\vspace{2mm}
+
 \setlength{\parskip}{.1mm}
 
 \verb![G] = glmalpha(40,20,1,0)!
@@ -300,20 +321,14 @@ Polar cap example:
 
 \setlength{\parskip}{0.5cm plus4mm minus3mm}
 
-1. Generate the coefficients of the function
-
-We will use  the function \verb!glmalpha.m!, which will essentially compute for us the best spatially-concentrated Slepian functions given two constraints. Those constraints are the first input, \verb!TH!, and the second, \verb!L!. \verb!TH! can be either a named region or the opening angle in degrees of a polar cap. \verb!L! is the bandwidth.
-
-You may choose among the named regions 'england', 'eurasia',  'namerica', 'australia', 'greenland', 'africa', 'samerica', 'amazon', 'orinoco', 'antarctica', 'contshelves', and  'alloceans'.
+To create the Slepian function to be plotted is to generate its spherical-harmonic coefficients. For this task we will use  the function \verb!glmalpha.m!, which computes the best spatially-concentrated Slepian functions given two constraints. Those constraints are the first input, \verb!TH!, either a named region or the opening angle in degrees of a polar cap, and the second, \verb!L!, the bandwidth. The named regions recognized by \verb!glmalpha! are 'england', 'eurasia',  'namerica', 'australia', 'greenland', 'africa', 'samerica', 'amazon', 'orinoco', 'antarctica', 'contshelves', and  'alloceans'.
 
 For example, 
 
 \verb![G] = glmalpha('africa',20,[],0);!
 
 
-2. Plot
-
-\verb![G]! in both cases is a matrix whose $n$th column holds the coefficients of the $n$th-best spatially-concentrated Slepian function. In order to plot the $n$th function we need to convert the $n$th column of \verb![G]! into the form recognized by the function \verb!plotplm.m!, the so-called "lmcosi" format.
+\verb![G]! is a matrix whose $n$th column holds the coefficients of the $n$th-best spatially-concentrated Slepian function. In order to plot the $n$th function we need to convert the $n$th column of \verb![G]! into the form recognized by the function \verb!plotplm.m!, the so-called "lmcosi" format.
 
 \verb!lmcs = coef2lmcosi(G(:,1),1);!
 
@@ -323,7 +338,9 @@ Now we input the (lmcosi-formatted) matrix \verb!lmcs! and a resolution into the
 
 \verb!data=plm2xyz(lmcs,0.5);!
 
-To plot, run
+\vspace{3mm}
+
+Now to plot, run
 
 \verb!plotplm(data, [], [], 1, 0.5)!
 
@@ -341,9 +358,13 @@ The command
 
 may be used to rotate the spherical figure so that the North pole is faced toward the viewer.
 
-We suggest reading the \verb!help! section for the relevant functions and/or Chapter 2 Section 1 in the folder .edu for a detailed discussion.
+We suggest reading the \verb!help! section for the relevant functions and/or Chapter 2, Section 1 in the folder \verb!.edu! for a detailed discussion.
 
 \subsection{Rotated polar cap}
+
+Example:
+
+\vspace{3mm}
 
 \setlength{\parskip}{.1mm}
 
@@ -380,9 +401,11 @@ We will need to use the function \verb!glmalphaptoJ! and provide the following i
 
 \section{Compute spherical-harmonic coefficients from regional data}
 
-The goal is to be able to calculate spherical-harmonic coefficients that describe observations when we only have these observations within a region. 
+Slepian functions may be used to represent data obtained from regional observations. The goal of the current task is to calculate the spherical-harmonic coefficients of the Slepian function which best represents such a data set.
 
-In a first step we create these observations from random spherical-harmonic coefficients. 
+In a preliminary step we create the "observations" from random spherical-harmonic coefficients. 
+
+Example:
 
 \vspace{3mm}
 
@@ -410,7 +433,9 @@ In a first step we create these observations from random spherical-harmonic coef
 
 \setlength{\parskip}{0.5cm plus4mm minus3mm}
 
-In a second step we try to obtain the spherical-harmonic coefficients from the observations.
+The main task consists of obtaining the spherical-harmonic coefficients from the observations.
+
+Example:
 
 \vspace{3mm}
 
@@ -418,9 +443,9 @@ In a second step we try to obtain the spherical-harmonic coefficients from the o
 
 \verb![G,V]=glmalpha(dom,Lmax);!
 
-\verb!Y=ylm([0 Lmax],[],(90-lat)*pi/180,lon*pi/180+pi,[],[],[],1!
+\verb!Y=ylm([0 Lmax],[],(90-lat)*pi/180,lon*pi/180+pi,[],[],[],1)!
 
-\verb!J = round(1.5*(Lmax+1)^2*spharea(dom));!
+\verb!J = min((Lmax+1)^2,round(1.5*(Lmax+1)^2*spharea(dom)));!
 
 \verb!Geval = G(:,1:J)'*Y;!
 
@@ -454,7 +479,7 @@ Next, create random spherical-harmonic coefficients using the function \verb!plm
 
 \verb!lmcosi=plm2rnd(Lmax,0)!
 
-Now evaluate the Slepian function determined by these random coefficients at these locations
+Now evaluate the Slepian function determined by these random coefficients at these locations:
 
 \verb!data = plm2xyz(lmcosi,lat,lon);!
 
@@ -462,43 +487,48 @@ To look at the data,
 
 \verb!subplot(2,1,1)!
 
-\verb!scatter(lon,lat,[],data)!
+\verb!scatter(lon,lat,[],data)! 
+
+\begin{figure}[H]
+\includegraphics[scale=.6]{namerica_randomdata}
+\end{figure}
 
 Step 2.
 
-We will now treat \verb!data! as a collection of observations and try to find the Slepian function which “best fits” the observations. We already know the function of best fit in this example; it is that whose spherical-harmonic coefficients are given in \verb!lmcosi! and whose values are the entries of \verb!data!. Hence this Step should recover for us these coefficients.
+We will now treat \verb!data! as a collection of observations and try to find the Slepian function which “best fits” the observations. We already know the function of best fit in this example; it is that whose spherical-harmonic coefficients are given in \verb!lmcosi! and whose values are the entries of \verb!data!. But be careful to note that \verb!data! only represents the values of that function $F$ over a subset of its domain, the randomly-generated \verb![lon,lat]! points in 'namerica'. The coefficients we will obtain in this Step will determine a Slepian function which matches $F$ on \verb![lon,lat]!, but which has no reason to coincide with it over the rest of the sphere. 
 
-First we will use \verb!glmalpha! to compute the coefficients of the best spatially-concentrated Slepian functions over our chosen region \verb!dom! and chosen bandwidth \verb!Lmax!. From this set of functions we will choose the one which best fits \verb!data!.
+First, we will use \verb!glmalpha! to compute the coefficients of the best spatially-concentrated Slepian functions over our chosen region \verb!dom! and chosen bandwidth \verb!Lmax!. From this set of functions will be chosen the one which best fits \verb!data!.
 
 \verb![G,V]=glmalpha(dom,Lmax);!
 
-First evaluate the spherical harmonics of degrees \verb!0! to \verb!Lmax! at the data points:
+Evaluate the spherical harmonics of degrees \verb!0! to \verb!Lmax! at the data points:
 
-\verb!Y=ylm([0 Lmax],[],(90-lat)*pi/180,lon*pi/180+pi,[],[],[],1!
+\verb!Y=ylm([0 Lmax],[],(90-lat)*pi/180,lon*pi/180+pi,[],[],[],1)!
 
-Next evaluate the Slepian functions at the data points. All of these evaluated Slepian functions are linear combinations of the above evaluated spherical harmonics; they differ by their coefficients, which are stored in the matrix \verb+[G,V]+. Therefore, in order to evaluate a Slepain function whose coefficients come from the nth vector of \verb+[G,V]+, we would run something like
+Next evaluate the Slepian functions at the data points. All of these evaluated Slepian functions are linear combinations of the above evaluated spherical harmonics; they differ by their coefficients, which are stored in the matrix \verb+[G]+. Therefore, in order to evaluate a Slepain function whose coefficients come from the $n$th vector of \verb+[G]+, we would run something like
 
 \verb!eval=G(:,n)'*Y!
 
 (Recall that \verb!transpose(A)=A' ! in Matlab.)
 
-But we want to evaluate the  functions for the first \verb!J! vectors of \verb![G,V]! simultaneously (in order that we may compare them for best fit to \verb!data!), so we run
+But we want to evaluate the  functions for the first \verb!J! vectors of \verb![G]! simultaneously, in order that we may compare them for best fit to \verb!data!, so we run
 
-\verb!J = round(1.5*(Lmax+1)^2*spharea(dom));!
+\verb!J = min((Lmax+1)^2,round(1.5*(Lmax+1)^2*spharea(dom)));!
 
 \verb!Geval = G(:,1:J)'*Y;!
 
-See that we have replaced the column argument “\verb+n+” with “\verb+1:J+”
+See that we have replaced the column argument “\verb+n+” with “\verb+1:J+”.
 
-To determine which of these \verb!J! functions best fits \verb!data!, we must solve 
+(This choice of \verb!J! should be sufficient in most situations. \verb!(Lmax+1)^2! is the number of Slepian functions which exist up to a maximum degree \verb!Lamx!, and \verb!spharea(dom)! is the area of the domain relative to the whole sphere. The role of these quantities in choosing \verb!J! was decided upon in order to optimize the solution to the linear system below relative to other factors like noise sensitivity. The scaling factor \verb!1.5! is usually a safe choice but varies with the context.)
+
+To determine which of these \verb!J! functions best fits \verb!data!, we must solve for a vector \verb!gcoef! in
 
 \verb!Geval*gcoef = data!
 
-where 
+This is an over-determined system, so we use the least-squares method to compute \verb!gcoef!:
 
 \verb!gcoef = (Geval*Geval')\(Geval*data);!
 
-One will recognize this as the least-squares method of solving an overdetermined linear system.
 
 The vector of best-fit coefficients \verb!gcoef! is currently in the Slepian basis. To translate it into the spherical-harmonic basis, run
 
@@ -514,17 +544,13 @@ To view the function whose coefficients are given in \verb!coef!,
 \includegraphics[scale=.75]{namerica_solvedcoefficients}
 \end{figure}
 
-To compare this with the graph of function whose values are the entries in \verb!data!, run
+For comparison, the Slepian function whose values are the entries in \verb!data! (that is, whose coefficients are the entries in \verb!lmcosi2coef(lmcosi,1)!) is graphed by
 
 \verb!plotplm(lmcosi,[],[],4,1)!
-
-And zoom in on the region namerica.
 
 \begin{figure}[H]
 \includegraphics[scale=.75]{namerica_compare}
 \end{figure}
-
-You can also compare the vectors of coefficients \verb!lmcosi2coef(lmcosi,1)! and \verb!coef!
-directly. 
+ 
 
 \end{document}
