@@ -125,9 +125,9 @@ projection over Earth's map. $\Yfun_{0\,0}$ is just a constant number
 over the entire planet. That's a bit boring so I won't plot it here.
 
 \begin{figure}%[H]
-\centering \includegraphics[width=0.4\textwidth,trim = 7cm 10cm 7cm
-  10cm, clip]{figures/Y10} \includegraphics[width=0.4\textwidth,trim =
-  3cm 9cm 3cm 10cm, clip]{figures/Y10_Mol}
+\centering \includegraphics[width=0.39\textwidth,trim = 7cm 10cm 7cm
+  10cm, clip]{figures/Fig1} \includegraphics[width=0.6\textwidth,trim =
+  3cm 9cm 3cm 10cm, clip]{figures/Fig1bar}
 \caption{This is spherical harmonic $\Yfun_{1\,0}$. It's a dipole with
   its north pole over the geographical North Pole and its south pole
   over the geographical South Pole. In the left panel I am plotting it
@@ -137,8 +137,8 @@ over the entire planet. That's a bit boring so I won't plot it here.
 
 %\newpage
 \begin{figure}%[H]
-\centering \includegraphics[width=0.4\textwidth,trim = 7cm 10cm 7cm
-  10cm, clip]{figures/Y1m1} \includegraphics[width=0.4\textwidth,trim
+\centering \includegraphics[width=0.39\textwidth,trim = 7cm 10cm 7cm
+  10cm, clip]{figures/Y1m1} \includegraphics[width=0.6\textwidth,trim
   = 3cm 9cm 3cm 10cm, clip]{figures/Y1m1_Mol}
 \caption{This is spherical harmonic $\Yfun_{1\,-1}$. It's a dipole
   with its north pole over the Pacific and its south pole over
@@ -148,8 +148,8 @@ over the entire planet. That's a bit boring so I won't plot it here.
 \end{figure}
  
 \begin{figure}[ht!]
-  \centering \includegraphics[width=0.4\textwidth,trim = 7cm 10cm 7cm
-    10cm, clip]{figures/Y11} \includegraphics[width=0.4\textwidth,trim =
+  \centering \includegraphics[width=0.39\textwidth,trim = 7cm 10cm 7cm
+    10cm, clip]{figures/Y11} \includegraphics[width=0.6\textwidth,trim =
     3cm 9cm 3cm 10cm, clip]{figures/Y11_Mol}
   \caption{This is spherical harmonic $\Yfun_{1\,1}$. It's a dipole with
     its north pole over the Indian Ocean and its south pole over Central
@@ -210,11 +210,6 @@ sphere, you need to first open a new figure or close the old one and
 then run
 
 \qquad \verb+plotplm(Y3m2,pi/180*phi,pi/180*theta,2)+
-
-The Octave version on my computer had issues with using the
-\verb+print+ command to turn figures into pdfs. I needed to take
-screen shots to get these figures into the document. This bug will
-probably be fixed soon and might not occur on your computer.
 
 \textbf{Exercise:} Reproduce figures \ref{Y10fig}, \ref{Y1m1fig}, and \ref{Y11fig}. Plot different spherical harmonics for different degrees and orders. Plot sums of spherical harmonics. Plot linear combinations of spherical harmonics. How does for example \\{$4\Yfun_{3\,1} - 0.2\Yfun_{1\,-1} +2\Yfun_{5\,-2}$} look like?
 
