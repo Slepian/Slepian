@@ -1,0 +1,7 @@
+still to do:
+
+update Scalar Slepian functions "Instructions" with Alyssa's edits. Create new (more descriptive) images and/or add color bars.
+
+possibly create Altitude-cognizant document explaining data inversion with potential field (not derivative) data.
+
+possibly edit the HELP sections of rGscal and scalupderivative to add clarity. 
