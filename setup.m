@@ -15,6 +15,7 @@ system('git clone https://github.com/csdms-contrib/slepian_hotel.git');
 system('git clone https://github.com/csdms-contrib/slepian_juliet.git');
 
 system('git clone https://github.com/AlainPlattner/nonZonalSlepians.git'); 
+%system('git clone https://github.com/AlainPlattner/localDataSpec.git');
 
 system('git clone https://github.com/Slepian/grdwrite2p.git');
 
