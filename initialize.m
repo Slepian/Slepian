@@ -1,4 +1,4 @@
-setenv('IFILES','./IFILES')
+
 setenv('OSTYPE','linux')
 %setenv('OSTYPE','solaris')
 disp('If you are using a Solaris machine, change the OSTYPE setting in initialize.m')
@@ -7,6 +7,7 @@ disp('If you are using a Solaris machine, change the OSTYPE setting in initializ
 % edit the Slepian directory below and copy this file over 
 slepdir = '.';
 
+setenv('IFILES',fullfile(slepdir,'IFILES'))
 
 addpath(fullfile(slepdir,'slepian_zero'))
 addpath(fullfile(slepdir,'slepian_alpha'))
