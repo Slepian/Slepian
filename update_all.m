@@ -69,8 +69,8 @@ cd('..');
 
 disp('Updating local data spectrum')
 cd('localDataSpec')
-system('git checkout master');
-system('git pull origin master');
+system('git checkout main');
+system('git pull origin main');
 cd('..');
 
 
