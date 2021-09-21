@@ -60,6 +60,20 @@ system('git checkout master');
 system('git pull origin master');
 cd('..');
 
+
+disp('Updating non-zonal Slepians')
+cd('nonZonalSlepians')
+system('git checkout master');
+system('git pull origin master');
+cd('..');
+
+disp('Updating local data spectrum')
+cd('localDataSpec')
+system('git checkout master');
+system('git pull origin master');
+cd('..');
+
+
 disp('Updating Slepian')
 system('git checkout master');
 system('git pull origin master');
