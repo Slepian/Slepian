@@ -27,41 +27,49 @@
 
 Start Matlab or Octave and switch to the folder \verb+Slepian+
 
-To initialize the Slepian software in Matlab, run
+In Matlab to initialize the Slepian software in Matlab, run
 
 \qquad \verb+initialize+
 
-To initialize the Slepian software in Octave, run
+For Octave, I recommend running
+
+\qquad \verb+more off+
+
+and
+
+\qquad \verb+warning off+
+
+before initialization, as otherwise it will print a long list of unimportant messages. You can then initialize the Slepian software in Octave using
 
 \qquad \verb+initialize_octave+
 
 The first time you run \verb+initialize_octave+, it will download and install
 missing packages. This will take a few minutes. Make sure you have
-internet access. 
+internet access otherwise Octave will not be able to install the necessary packages
 
-\subsection{Additional considerations for Octave}
+%% \subsection{Additional considerations for Octave}
 
-If you are running Octave and your figures further on in this tutorial
-look bad, then you may want to switch the graphics package Octave
-uses. Try for example
+%% If you are running Octave and your figures further on in this tutorial
+%% look bad, then you may want to switch the graphics package Octave
+%% uses. Try for example
 
-\qquad \verb+graphics_toolkit('fltk')+
+%% \qquad \verb+graphics_toolkit('fltk')+
 
-or
+%% or
 
-\qquad \verb+graphics_toolkit('gnuplot')+
+%% \qquad \verb+graphics_toolkit('gnuplot')+
 
-or
+%% or
 
-\qquad \verb+graphics_toolkit('qt')+
+%% \qquad \verb+graphics_toolkit('qt')+
 
-When you are displaying a lot of output, Octave usually shows this
-step by step. This is a bit annoying. We'll turn this off by running
+%% When you are displaying a lot of output, Octave usually shows this
+%% step by step. This is a bit annoying. We'll turn this off by running
 
-\qquad \verb+more off+
+%% \qquad \verb+more off+
 
-You will need to run all of these initializations every time you start
-Octave.
+%% You will need to run all of these initializations every time you start
+%% Octave.
 
 
 
@@ -221,9 +229,9 @@ probably be fixed soon and might not occur on your computer.
 If it looks like in figure~\ref{MixY}, then your programing was
 correct.
 
-\begin{figure}%[H]
+\begin{figure}[h]%[H]
   \centering
-  \includegraphics[width=0.7\textwidth,trim = 3cm 9cm 3cm 10cm, clip]{figures/mixY}
+  \includegraphics[width=0.6\textwidth,trim = 3cm 9cm 3cm 10cm, clip]{figures/mixY}
   \caption{Linear combination of spherical harmonics $4\Yfun_{3\,1} - 0.2\Yfun_{1\,-1} +2\Yfun_{5\,-2}$ in Mollweide projection}
   \label{MixY}
 \end{figure}
