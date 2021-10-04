@@ -176,11 +176,11 @@ chose a degree $l$ and an order $m$, you must select a plotting
 grid. Let's make a pixel every half degree. From your Octave tutorial
 you remember that
 
-\qquad \verb+theta=-90:0.5:90;+
+\qquad \verb+lat=-90:0.5:90;+
 
 Sets up such a vector for the latitudes and 
 
-\qquad \verb+phi=0:0.5:360;+
+\qquad \verb+lon=0:0.5:360;+
 
 for the longitudes. We will use the function \verb+ylm.m+ to
 calculate spherical-harmonic values on the sphere on the grid we just
@@ -194,19 +194,19 @@ and
 
 and then 
 
-\qquad \verb+Y3m2=ylm(l,m,pi/180*(90-theta),pi/180*phi);+
+\qquad \verb+Y3m2=ylm(l,m,pi/180*(90-lat),pi/180*lon);+
 
 This will calculate the values of $\Yfun_{lm}$ for your chosen $l$ and
-$m$ on the grid you defined with latitudes \verb+theta+ and longitudes
-\verb+phi+. We need the factors $\pi/180$ because the function
+$m$ on the grid you defined with latitudes \verb+lat+ and longitudes
+\verb+lon+. We need the factors $\pi/180$ because the function
 \verb+ylm.m+ requires the grid in radians and we need the $90-$
-\verb+theta+ because the function \verb+ylm.m+ works with colatitudes
+\verb+lat+ because the function \verb+ylm.m+ works with colatitudes
 instead of latitudes.
 
 To plot the resulting evaluated spherical harmonic \verb+Y3m2+ on a
 Mollweide projection, run
   
-\qquad \verb+plotplm(Y3m2,pi/180*phi,pi/180*theta,1)+
+\qquad \verb+plotplm(Y3m2,pi/180*lon,pi/180*lat,1)+
 
 Let's change the color to a bit a nicer color scheme, run
 
@@ -217,7 +217,7 @@ To plot the resulting evaluated spherical harmonic on a rotatable
 sphere, you need to first open a new figure or close the old one and
 then run
 
-\qquad \verb+plotplm(Y3m2,pi/180*phi,pi/180*theta,2)+
+\qquad \verb+plotplm(Y3m2,pi/180*lon,pi/180*lat,2)+
 
 The Octave version on my computer had issues with using the
 \verb+print+ command to turn figures into pdfs. I needed to take
@@ -259,7 +259,7 @@ up to a any degree $L$ we choose. Run for example
 
 and then
 
-\quad \verb+Y=ylm([0 L],[],pi/180*(90-theta),pi/180*phi);+
+\quad \verb+Y=ylm([0 L],[],pi/180*(90-lat),pi/180*lon);+
 
 This will calculate a matrix \verb+Y+ in which each row represents an
 evaluated spherical harmonic. the rows are ordered in what we call
@@ -290,11 +290,11 @@ and evaluate the linear combination of the spherical harmonics as
 The linear combination \verb!F! has the form of a vector. We need to
 put it into the right shape by running
 
-\quad \verb!Fp=reshape(F,length(theta),length(phi));!
+\quad \verb!Fp=reshape(F,length(lat),length(lon));!
 
 Plot this function with the command we have seen before
 
-\qquad \verb+plotplm(Fp,pi/180*phi,pi/180*theta,1)+
+\qquad \verb+plotplm(Fp,pi/180*lon,pi/180*lat,1)+
 
 \textbf{Question:} Why are there $(L+1)^2$ spherical harmonics for
 degrees 0 to $L$ and all coprresponding orders?
@@ -308,6 +308,43 @@ harmonics with the corresponding coefficients in \verb+c+?
 together with their locations, can you find a way to calculate
 best-fitting spherical-harmonic coefficients? Remember least-squares
 fitting.
+
+To solve this exercise, you need to evaluate the spherical harmonics
+$Y_{lm}$ on arbitary points, not just the regular grids we have
+seen. To do that, you first need to have the longitudes and latitudes
+of your arbitary (``irregularly spaced'') points organized as two
+vectors list. For example, you may want to calculate the spherical
+harmonics at the (lon, lat) locations (286, 40), (18, -34), and (0,
+52). In this case, your longitude vector would be
+\verb#lon=[286,18,0]# and your latitude vector would be
+\verb#lat=[40,-34,52]#. To evaluate all spherical harmonic functions
+between degree 0 and L at these locations, run the following:
+
+\qquad
+\verb#Y=ylm([0,L], [], pi/180*(90-lat), pi/180*lon, [], [], [], 1);#
+
+The \verb#1# (the number ``one'') at the end of this function call is
+to indicate to \verb#ylm# that the points we provide are not for a
+grid but irregular points. The open and close brackets before that are
+to just use the standard values for all the other, here irrelevant,
+values that \verb#ylm# needs as input parameters.
+
+You will also need to make sure that the matrix dimensions agree. If
+you want to solve the classical $A c = b$ system of equation where $A$
+is the matrix, $x$ is the column vector of unknowns, $b$ is the column
+right hand side vector, then you need to define the matrix $A$ and the
+right hand side vector $b$ accordingly. The matrix $A$ needs to be the transpose
+of \verb#Y#.
+
+\qquad  \verb#A = Y';#
+
+Then you can obtain the spherical-harmonic coefficients \verb#c#
+through
+
+\qquad \verb#c = A\b;#
+
+
+
 
 
 \end{document}
