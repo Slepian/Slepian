@@ -220,11 +220,6 @@ then run
 
 \qquad \verb+plotplm(Y3m2,pi/180*lon,pi/180*lat,2)+
 
-The Octave version on my computer had issues with using the
-\verb+print+ command to turn figures into pdfs. I needed to take
-screen shots to get these figures into the document. This bug will
-probably be fixed soon and might not occur on your computer.
-
 \textbf{Exercise:} Reproduce figures \ref{Y10fig}, \ref{Y1m1fig}, and \ref{Y11fig}. Plot different spherical harmonics for different degrees and orders. Plot sums of spherical harmonics. Plot linear combinations of spherical harmonics. How does for example \\{$4\Yfun_{3\,1} - 0.2\Yfun_{1\,-1} +2\Yfun_{5\,-2}$} look like?
 
 If it looks like in figure~\ref{MixY}, then your programing was
@@ -264,8 +259,9 @@ and then
 
 This will calculate a matrix \verb+Y+ in which each row represents an
 evaluated spherical harmonic. the rows are ordered in what we call
-here the \emph{addmout} format. This is an informal term used within
-the software suite and is not generally used in the community. Addmout
+here the ADDMOUT format (more about this in
+Section~\ref{ordering}). This is an informal term used within the
+software suite and is not generally used in the community. ADDMOUT
 means the following ordering for the (degree/order) pairs: (0/0),
 (1/-1), (1/0), (1/1), (2/-2), (2/-1), etc. This means that the
 spherical harmonic with degree 2 and order 1 is in the 8th row of the
@@ -346,7 +342,7 @@ through
 
 
 
-\section{Organization of spehrical-harmonic coefficients}
+\section{Organization and ordering of spherical-harmonic coefficients}\label{ordering}
 
 Some representations of spherical harmonics split the
 spherical-harmonic coefficients up into coefficients for the $\cos$
@@ -357,7 +353,7 @@ to the $\sin$ coefficients and the negative coefficients correspond to
 the $\cos$ coefficients.
 
 Our software has three ways to store the spherical-harmonic
-coefficients in a variable:
+coefficients in a variable, LMCOSI, ADDMOUT, and ADDMON.
 
 The first, most intuitive one is LMCOSI. As the name says, this
 variable, a matrix, has four columns. The first one indicating the
