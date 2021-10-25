@@ -4,6 +4,7 @@
 \usepackage{hyperref}
 \usepackage{graphicx}
 \usepackage{upquote}
+\usepackage{amsmath}
 \setlength{\parskip}{0.5cm plus4mm minus3mm}
 
 \textwidth=6.4in
@@ -96,7 +97,7 @@ article
 including links on the website \url{www.alainplattner.net}.
 
 
-\section{Introduction to spherical harmonics}
+\section{Introduction to spherical harmonics}\label{sphintro}
 
 Spherical harmonics are a counterpart to monomials (building blocks of
 polynomials, the ``wiggly'' lines) but on the sphere. Remember that
@@ -344,6 +345,129 @@ through
 \qquad \verb#c = A\b;#
 
 
+
+\section{Organization of spehrical-harmonic coefficients}
+
+Some representations of spherical harmonics split the
+spherical-harmonic coefficients up into coefficients for the $\cos$
+longitudinal variation and coefficients for the $\sin$ longitudinal
+variation, each with a positive order. In our representation, the
+order $m$ can be positive or negative. The positive orders correspond
+to the $\sin$ coefficients and the negative coefficients correspond to
+the $\cos$ coefficients.
+
+Our software has three ways to store the spherical-harmonic
+coefficients in a variable:
+
+The first, most intuitive one is LMCOSI. As the name says, this
+variable, a matrix, has four columns. The first one indicating the
+degree $l$, the second column contains the (non-negative) order $m$,
+the third column contains the coefficients for the negative or zero
+order (corresponding to the $\cos$ longitudinal variation) and the
+4-th column contains the coefficients for the positive order
+(corresponding to the $\sin$ longitudinal variation).
+
+We often need to work with the spherical-harmonic coefficients as a
+single vector to be able to carry out linear algebraic operations. To
+do that, we have two different \textbf{ordering schemes}: ADDMOUT and
+ADDMON.
+
+In the ADDMOUT ordering scheme, we order the coefficients first by
+their degree and then by their order, from negative to positive:
+
+\begin{tabular}{c|cccccccccc}
+l&0&1&1&1&2&2&2&2&2&etc.\\
+\hline
+m&0&-1&0&1&-2&-1&0&1&2&\text{etc.}
+\end{tabular}
+
+For example, if the coefficients organized in LMCOSI are:
+
+\begin{tabular}{rrrr}
+  l&m&cos&sin\\
+  \hline
+  0&0&-1.2&0\\
+  1&0&3.1&0\\
+  1&1&0.01&1.35
+\end{tabular}
+
+then their corresponding ADDMOUT representation is
+
+\verb#[-1.2, 0.01, 3.1, 1.35]#
+
+A second ordering scheme is ADDMON. As for ADDMOUT, the primary
+ordering scheme is using the degrees. But here, the orders are
+arranged by their absolute values:
+
+
+\begin{tabular}{c|cccccccccc}
+l&0&1&1&1&2&2&2&2&2&\text{etc.}\\
+\hline
+m&0&0&-1&1&0&-1&1&-2&2&\text{etc.}
+\end{tabular}
+
+Our coefficients from before would thus be ordered as
+
+\verb#[-1.2 , 3.1, 0.01, 1.35]#
+
+Luckily, this transformation does not need to be done by hand. Our
+functions \verb#coef2lmcosi# and \verb#lmcosi2coef# can transform the
+vector form to and back from the LMCOSI form. You can choose whether
+you want ADDMON or ADDMOFF by supplying an extra flag:
+
+\verb#lmcosi2coef(lmcosi,0)# translates into ADDMON, and
+\verb#lmcosi2coef(lmcosi,1)# translates to ADDMOFF. The same flag
+applies when you transform your vector of coefficients into
+LMCOSI. You need to let the program know if the vector was in ADDMON
+or ADDMOFF ordering scheme:
+\verb#coef2lmcosi(coef,0)# or \verb#coef2lmcosi(coef,1)#,
+respectively.
+
+
+\section{Normalization of the spherical harmonics}
+
+In the scientific literature contains a myriad of different
+normalizations for the spherical harmonics. Here we use ``unit sphere
+normalization''. But even this normalization is not unique. It could
+mean ``normalization with respect to the sphere of unit radius'', or
+``normalization with respect to the sphere of unit surface area''.
+
+So specifically: Our function \verb#ylm# normalizes with respect to
+the unit-area sphere. Mathematically, this means that if $Y_{lm}$ and
+$Y_{l'm'}$ are outputs of the function \verb#ylm#, then their inner
+product over the sphere is either 1 (if $Y_{lm} = Y_{l'm'}$) or zero
+(if they are not the same):
+
+\[
+\int_\Omega Y_{lm} Y_{l'm'} \, d\Omega = \delta_{ll'}\delta_{mm'}
+\]
+
+
+Our collection of Matlab/Octave codes also contains the
+highly-efficient \verb#plm2xyz#, which can plot spherical-harmonic
+coefficients on the sphere in a computationally more efficient way
+than \verb#ylm#. But \verb#plm2xyz# is normalized for the ``unit
+radius sphere'', thus
+
+
+\[
+\int_\Omega Y_{lm} Y_{l'm'} \, d\Omega = 4\pi \delta_{ll'}\delta_{mm'}
+\]
+
+The plotting routine \verb#plotplm# uses \verb#plm2xyz# and thus
+follows the same normalization.
+
+So if you obtain spherical-harmonic coefficients through inversion
+using \verb#ylm# (see Section~\ref{sphintro}) and you want to plot
+them using \verb#plm2xyz#, then you must divide the coefficients by
+\verb#sqrt(4*pi)# before plotting to obtain the correct spatial
+representation:
+
+\quad \verb#coef = Y'\b;#
+
+\quad \verb#lmcosi = coef2lmcosi(coef/sqrt(4*pi) ,0); % Y is in ADDMON#
+
+\quad \verb#plotplm(lmcosi,[],[],[],1)#
 
 
 
