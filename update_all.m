@@ -74,6 +74,16 @@ system('git pull origin main');
 cd('..');
 
 
+disp('Updating equal area subsampling')
+cd('equalAreaSubsampling')
+system('git checkout main');
+system('git pull origin main');
+cd('spheretri')
+system('git checkout master');
+system('git pull origin master');
+cd('..');
+cd('..');
+
 disp('Updating Slepian')
 system('git checkout master');
 system('git pull origin master');

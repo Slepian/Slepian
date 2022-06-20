@@ -20,6 +20,7 @@ slepian_hotel/
 slepian_juliet/
 nonZonalSlepians/
 localDataSpec/
+equalAreaSubsampling/
 MMASS/
 octave_funcs/
 grdwrite2p/

@@ -23,6 +23,8 @@ addpath(fullfile(slepdir,'slepian_hotel/MGS'))
 addpath(fullfile(slepdir,'slepian_juliet'))
 addpath(fullfile(slepdir,'nonZonalSlepians'))
 addpath(fullfile(slepdir,'localDataSpec'))
+addpath(fullfile(slepdir,'equalAreaSubsampling'))
+addpath(fullfile(slepdir,'equalAreaSubsampling','spheretri'))
 
 addpath(fullfile(slepdir,'grdwrite2p'))
 

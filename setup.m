@@ -19,6 +19,12 @@ system('git clone https://github.com/AlainPlattner/localDataSpec.git');
 
 system('git clone https://github.com/Slepian/grdwrite2p.git');
 
+system('git clone https://github.com/AlainPlattner/equalAreaSubsampling.git');
+cd('equalAreaSubsampling');
+system('git clone https://github.com/AlainPlattner/spheretri.git');
+cd('..')
+
+
 disp('Creating folder structure ..')
 mkdir('IFILES');
 cd('IFILES');
