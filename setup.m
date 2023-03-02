@@ -82,6 +82,7 @@ mkdir('TORVECGLMALPHA');
 mkdir('TORVECGLMALPHATOJ');
 mkdir('VECTANSDWCAP');
 mkdir('VECTANGLMALPHA');
+mkdir('FULLVECROTJ');
 mkdir('SDWCAPRING');
 mkdir('GLMALPHARING');
 mkdir('MCOUPLINGS');
