@@ -65,6 +65,10 @@ cd('..');
 mkdir('RADSLEPIANS');
 mkdir('TANSLEPIANS');
 mkdir('TANCAP');
+mkdir('GAMMAP');
+cd('GAMMAP');
+mkdir('REGIONS');
+cd('..')
 mkdir('WIGNER');
 cd('WIGNER');
 mkdir('0J');
