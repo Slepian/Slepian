@@ -9,6 +9,7 @@ slepdir = '.';
 
 setenv('IFILES',fullfile(slepdir,'IFILES'))
 
+addpath(fullfile(slepdir,'.'))
 addpath(fullfile(slepdir,'slepian_zero'))
 addpath(fullfile(slepdir,'slepian_alpha'))
 addpath(fullfile(slepdir,'slepian_alpha/REGIONS'))
